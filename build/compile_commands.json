@@ -1,0 +1,52 @@
+[
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/buffer.cpp.o -c /home/wxy/Projects/my-WebServer/codes/buffer.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/buffer.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/epoller.cpp.o -c /home/wxy/Projects/my-WebServer/codes/epoller.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/epoller.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/heaptimer.cpp.o -c /home/wxy/Projects/my-WebServer/codes/heaptimer.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/heaptimer.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/httpconn.cpp.o -c /home/wxy/Projects/my-WebServer/codes/httpconn.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/httpconn.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/httprequest.cpp.o -c /home/wxy/Projects/my-WebServer/codes/httprequest.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/httprequest.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/httpresponse.cpp.o -c /home/wxy/Projects/my-WebServer/codes/httpresponse.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/httpresponse.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/log.cpp.o -c /home/wxy/Projects/my-WebServer/codes/log.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/log.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o -c /home/wxy/Projects/my-WebServer/codes/sqlconnpoll.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/sqlconnpoll.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o -c /home/wxy/Projects/my-WebServer/codes/webserver.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/webserver.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/main.cpp.o -c /home/wxy/Projects/my-WebServer/main.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/main.cpp"
+}
+]

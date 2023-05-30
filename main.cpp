@@ -1,10 +1,20 @@
-#include<unistd.h>
-#include"webserver.h"
+/*
+ * @Copyright: Copyright (c) 2022 WangXingyu All Rights Reserved.
+ * @Description:
+ * @Version:
+ * @Author: WangXingyu
+ * @Date: 2023-05-30 18:15:26
+ * @LastEditors: WangXingyu
+ * @LastEditTime: 2023-05-30 18:17:54
+ */
+#include <unistd.h>
+#include "webserver.h"
 
-int main() {
+int main()
+{
     WebServer server(
-            1316, 3, 60000, false,                    /* 端口 ET模式 timeoutMs 优雅退出  */
-            3306, "root", "cqupt1811", "zzh",           /* Mysql配置 */
-            12, 6, true, 1, 1024);    /* 连接池数量 线程池数量 日志开关 日志等级 日志异步队列容量 */
+        1316, 3, 60000, false,              /* 端口 ET模式 timeoutMs 优雅退出  */
+        3306, "wxy", "123456", "webserver", /* Mysql配置 */
+        12, 6, true, 1, 1024);              /* 连接池数量 线程池数量 日志开关 日志等级 日志异步队列容量 */
     server.start();
 }
