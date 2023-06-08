@@ -150,6 +150,33 @@ codes/buffer.cpp.s:
 	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/buffer.cpp.s
 .PHONY : codes/buffer.cpp.s
 
+codes/config.o: codes/config.cpp.o
+
+.PHONY : codes/config.o
+
+# target to build an object file
+codes/config.cpp.o:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.o
+.PHONY : codes/config.cpp.o
+
+codes/config.i: codes/config.cpp.i
+
+.PHONY : codes/config.i
+
+# target to preprocess a source file
+codes/config.cpp.i:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.i
+.PHONY : codes/config.cpp.i
+
+codes/config.s: codes/config.cpp.s
+
+.PHONY : codes/config.s
+
+# target to generate assembly for a file
+codes/config.cpp.s:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.s
+.PHONY : codes/config.cpp.s
+
 codes/epoller.o: codes/epoller.cpp.o
 
 .PHONY : codes/epoller.o
@@ -405,6 +432,9 @@ help:
 	@echo "... codes/buffer.o"
 	@echo "... codes/buffer.i"
 	@echo "... codes/buffer.s"
+	@echo "... codes/config.o"
+	@echo "... codes/config.i"
+	@echo "... codes/config.s"
 	@echo "... codes/epoller.o"
 	@echo "... codes/epoller.i"
 	@echo "... codes/epoller.s"

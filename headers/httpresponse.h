@@ -1,21 +1,27 @@
-//
-// Created by zzh on 2022/4/19.
-//
+/*
+ * @Copyright: Copyright (c) 2022 WangXingyu All Rights Reserved.
+ * @Description:
+ * @Version:
+ * @Author: WangXingyu
+ * @Date: 2023-05-30 18:15:26
+ * @LastEditors: WangXingyu
+ * @LastEditTime: 2023-06-08 15:16:59
+ */
 
 #ifndef MY_WEBSERVER_HTTPRESPONSE_H
 #define MY_WEBSERVER_HTTPRESPONSE_H
 
-#include<unordered_map>
-#include<fcntl.h>
-#include<unistd.h>
-#include<sys/stat.h>
-#include<sys/mman.h>  /*mmap,munmap*/
+#include <unordered_map>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/mman.h> /*mmap,munmap*/
 
-#include"log.h"
-#include"buffer.h"
+#include "log.h"
+#include "buffer.h"
 
-
-class HttpResponse {
+class HttpResponse
+{
 public:
     HttpResponse();
 
@@ -46,17 +52,16 @@ private:
 
     std::string getFileType_();
 
-    int code_;  /*返回码*/
-    bool isKeepAlive_;  /*是否保持长连接*/
-    char *mmFile_;  /*发送的文件名*/
-    struct stat mmFileStat_;  /*发送的文件信息*/
-    std::string path_;  /*返回的文件路径*/
-    std::string srcDir_;  /*项目根目录*/
+    int code_;               /*返回码*/
+    bool isKeepAlive_;       /*是否保持长连接*/
+    char *mmFile_;           /*发送的文件名*/
+    struct stat mmFileStat_; /*发送的文件信息*/
+    std::string path_;       /*返回的文件路径*/
+    std::string srcDir_;     /*项目根目录*/
 
-    static const std::unordered_map<std::string, std::string> SUFFIX_TYPE;  /*返回类型键值对*/
-    static const std::unordered_map<int, std::string> CODE_STATUS;  /*状态码键值对*/
-    static const std::unordered_map<int, std::string> CODE_PATH;  /*错误码与页面对应关系*/
+    static const std::unordered_map<std::string, std::string> SUFFIX_TYPE; /*返回类型键值对*/
+    static const std::unordered_map<int, std::string> CODE_STATUS;         /*状态码键值对*/
+    static const std::unordered_map<int, std::string> CODE_PATH;           /*错误码与页面对应关系*/
 };
 
-
-#endif //MY_WEBSERVER_HTTPRESPONSE_H
+#endif // MY_WEBSERVER_HTTPRESPONSE_H

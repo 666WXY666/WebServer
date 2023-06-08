@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/my_WebServer.dir/codes/buffer.cpp.o"
+  "CMakeFiles/my_WebServer.dir/codes/config.cpp.o"
   "CMakeFiles/my_WebServer.dir/codes/epoller.cpp.o"
   "CMakeFiles/my_WebServer.dir/codes/heaptimer.cpp.o"
   "CMakeFiles/my_WebServer.dir/codes/httpconn.cpp.o"

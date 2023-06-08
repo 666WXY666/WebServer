@@ -1,3 +1,12 @@
+/*
+ * @Copyright: Copyright (c) 2022 WangXingyu All Rights Reserved.
+ * @Description:
+ * @Version:
+ * @Author: WangXingyu
+ * @Date: 2023-05-30 18:15:26
+ * @LastEditors: WangXingyu
+ * @LastEditTime: 2023-06-08 15:53:09
+ */
 //
 // Created by zzh on 2022/4/19.
 //
@@ -5,18 +14,20 @@
 #ifndef MY_WEBSERVER_SQLCONNRAII_H
 #define MY_WEBSERVER_SQLCONNRAII_H
 
-#include"sqlconnpoll.h"
+#include "sqlconnpoll.h"
 
 /*
  * 资源在对象构造初始化 资源在对象析构时释放
  */
-class SqlConnRAII {
+class SqlConnRAII
+{
 public:
     /*
      * 因为这里需要修改指针的值，所以需要拆入二级指针，其实这里可以用指针的引用接收，这样只需要传入指针即可
      * 构造函数中获取连接
      */
-    SqlConnRAII(MYSQL **sql, SqlConnPool *connpool) {
+    SqlConnRAII(MYSQL **sql, SqlConnPool *connpool)
+    {
         assert(connpool);
         *sql = connpool->getConn();
         sql_ = *sql;
@@ -26,16 +37,17 @@ public:
     /*
      * 析构函数中释放
      */
-    ~SqlConnRAII(){
-        if(sql_){
+    ~SqlConnRAII()
+    {
+        if (sql_)
+        {
             connpool_->freeConn(sql_);
         }
     }
 
 private:
-    MYSQL *sql_;  /*数据库连接*/
-    SqlConnPool *connpool_;  /*连接池*/
+    MYSQL *sql_;            /*数据库连接*/
+    SqlConnPool *connpool_; /*连接池*/
 };
 
-
-#endif //MY_WEBSERVER_SQLCONNRAII_H
+#endif // MY_WEBSERVER_SQLCONNRAII_H

@@ -1,29 +1,32 @@
 //
 // Created by zzh on 2022/4/20.
 //
-#include"log.h"
-
+#include "../headers/log.h"
 
 /*
  * 构造函数中初始化一系列变量
  */
 Log::Log() : lineCount_(0), isAsync_(false), writeThread_(nullptr),
-             deque_(nullptr), today_(0), fp_(nullptr) {
-
+             deque_(nullptr), today_(0), fp_(nullptr)
+{
 }
 
 /*
  * 在析构时将所有log信息写入文件，再关闭写入线程
  */
-Log::~Log() {
-    if (writeThread_ && writeThread_->joinable()) {
-        while (!deque_->empty()) {
+Log::~Log()
+{
+    if (writeThread_ && writeThread_->joinable())
+    {
+        while (!deque_->empty())
+        {
             deque_->flush();
         };
         deque_->close();
         writeThread_->join();
     }
-    if (fp_) {
+    if (fp_)
+    {
         std::lock_guard<std::mutex> locker(mtx_);
         flush();
         fclose(fp_);
@@ -33,14 +36,16 @@ Log::~Log() {
 /*
  * 返回文件是否打开
  */
-bool Log::isOpen() {
+bool Log::isOpen()
+{
     return isOpen_;
 }
 
 /*
  * 返回日志级别
  */
-int Log::getLevel() {
+int Log::getLevel()
+{
     std::lock_guard<std::mutex> locker(mtx_);
 
     return level_;
@@ -49,7 +54,8 @@ int Log::getLevel() {
 /*
  * 设置日志级别
  */
-void Log::setLevel(int level) {
+void Log::setLevel(int level)
+{
     std::lock_guard<std::mutex> locker(mtx_);
     level_ = level;
 }
@@ -57,31 +63,35 @@ void Log::setLevel(int level) {
 /*
  * 向缓冲区中加入log的级别信息
  */
-void Log::appendLogLevelTitle_(int level) {
-    switch (level) {
-        case 0:
-            buff_.append("[debug]: ", 9);
-            break;
-        case 1:
-            buff_.append("[info]:  ", 9);
-            break;
-        case 2:
-            buff_.append("[warn]:  ", 9);
-            break;
-        case 3:
-            buff_.append("[error]: ", 9);
-            break;
-        default:
-            buff_.append("[info]:  ", 9);
-            break;
+void Log::appendLogLevelTitle_(int level)
+{
+    switch (level)
+    {
+    case 0:
+        buff_.append("[debug]: ", 9);
+        break;
+    case 1:
+        buff_.append("[info]:  ", 9);
+        break;
+    case 2:
+        buff_.append("[warn]:  ", 9);
+        break;
+    case 3:
+        buff_.append("[error]: ", 9);
+        break;
+    default:
+        buff_.append("[info]:  ", 9);
+        break;
     }
 }
 
 /*
  * 清空缓冲区，将当前的数据都写入到文件中去
  */
-void Log::flush() {
-    if (isAsync_) {
+void Log::flush()
+{
+    if (isAsync_)
+    {
         /*如果是异步模式，需要将整个队列都写入*/
         deque_->flush();
     }
@@ -93,9 +103,11 @@ void Log::flush() {
  * 异步取出队列中数据，写入文件中
  * 不停循环取出数据写入文件，只有队列为空时会阻塞等待
  */
-void Log::asyncWrite_() {
+void Log::asyncWrite_()
+{
     std::string str = "";
-    while (deque_->pop(str)) {
+    while (deque_->pop(str))
+    {
         std::lock_guard<std::mutex> locker(mtx_);
         fputs(str.c_str(), fp_);
     }
@@ -105,7 +117,8 @@ void Log::asyncWrite_() {
  * 局部静态变量，线程安全的初始化方式
  * 单例模式，返回一个LOG对象的引用
  */
-Log *Log::instance() {
+Log *Log::instance()
+{
     static Log instance;
 
     return &instance;
@@ -114,27 +127,33 @@ Log *Log::instance() {
 /*
  * 线程的执行函数
  */
-void Log::flushLogThread() {
+void Log::flushLogThread()
+{
     Log::instance()->asyncWrite_();
 }
 
 /*
  * 初始化Log类设置
  */
-void Log::init(int level, const char *path, const char *suffix, int maxQueueSize) {
+void Log::init(int level, const char *path, const char *suffix, int maxQueueSize)
+{
     isOpen_ = true;
     level_ = level;
     /*如果消息队列大于0，说明启用了异步写入log，那就要初始化异步写入所需的变量*/
-    if (maxQueueSize > 0) {
+    if (maxQueueSize > 0)
+    {
         /*表示开启异步写入*/
         isAsync_ = true;
-        if (!deque_) {
+        if (!deque_)
+        {
             /*获取deque_的unique智能指针*/
             deque_ = std::make_unique<BlockDeque<std::string>>();
             /*获取writeThread_的unique智能指针*/
             writeThread_ = std::make_unique<std::thread>(flushLogThread);
         }
-    } else {
+    }
+    else
+    {
         /*表示不开启异步写入*/
         isAsync_ = false;
     }
@@ -159,14 +178,16 @@ void Log::init(int level, const char *path, const char *suffix, int maxQueueSize
     {
         std::lock_guard<std::mutex> locker(mtx_);
         /*确保buff回收完全*/
-        if (fp_) {
+        if (fp_)
+        {
             flush();
             fclose(fp_);
         }
         /*创建文件目录与文件*/
         fp_ = fopen(fileName, "a");
         /*如果未创建成功，说明没有对应的目录，创建目录后再创建文件即可*/
-        if (!fp_) {
+        if (!fp_)
+        {
             /*创建目录*/
             mkdir(path_, 0777);
             /*创建文件*/
@@ -179,7 +200,8 @@ void Log::init(int level, const char *path, const char *suffix, int maxQueueSize
 /*
  * 向log文件中写入log信息
  */
-void Log::write(int level, const char *format, ...) {
+void Log::write(int level, const char *format, ...)
+{
     /*获取当前时间*/
     struct timeval now = {0, 0};
     gettimeofday(&now, nullptr);
@@ -190,7 +212,8 @@ void Log::write(int level, const char *format, ...) {
     /* ... 使用的可变参数列表*/
     va_list vaList;
     /*如果日期变了，也就是到第二天了，或者当前log文件行数达到规定的最大值时都需要创建一个新的log文件*/
-    if (today_ != t.tm_mday || (lineCount_ && (lineCount_ % MAX_LINES) == 0)) {
+    if (today_ != t.tm_mday || (lineCount_ && (lineCount_ % MAX_LINES) == 0))
+    {
         /*最终文件路径存储变量*/
         char newFile[LOG_NAME_LEN];
         char tail[36] = {0};
@@ -198,14 +221,17 @@ void Log::write(int level, const char *format, ...) {
         snprintf(tail, 36, "%04d_%02d_%02d",
                  t.tm_year + 1900, t.tm_mon + 1, t.tm_mday);
         /*如果日期变化了，那么需要将toDay变量更改为当前日期*/
-        if (today_ != t.tm_mday) {
+        if (today_ != t.tm_mday)
+        {
             /*拼接 path_ tail suffix_ 获取最终文件名*/
             snprintf(newFile, LOG_NAME_LEN - 72, "%s/%s%s", path_, tail, suffix_);
             /*更改today变量*/
             today_ = t.tm_mday;
             /*重置文件行计数变量*/
             lineCount_ = 0;
-        } else {
+        }
+        else
+        {
             /*进入到此分支表示文件行数超过了最大行数，需要分出第二个log文件来存储今日的文件*/
             /*文件名由 path_  tail (lineCount_  / MAX_LINES) suffix_ 组成*/
             snprintf(newFile, LOG_NAME_LEN - 72, "%s/%s-%d%s", path_,
@@ -247,10 +273,13 @@ void Log::write(int level, const char *format, ...) {
         buff_.append("\n\0", 2);
 
         /*根据变量选择是否异步写入*/
-        if (isAsync_ && deque_ && !deque_->full()) {
+        if (isAsync_ && deque_ && !deque_->full())
+        {
             /*如果以上三个条件都满足，那么进行异步写入*/
             deque_->push_back(buff_.retrieveAllToStr());
-        } else {
+        }
+        else
+        {
             /*否则直接写入至文件*/
             fputs(buff_.peek(), fp_);
         }
@@ -258,15 +287,3 @@ void Log::write(int level, const char *format, ...) {
         buff_.retrieveAll();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

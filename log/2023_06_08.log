@@ -1,0 +1,187 @@
+2023-06-08 15:47:16.118062 [info]:  =============Server init================
+2023-06-08 15:47:16.118085 [info]:  Date: 2023-06-08, Time: 15:47:16
+2023-06-08 15:47:16.118096 [info]:  Port: 9006, OpenLinger: false
+2023-06-08 15:47:16.118180 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-08 15:47:16.118192 [info]:  Actor Mode: Reactor
+2023-06-08 15:47:16.118199 [info]:  LogSys Status: Open
+2023-06-08 15:47:16.118208 [info]:  Log level: 1
+2023-06-08 15:47:16.118218 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-08 15:47:16.118227 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-08 15:47:16.118237 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-08 15:47:16.118247 [info]:  TimeOut: 60s
+2023-06-08 15:47:16.118254 [info]:  ================Server start================
+2023-06-08 15:48:07.572216 [info]:  Client[18](10.128.133.88:10209) in, userCount: 1
+2023-06-08 15:48:07.572334 [info]:  Client[18] in!
+2023-06-08 15:48:07.621393 [info]:  Client[19](10.128.133.88:11233) in, userCount: 2
+2023-06-08 15:48:07.621477 [info]:  Client[19] in!
+2023-06-08 15:48:07.621529 [info]:  Client[20](10.128.133.88:10977) in, userCount: 3
+2023-06-08 15:48:07.621561 [info]:  Client[20] in!
+2023-06-08 15:48:07.621592 [info]:  Client[21](10.128.133.88:10721) in, userCount: 4
+2023-06-08 15:48:07.621623 [info]:  Client[21] in!
+2023-06-08 15:48:07.621656 [info]:  Client[22](10.128.133.88:10465) in, userCount: 5
+2023-06-08 15:48:07.621682 [info]:  Client[22] in!
+2023-06-08 15:48:07.657878 [info]:  Client[23](10.128.133.88:11489) in, userCount: 6
+2023-06-08 15:48:07.657971 [info]:  Client[23] in!
+2023-06-08 15:48:57.152062 [info]:  Client[19] quit!
+2023-06-08 15:48:57.152252 [info]:  Client[19](10.128.133.88:11233) quit, userCount: 5
+2023-06-08 15:48:57.152314 [info]:  Client[23] quit!
+2023-06-08 15:48:57.152390 [info]:  Client[23](10.128.133.88:11489) quit, userCount: 4
+2023-06-08 15:48:57.152416 [info]:  Client[20] quit!
+2023-06-08 15:48:57.152459 [info]:  Client[20](10.128.133.88:10977) quit, userCount: 3
+2023-06-08 15:48:57.153012 [info]:  Client[18] quit!
+2023-06-08 15:48:57.153058 [info]:  Client[18](10.128.133.88:10209) quit, userCount: 2
+2023-06-08 15:48:57.153076 [info]:  Client[22] quit!
+2023-06-08 15:48:57.153111 [info]:  Client[22](10.128.133.88:10465) quit, userCount: 1
+2023-06-08 15:49:04.280762 [info]:  Client[18](10.128.133.88:63969) in, userCount: 2
+2023-06-08 15:49:04.280925 [info]:  Client[18] in!
+2023-06-08 15:49:04.288846 [info]:  Verify name:haha pwd:haha
+2023-06-08 15:49:04.333831 [info]:  Client[19](10.128.133.88:64481) in, userCount: 3
+2023-06-08 15:49:04.333945 [info]:  Client[19] in!
+2023-06-08 15:49:04.335309 [info]:  Client[20](10.128.133.88:64737) in, userCount: 4
+2023-06-08 15:49:04.335407 [info]:  Client[20] in!
+2023-06-08 15:49:04.335431 [info]:  Client[22](10.128.133.88:64993) in, userCount: 5
+2023-06-08 15:49:04.335472 [info]:  Client[22] in!
+2023-06-08 15:49:04.335522 [info]:  Client[23](10.128.133.88:65249) in, userCount: 6
+2023-06-08 15:49:04.335550 [info]:  Client[23] in!
+2023-06-08 15:49:15.950662 [info]:  Client[21] quit!
+2023-06-08 15:49:15.954455 [info]:  Client[21](10.128.133.88:10721) quit, userCount: 5
+2023-06-08 15:49:16.041557 [info]:  Client[22] quit!
+2023-06-08 15:49:16.041725 [info]:  Client[22](10.128.133.88:64993) quit, userCount: 4
+2023-06-08 15:49:16.041789 [info]:  Client[23] quit!
+2023-06-08 15:49:16.041846 [info]:  Client[23](10.128.133.88:65249) quit, userCount: 3
+2023-06-08 15:49:16.041878 [info]:  Client[20] quit!
+2023-06-08 15:49:16.041918 [info]:  Client[20](10.128.133.88:64737) quit, userCount: 2
+2023-06-08 15:49:16.042370 [info]:  Client[19] quit!
+2023-06-08 15:49:16.042439 [info]:  Client[19](10.128.133.88:64481) quit, userCount: 1
+2023-06-08 15:49:16.042465 [info]:  Client[18] quit!
+2023-06-08 15:57:02.298582 [info]:  =============Server init================
+2023-06-08 15:57:02.298604 [info]:  Date: 2023-06-08, Time: 15:57:02
+2023-06-08 15:57:02.298695 [info]:  Port: 9006, OpenLinger: false
+2023-06-08 15:57:02.298706 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-08 15:57:02.298716 [info]:  Actor Mode: Reactor
+2023-06-08 15:57:02.298726 [info]:  LogSys Status: Open
+2023-06-08 15:57:02.298733 [info]:  Log level: 1
+2023-06-08 15:57:02.298743 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-08 15:57:02.298775 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-08 15:57:02.298851 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-08 15:57:02.298883 [info]:  TimeOut: 60s
+2023-06-08 15:57:02.298901 [info]:  ================Server start================
+2023-06-08 15:57:12.929516 [info]:  Client[18](10.128.133.88:49125) in, userCount: 1
+2023-06-08 15:57:12.929630 [info]:  Client[18] in!
+2023-06-08 15:57:12.981165 [info]:  Client[19](10.128.133.88:49637) in, userCount: 2
+2023-06-08 15:57:12.981247 [info]:  Client[19] in!
+2023-06-08 15:57:12.981282 [info]:  Client[20](10.128.133.88:49893) in, userCount: 3
+2023-06-08 15:57:12.981367 [info]:  Client[20] in!
+2023-06-08 15:57:12.981404 [info]:  Client[21](10.128.133.88:50405) in, userCount: 4
+2023-06-08 15:57:12.981438 [info]:  Client[21] in!
+2023-06-08 15:57:12.981468 [info]:  Client[22](10.128.133.88:49381) in, userCount: 5
+2023-06-08 15:57:12.981496 [info]:  Client[22] in!
+2023-06-08 15:57:12.983090 [info]:  Client[23](10.128.133.88:50149) in, userCount: 6
+2023-06-08 16:12:00.951865 [info]:  =============Server init================
+2023-06-08 16:12:00.951898 [info]:  Date: 2023-06-08, Time: 16:12:00
+2023-06-08 16:12:00.951983 [info]:  Port: 9006, OpenLinger: false
+2023-06-08 16:12:00.951996 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-08 16:12:00.952006 [info]:  Actor Mode: Reactor
+2023-06-08 16:12:00.952016 [info]:  LogSys Status: Open
+2023-06-08 16:12:00.952026 [info]:  Log level: 1
+2023-06-08 16:12:00.952036 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-08 16:12:00.952046 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-08 16:12:00.952056 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-08 16:12:00.952063 [info]:  TimeOut: 60s
+2023-06-08 16:12:00.952143 [info]:  ================Server start================
+2023-06-08 16:12:13.558019 [info]:  Client[18](10.128.133.88:29676) in, userCount: 1
+2023-06-08 16:12:13.558172 [info]:  Client[18] in!
+2023-06-08 16:12:13.608854 [info]:  Client[19](10.128.133.88:29932) in, userCount: 2
+2023-06-08 16:12:13.608968 [info]:  Client[19] in!
+2023-06-08 16:12:13.609020 [info]:  Client[20](10.128.133.88:30444) in, userCount: 3
+2023-06-08 16:12:13.609057 [info]:  Client[20] in!
+2023-06-08 16:12:13.609092 [info]:  Client[21](10.128.133.88:30188) in, userCount: 4
+2023-06-08 16:12:13.609126 [info]:  Client[21] in!
+2023-06-08 16:12:13.609161 [info]:  Client[22](10.128.133.88:30700) in, userCount: 5
+2023-06-08 16:12:13.609188 [info]:  Client[22] in!
+2023-06-08 16:12:13.609225 [info]:  Client[23](10.128.133.88:30956) in, userCount: 6
+2023-06-08 16:12:13.609253 [info]:  Client[23] in!
+2023-06-08 16:13:13.690045 [info]:  Client[21] quit!
+2023-06-08 16:13:13.690228 [info]:  Client[21](10.128.133.88:30188) quit, userCount: 5
+2023-06-08 16:13:13.690290 [info]:  Client[23] quit!
+2023-06-08 16:13:13.690354 [info]:  Client[23](10.128.133.88:30956) quit, userCount: 4
+2023-06-08 16:13:13.690385 [info]:  Client[22] quit!
+2023-06-08 16:13:13.690427 [info]:  Client[22](10.128.133.88:30700) quit, userCount: 3
+2023-06-08 16:13:13.690456 [info]:  Client[19] quit!
+2023-06-08 16:13:13.690498 [info]:  Client[19](10.128.133.88:29932) quit, userCount: 2
+2023-06-08 16:13:13.690527 [info]:  Client[20] quit!
+2023-06-08 16:13:13.690568 [info]:  Client[20](10.128.133.88:30444) quit, userCount: 1
+2023-06-08 16:13:13.690594 [info]:  Client[18] quit!
+2023-06-08 16:13:13.690638 [info]:  Client[18](10.128.133.88:29676) quit, userCount: 0
+2023-06-08 16:16:24.088018 [info]:  Client[18](10.128.133.88:13038) in, userCount: 1
+2023-06-08 16:16:24.088144 [info]:  Client[18] in!
+2023-06-08 16:16:24.095783 [info]:  Verify name:haha pwd:haha
+2023-06-08 16:16:24.196738 [info]:  Client[19](10.128.133.88:14062) in, userCount: 2
+2023-06-08 16:16:24.196826 [info]:  Client[19] in!
+2023-06-08 16:16:24.196851 [info]:  Client[20](10.128.133.88:13550) in, userCount: 3
+2023-06-08 16:16:24.196993 [info]:  Client[20] in!
+2023-06-08 16:16:24.197097 [info]:  Client[21](10.128.133.88:13294) in, userCount: 4
+2023-06-08 16:16:24.197138 [info]:  Client[21] in!
+2023-06-08 16:16:24.197191 [info]:  Client[22](10.128.133.88:13806) in, userCount: 5
+2023-06-08 16:16:24.197225 [info]:  Client[22] in!
+2023-06-08 16:16:24.226299 [info]:  Client[23](10.128.133.88:14318) in, userCount: 6
+2023-06-08 16:16:24.226428 [info]:  Client[23] in!
+2023-06-08 16:16:42.192377 [info]:  Client[19] quit!
+2023-06-08 16:24:38.710847 [info]:  =============Server init================
+2023-06-08 16:24:38.710877 [info]:  Date: 2023-06-08, Time: 16:24:38
+2023-06-08 16:24:38.710967 [info]:  Port: 9006, OpenLinger: false
+2023-06-08 16:24:38.710978 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-08 16:24:38.710988 [info]:  Actor Mode: Reactor
+2023-06-08 16:24:38.710997 [info]:  LogSys Status: Open
+2023-06-08 16:24:38.711006 [info]:  Log level: 1
+2023-06-08 16:24:38.711016 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-08 16:24:38.711026 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-08 16:24:38.711035 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-08 16:24:38.711045 [info]:  TimeOut: 60s
+2023-06-08 16:24:38.711055 [info]:  ================Server start================
+2023-06-08 16:25:50.907420 [info]:  Client[18](10.128.133.88:59890) in, userCount: 1
+2023-06-08 16:25:50.907538 [info]:  Client[18] in!
+2023-06-08 16:25:50.956179 [info]:  Client[19](10.128.133.88:60658) in, userCount: 2
+2023-06-08 16:25:50.956285 [info]:  Client[19] in!
+2023-06-08 16:25:50.956345 [info]:  Client[20](10.128.133.88:60402) in, userCount: 3
+2023-06-08 16:25:50.956380 [info]:  Client[20] in!
+2023-06-08 16:25:50.957374 [info]:  Client[21](10.128.133.88:60914) in, userCount: 4
+2023-06-08 16:25:50.957415 [info]:  Client[21] in!
+2023-06-08 16:25:50.957435 [info]:  Client[22](10.128.133.88:61170) in, userCount: 5
+2023-06-08 16:25:50.957448 [info]:  Client[22] in!
+2023-06-08 16:25:50.957472 [info]:  Client[23](10.128.133.88:61426) in, userCount: 6
+2023-06-08 16:25:50.957510 [info]:  Client[23] in!
+2023-06-08 16:25:54.866417 [info]:  Client[18] quit!
+2023-06-08 16:25:54.866603 [info]:  Client[18](10.128.133.88:59890) quit, userCount: 5
+2023-06-08 16:25:54.866671 [info]:  Client[22] quit!
+2023-06-08 16:25:54.866734 [info]:  Client[22](10.128.133.88:61170) quit, userCount: 4
+2023-06-08 16:25:54.866757 [info]:  Client[20] quit!
+2023-06-08 16:25:54.866804 [info]:  Client[20](10.128.133.88:60402) quit, userCount: 3
+2023-06-08 16:25:54.866826 [info]:  Client[19] quit!
+2023-06-08 16:25:54.866871 [info]:  Client[19](10.128.133.88:60658) quit, userCount: 2
+2023-06-08 16:25:54.866921 [info]:  Client[23] quit!
+2023-06-08 16:25:54.866976 [info]:  Client[23](10.128.133.88:61426) quit, userCount: 1
+2023-06-08 16:25:54.867007 [info]:  Client[21] quit!
+2023-06-08 16:28:50.845629 [info]:  =============Server init================
+2023-06-08 16:28:50.845653 [info]:  Date: 2023-06-08, Time: 16:28:50
+2023-06-08 16:28:50.845662 [info]:  Port: 9006, OpenLinger: false
+2023-06-08 16:28:50.845746 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-08 16:28:50.845757 [info]:  Actor Mode: Reactor
+2023-06-08 16:28:50.845767 [info]:  LogSys Status: Open
+2023-06-08 16:28:50.845778 [info]:  Log level: 1
+2023-06-08 16:28:50.845787 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-08 16:28:50.845795 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-08 16:28:50.845878 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-08 16:28:50.845909 [info]:  TimeOut: 60s
+2023-06-08 16:35:32.261049 [info]:  =============Server init================
+2023-06-08 16:35:32.261083 [info]:  Date: 2023-06-08, Time: 16:35:32
+2023-06-08 16:35:32.261162 [info]:  Daemon Mode: No
+2023-06-08 16:35:32.261245 [info]:  Port: 9006, OpenLinger: false
+2023-06-08 16:35:32.261283 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-08 16:35:32.261311 [info]:  Actor Mode: Reactor
+2023-06-08 16:35:32.261328 [info]:  LogSys Status: Open
+2023-06-08 16:35:32.261376 [info]:  Log level: 1
+2023-06-08 16:35:32.261398 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-08 16:35:32.261415 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-08 16:35:32.261431 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-08 16:35:32.261448 [info]:  TimeOut: 60s

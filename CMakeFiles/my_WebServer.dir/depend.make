@@ -4,6 +4,12 @@
 CMakeFiles/my_WebServer.dir/codes/buffer.cpp.o: codes/buffer.cpp
 CMakeFiles/my_WebServer.dir/codes/buffer.cpp.o: headers/buffer.h
 
+CMakeFiles/my_WebServer.dir/codes/config.cpp.o: codes/config.cpp
+CMakeFiles/my_WebServer.dir/codes/config.cpp.o: headers/blockqueue.h
+CMakeFiles/my_WebServer.dir/codes/config.cpp.o: headers/buffer.h
+CMakeFiles/my_WebServer.dir/codes/config.cpp.o: headers/config.h
+CMakeFiles/my_WebServer.dir/codes/config.cpp.o: headers/log.h
+
 CMakeFiles/my_WebServer.dir/codes/epoller.cpp.o: codes/epoller.cpp
 CMakeFiles/my_WebServer.dir/codes/epoller.cpp.o: headers/epoller.h
 
@@ -62,9 +68,9 @@ CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/sqlconnpoll.h
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/threadpool.h
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/webserver.h
 
-CMakeFiles/my_WebServer.dir/main.cpp.o: main.cpp
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/blockqueue.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/buffer.h
+CMakeFiles/my_WebServer.dir/main.cpp.o: headers/config.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/epoller.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/heaptimer.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/httpconn.h
@@ -75,4 +81,5 @@ CMakeFiles/my_WebServer.dir/main.cpp.o: headers/sqlconnRAII.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/sqlconnpoll.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/threadpool.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/webserver.h
+CMakeFiles/my_WebServer.dir/main.cpp.o: main.cpp
 

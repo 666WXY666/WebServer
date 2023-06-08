@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wxy/Projects/my-WebServer/codes/buffer.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/buffer.cpp.o"
+  "/home/wxy/Projects/my-WebServer/codes/config.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/config.cpp.o"
   "/home/wxy/Projects/my-WebServer/codes/epoller.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/epoller.cpp.o"
   "/home/wxy/Projects/my-WebServer/codes/heaptimer.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/heaptimer.cpp.o"
   "/home/wxy/Projects/my-WebServer/codes/httpconn.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/httpconn.cpp.o"
