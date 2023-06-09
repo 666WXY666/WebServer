@@ -1,9 +1,5 @@
-//
-// Created by zzh on 2022/4/19.
-//
-
-#ifndef MY_WEBSERVER_THREADPOOL_H
-#define MY_WEBSERVER_THREADPOOL_H
+#ifndef THREAD_POOL_H
+#define THREAD_POOL_H
 
 #include <mutex>
 #include <queue>
@@ -120,4 +116,4 @@ private:
     std::shared_ptr<Pool> pool_; // 因为线程是在detach模式下运行的，所以这里使用动态申请的堆内存空间，使用shareptr管理
 };
 
-#endif // MY_WEBSERVER_THREADPOOL_H
+#endif // THREAD_POOL_H

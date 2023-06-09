@@ -1,6 +1,3 @@
-//
-// Created by zzh on 2022/4/20.
-//
 #include "../headers/epoller.h"
 
 /*
@@ -37,7 +34,8 @@ bool Epoller::addFd(int fd, uint32_t events)
 }
 
 /*
- * 修改监听事件类型或是重新添加监听事件因为之前设置了EPOLLONESHOT，表示指挥监听一次
+ * 修改监听事件类型或是重新添加监听事件
+ * 因为之前设置了EPOLLONESHOT，表示只会监听一次
  */
 bool Epoller::modFd(int fd, uint32_t events)
 {
@@ -71,7 +69,7 @@ bool Epoller::delFd(int fd)
  */
 int Epoller::wait(int timeoutMS)
 {
-    /*因为events_是vector，所以应该取events_[0]数据所在的地址才对*/
+    // 因为events_是vector，所以应该取events_[0]数据所在的地址才对
     return epoll_wait(epollFd_, &events_[0], static_cast<int>(events_.size()), timeoutMS);
 }
 

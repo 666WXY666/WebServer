@@ -1,16 +1,21 @@
-//
-// Created by zzh on 2022/4/19.
-//
-
-#ifndef MY_WEBSERVER_HTTPREQUEST_H
-#define MY_WEBSERVER_HTTPREQUEST_H
+/*
+ * @Copyright: Copyright (c) 2022 WangXingyu All Rights Reserved.
+ * @Description:
+ * @Version:
+ * @Author: WangXingyu
+ * @Date: 2023-05-30 18:15:26
+ * @LastEditors: WangXingyu
+ * @LastEditTime: 2023-06-09 14:51:10
+ */
+#ifndef HTTP_REQUEST_H
+#define HTTP_REQUEST_H
 
 #include <regex>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <errno.h>
-#include <mysql/mysql.h>
+#include <mysql/mysql.h> //mysql
 
 #include "log.h"
 #include "buffer.h"
@@ -20,79 +25,75 @@
 class HttpRequest
 {
 public:
-    /*指示解析到请求头的哪一部分的枚举变量*/
+    // 指示解析到请求头的哪一部分的枚举变量
     enum PARSE_STATE
     {
-        REQUEST_LINE,
-        HEADER,
-        BODY,
-        FINISH
+        REQUEST_LINE, // 正在解析请求首行
+        HEADER,       // 正在解析请求头
+        BODY,         // 正在解析请求体
+        FINISH        // 解析完成
     };
 
-    /*指示解析结果的枚举变量*/
+    // 指示解析结果的枚举变量
     enum HTTP_CODE
     {
-        NO_REQUEST = 0,
-        GET_REQUEST,
-        BAD_REQUEST,
-        NO_RESOURCE,
-        FORBIDDEN_REQUEST,
-        FILE_REQUEST,
-        INTERNAL_ERROR,
-        CLOSED_CONNECTION
+        NO_REQUEST = 0,    // 请求不完整，继续读取请求数据，epoll继续监测读事件
+        GET_REQUEST,       // 获取了完整请求，处理请求，完成资源映射
+        BAD_REQUEST,       // 请求报文语法错误，返回错误报文
+        NO_RESOURCE,       // 没有资源，返回错误报文
+        FORBIDDEN_REQUEST, // 禁止访问，返回错误报文
+        FILE_REQUEST,      // 请求文件可以正常访问，返回正常响应报文
+        INTERNAL_ERROR,    // 内部错误（switch的default，一般不会触发）
+        CLOSED_CONNECTION  // 关闭连接
     };
 
+    // 构造函数
     HttpRequest();
-
-    /*
-     * 生成默认析构函数
-     */
+    // 生成默认析构函数
     ~HttpRequest() = default;
-
+    // 请求初始化
     void init();
-
+    // 解析请求（数据包存在buff）
     HTTP_CODE parse(Buffer &buff);
-
+    // 获取请求的基本信息
     PARSE_STATE state() const;
-
     std::string path() const;
-
     std::string &path();
-
     std::string method() const;
-
     std::string version() const;
-
+    // 返回请求头中指定key对应的数据
     std::string getPost(const std::string &key) const;
-
     std::string getPost(const char *key) const;
-
+    // 是否是长连接
     bool isKeepAlive() const;
 
 private:
+    // 16进制转10进制
     static int convertHex(char ch);
-
+    // 用户验证（登陆或注册）
     static bool userVerify(const std::string &name, const std::string &pwd, bool isLogin);
-
+    // 解析HTTP请求首行
     bool parseRequestLine_(const std::string &line);
-
+    // 解析HTTP请求头
     void parseHeader_(const std::string &line);
-
+    // 解析HTTP消息体
     bool parseBody_(const std::string &line);
-
+    // 解析资源路径，并将路径添加完整
     void parsePath_();
-
+    // 解析POST消息体
     bool parsePost_();
-
+    // 解析form-urlencoded格式，获取POST的数据
     void parseFromUrlencoded_();
 
-    PARSE_STATE state_;                                   /*状态机状态*/
-    std::string method_, path_, version_, body_;          /*http请求头中信息对应的字符串*/
-    std::unordered_map<std::string, std::string> header_; /*请求头字段转化为hashmap*/
-    std::unordered_map<std::string, std::string> post_;   /*保存请求体中的信息，以键值对的方式，因为本服务器接受的是application/x-www-form-urlencoded这种表单形式*/
-
-    static const std::unordered_set<std::string> DEFAULT_HTML;          /*静态常量，默认的返回页面的地址*/
-    static const std::unordered_map<std::string, int> DEFAULT_HTML_TAG; /*静态变量，保存默认的HTML标签*/
+    PARSE_STATE state_;                                   // 状态机解析状态
+    std::string method_, path_, version_, body_;          // 请求首行：方法、URL、版本，消息体
+    std::unordered_map<std::string, std::string> header_; // 请求头字段hashmap，key:value对形式
+    // POST请求表单中的信息，以key:value对的形式存储POST的参数（用户名&密码）
+    // 因为本服务器接受的是application/x-www-form-urlencoded这种表单形式
+    std::unordered_map<std::string, std::string> post_;
+    // 静态常量
+    static const std::unordered_set<std::string> DEFAULT_HTML;          // 默认的返回页面的地址
+    static const std::unordered_map<std::string, int> DEFAULT_HTML_TAG; // 保存默认的HTML标签
 };
 
-#endif // MY_WEBSERVER_HTTPREQUEST_H
+#endif // HTTP_REQUEST_H

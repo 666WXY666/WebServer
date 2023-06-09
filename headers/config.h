@@ -5,10 +5,10 @@
  * @Author: WangXingyu
  * @Date: 2023-06-08 15:13:16
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-08 16:03:47
+ * @LastEditTime: 2023-06-08 16:59:33
  */
-#ifndef MY_WEBSERVER_CONFIG_H
-#define MY_WEBSERVER_CONFIG_H
+#ifndef CONFIG_H
+#define CONFIG_H
 
 #include <sys/types.h>
 #include <sys/statfs.h>
@@ -47,4 +47,4 @@ public:
     bool is_daemon;      // 是否开启守护进程
 };
 
-#endif
+#endif // CONFIG_H

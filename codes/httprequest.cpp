@@ -1,11 +1,6 @@
-//
-// Created by zzh on 2022/4/20.
-//
 #include "../headers/httprequest.h"
 
-/*
- * 保存默认界面名字的静态变量，所有对以下界面的请求都会加上 .html 后缀
- */
+// 保存默认界面名字的静态变量，所有对以下界面的请求都会加上 .html 后缀
 const std::unordered_set<std::string> HttpRequest::DEFAULT_HTML{
     "/index",
     "/register",
@@ -15,9 +10,7 @@ const std::unordered_set<std::string> HttpRequest::DEFAULT_HTML{
     "/picture",
 };
 
-/*
- * 静态变量，保存默认的HTML标签
- */
+// 静态变量，保存默认的HTML标签
 const std::unordered_map<std::string, int> HttpRequest::DEFAULT_HTML_TAG{
     {"/register.html", 0},
     {"/login.html", 1}};
@@ -35,11 +28,11 @@ HttpRequest::HttpRequest()
  */
 void HttpRequest::init()
 {
-    /*所有变量清空*/
+    // 所有变量清空
     method_ = path_ = version_ = body_ = "";
-    /*状态重置到解析请求行状态*/
+    // 状态重置到解析请求首行状态
     state_ = REQUEST_LINE;
-    /*清空以下变量*/
+    // 清空以下变量
     header_.clear();
     post_.clear();
 }
@@ -73,7 +66,7 @@ int HttpRequest::convertHex(char ch)
 }
 
 /*
- * 返回解析请求行得到的state_变量
+ * 返回解析请求首行得到的state_变量
  */
 HttpRequest::PARSE_STATE HttpRequest::state() const
 {
@@ -81,7 +74,7 @@ HttpRequest::PARSE_STATE HttpRequest::state() const
 }
 
 /*
- * 返回解析请求行得到的path_变量
+ * 返回解析请求首行得到的path_变量
  */
 std::string &HttpRequest::path()
 {
@@ -97,7 +90,7 @@ std::string HttpRequest::path() const
 }
 
 /*
- * 返回解析请求行得到的method_变量
+ * 返回解析请求首行得到的method_变量
  */
 std::string HttpRequest::method() const
 {
@@ -105,7 +98,7 @@ std::string HttpRequest::method() const
 }
 
 /*
- * 返回解析请求行得到的version_变量
+ * 返回解析请求首行得到的version_变量
  */
 std::string HttpRequest::version() const
 {
@@ -139,28 +132,32 @@ std::string HttpRequest::getPost(const char *key) const
 }
 
 /*
- * 使用正则库解析请求行
- * GET请求的请求行示例
- * GET /562f25980001b1b106000338.jpg HTTP/1.1
- * POST请求的请求行示例
+ * 使用正则库解析请求首行
+ * GET请求的请求首行示例
+ * GET /test.jpg HTTP/1.1
+ * POST请求的请求首行示例
  * POST / HTTP1.1
  */
 bool HttpRequest::parseRequestLine_(const std::string &line)
 {
-    /*指定匹配规则，^表示行开始，$表示行尾，[^ ]表示匹配非空格,括号()括住的代表我们需要得到的字符串，最后会送入submatch中*/
+    // note: 正则表达式匹配
+    // 指定匹配规则，^表示行开始，$表示行尾，[^ ]表示匹配非空格
+    // 括号()括住的代表我们需要得到的字符串，最后会送入submatch中
+    // subMatch[0]代表整个字符串的完整匹配结果，subMatch[1...]等代表()中各组匹配结果
     std::regex pattern("^([^ ]*) ([^ ]*) HTTP/([^ ]*)$");
     std::smatch subMatch;
     if (std::regex_match(line, subMatch, pattern))
     {
-        /*解析请求行获取需要的信息*/
+        // 解析请求首行获取需要的信息
         method_ = subMatch[1];
         path_ = subMatch[2];
         version_ = subMatch[3];
-        /*切换到下一个状态，即解析请求头*/
+        // 切换到下一个状态，即解析请求头
         state_ = HEADER;
         return true;
     }
-    LOG_ERROR("RequestLine error! %s", line.c_str());
+    // 没有匹配到说明请求首行格式错误，打印错误日志，返回false
+    LOG_ERROR("RequestLine Error! %s", line.c_str());
 
     return false;
 }
@@ -168,22 +165,26 @@ bool HttpRequest::parseRequestLine_(const std::string &line)
 /*
  * 使用正则库解析请求头
  * 请求头由如下键值对组成，由 : 分割键值对
- * Host:img.mukewang.com
+ * Host:test.baidu.com
  */
 void HttpRequest::parseHeader_(const std::string &line)
 {
-    /*指定匹配规则，^表示行开始，[^ ]表示匹配非空格，括号()括住的代表我们需要得到的字符串，最后会送入submatch中*/
+    // 指定匹配规则，^表示行开始，[^:]表示匹配非冒号(:)
+    // ?代表前面的（这里是空格）1次或0次
+    // 括号()括住的代表我们需要得到的字符串，最后会送入submatch中
+    // subMatch[0]代表整个字符串的完整匹配结果，subMatch[1...]等代表()中各组匹配结果
     std::regex pattern("^([^:]*): ?(.*)$");
     std::smatch subMatch;
     if (std::regex_match(line, subMatch, pattern))
     {
-        /*将解析出来的信息以键值对的形式存入unordered_map里面*/
+        // 将解析出来的信息以键值对的形式存入unordered_map里面
         header_[subMatch[1]] = subMatch[2];
     }
     else
     {
-        /*如果没有匹配到，说明进入到了请求头后的空行，若是post请求，则将state_设置为BODY进入解析请求体的流程*/
-        /*调用此函数的函数通过可读的数据量判断是POST还是GET请求，若是GET请求则直接将state_设置为FINISH状态结束解析，这里后面需要改一下逻辑，*/
+        // 如果没有匹配到，说明进入到了请求头后的空行
+        // 这里先默认设为解析请求体BODY状态，在调用此函数的函数外可判断method_来判断是POST还是GET请求
+        // 从而转换状态为BODY（POST）还是FINISH（GET）
         state_ = BODY;
     }
 }
@@ -193,16 +194,17 @@ void HttpRequest::parseHeader_(const std::string &line)
  */
 bool HttpRequest::parseBody_(const std::string &line)
 {
-    /*将line赋值给类变量body_*/
+    // 将line赋值给类变量body_
     body_ = line;
-    /*调用ParsePost_函数解析POST中带的请求体数据*/
+    // 调用ParsePost_函数解析POST中带的请求体数据
+    // parsePost_()函数返回false代表请求体不完整，继续请求
     if (!parsePost_())
     {
         return false;
     }
-    /*将状态置为FINISH，指示解析完成*/
+    // 请求体完整，解析成功，将状态置为FINISH
     state_ = FINISH;
-
+    // 打印解析到的请求体日志信息
     LOG_DEBUG("Body: %s, len: %d", line.c_str(), line.size());
     return true;
 }
@@ -215,34 +217,36 @@ bool HttpRequest::parseBody_(const std::string &line)
  */
 bool HttpRequest::parsePost_()
 {
+    // 判断post数据是否接受完整，未接收完则返回false，表示继续请求
     if (body_.size() < atol(header_["Content-Length"].c_str()))
     {
-        /*判断post数据是否接受完整，未接收完则返回false，表示继续请求*/
         return false;
     }
-    /*以后可以添加其他种类的Content-Type的支持*/
+    // 以后可以添加其他种类的Content-Type的支持
     if (method_ == "POST" && header_["Content-Type"] == "application/x-www-form-urlencoded")
     {
-        /*将请求体中的内容解析到post_变量中*/
+        // 将请求体中的内容解析到post_变量中
         parseFromUrlencoded_();
-        /*用户是否请求的默认DEFAULT_HTML_TAG（登录与注册）网页*/
+        // 用户是否请求的默认DEFAULT_HTML_TAG（登录与注册）网页
         if (DEFAULT_HTML_TAG.count(path_))
         {
-            /*获取登录与注册对应的标识*/
+            // 获取登录与注册对应的标识
+            // 注意：const的map没有重载[]运算符，所以这里需要用find
             int tag = DEFAULT_HTML_TAG.find(path_)->second;
             LOG_DEBUG("Tag:%d", tag);
             if (tag == 0 || tag == 1)
             {
-                /*通过标识确定用户请求的是登录还是注册*/
+                // 通过标识确定用户请求的是登录还是注册（0注册，1登陆）
                 bool isLogin = (tag == 1);
+                // 进行用户验证，数据库相应操作
+                // 验证成功，进入下一步，设置为成功页面
                 if (userVerify(post_["username"], post_["password"], isLogin))
                 {
-                    /*验证成功，进入下一步，设置为成功页面*/
                     path_ = "/welcome.html";
                 }
+                // 验证失败，设置返回错误页面
                 else
                 {
-                    /*验证失败，设置返回错误页面*/
                     path_ = "/error.html";
                 }
             }
@@ -253,48 +257,49 @@ bool HttpRequest::parsePost_()
 
 /*
  * 从请求体中的application/x-www-form-urlencoded类型信息提取信息
+ * 示例：username=test&password=test
  */
 void HttpRequest::parseFromUrlencoded_()
 {
-    if (body_.size() == 0)
+    // 请求体大小=0，直接返回
+    int n = body_.size();
+    if (n == 0)
     {
         return;
     }
 
     std::string key, value, temp;
     int num = 0;
-    int n = body_.size();
-    int i = 0;
-
-    for (; i < n; i++)
+    // 遍历整个请求体大小
+    for (int i = 0; i < n; i++)
     {
         char ch = body_[i];
         switch (ch)
         {
         case '=':
-            /*等号之前是key*/
+            // 等号之前是key
             key = temp;
             temp.clear();
             break;
         case '+':
-            /* + 号改为 空格 ，因为浏览器会将空格编码为+号*/
+            // + 号改为 空格 ，因为浏览器会将空格编码为+号
             temp += ' ';
             break;
         case '%':
-            /*浏览器会将非字母字母字符，encode成百分号+其ASCII码的十六进制*/
-            /*%后面跟的是十六进制码,将十六进制转化为10进制*/
-            /*作者这里的实现是有一点问题，这里应该是转成ASCII码对应的字符的，而不是转换成对应的十进制字符，况且转化后的十进制也只能局限在0-99范围内*/
+            // 浏览器会将非字母字符，encode成百分号+其ASCII码的十六进制
+            // %后面跟的是十六进制码，将十六进制转化为10进制
+            // 这里应该是转成ASCII码对应的字符，而不是转换成对应的十进制字符，况且转化后的十进制也只能局限在0-99范围内
             num = convertHex(body_[i + 1]) * 16 + convertHex(body_[i + 2]);
-            /*根据ascii码转换为字符*/
+            // 根据ascii码转换为字符
             temp += static_cast<char>(num);
-            /*向后移动两个位置*/
+            // 向后移动两个位置
             i += 2;
             break;
         case '&':
-            /*&号前是val*/
+            // &号前是val
             value = temp;
             temp.clear();
-            /*添加键值对*/
+            // 添加键值对
             post_[key] = value;
             LOG_DEBUG("%s = %s", key.c_str(), value.c_str());
             break;
@@ -303,7 +308,7 @@ void HttpRequest::parseFromUrlencoded_()
             break;
         }
     }
-    /*获取最后一个键值对*/
+    // 获取最后一个键值对
     if (post_.count(key) == 0)
     {
         value = temp;
@@ -432,69 +437,87 @@ void HttpRequest::parsePath_()
  */
 HttpRequest::HTTP_CODE HttpRequest::parse(Buffer &buff)
 {
-    /*在请求头的每一行结尾都有下面这两个字符*/
+    // 在请求头的每一行结尾都有\r\n
     const char CRLF[] = "\r\n";
-    /*若没有内容可以被读取，直接返回false，这里是有问题的，应该返回一个NO_REQUEST状态，调用函数接受到该状态之后重新修改EPOLL事件注册一个EPOLLIN事件*/
+    // note: 若没有内容可以被读取，不能直接返回false
+    // 应该返回一个NO_REQUEST状态，调用函数接受到该状态之后重新修改epoll事件注册一个EPOLLIN事件继续读
     if (buff.readableBytes() <= 0)
     {
         return NO_REQUEST;
     }
 
-    /*状态机方式解析http请求头*/
+    // 状态机方式解析http请求头，只要可读并且没有解析完成就继续循环
     while (buff.readableBytes() && state_ != FINISH)
     {
-        /*首先通过查找CRLF标志找到一行的结尾，用于在序列 A 中查找序列 B 第一次出现的位置,lineEnd指针会指向\r位置，也就是有效字符串的后一个位置，当序列A中没有序列B中的字符时，会返回序列A的尾后指针*/
+        // 首先通过查找CRLF标志找到一行的结尾
+        // note: search用于在序列A中查找序列B第一次出现的位置
+        // lineEnd指针会指向\r位置，也就是有效字符串的后一个位置
+        // 当序列A中没有序列B中的字符时，会返回序列A的尾后指针
         const char *lineEnd = std::search(buff.peek(), buff.beginWriteConst(), CRLF, CRLF + 2);
-        /*根据查找到的行尾的位置初始化一个行字符串*/
+        // 根据查找到的行尾的位置初始化一个行字符串
         std::string line(buff.peek(), lineEnd);
 
-        /* 若解析状态停留在header且没有CRLF作为结尾，直接退出循环，等待接收剩余数据 */
+        // 若解析状态停留在header且没有CRLF作为结尾，直接退出循环，返回NO_REQUEST请求不完整，等待接收剩余数据
         if (lineEnd == buff.beginWrite() && state_ == HEADER)
         {
             break;
         }
 
-        /*开始解析*/
+        // 开始解析
         switch (state_)
         {
         case REQUEST_LINE:
-            /*首先解析请求行*/
+            // 首先解析请求首行
             if (!parseRequestLine_(line))
             {
-                /*如果失败的话，false*/
+                // 如果失败的话，返回BAD_REQUEST
                 return BAD_REQUEST;
-                ;
             }
-            /*将客户端传来的path变量添加完整,目录加上默认页面，没有后缀的指定文件加上后缀*/
+            // 将客户端传来的path变量添加完整,目录加上默认页面，没有后缀的指定文件加上后缀
             parsePath_();
+            // 这里break是退出switch，不是退出循环，要继续解析
             break;
         case HEADER:
-            /*解析完请求行之后，state_变量会被置为HEADERS，所以会跳到此处处理请求头部*/
+            // 解析完请求首行之后，state_变量会被置为HEADERS，所以会跳到此处解析请求头部
             parseHeader_(line);
-            /*这里逻辑有点问题，因为可能会存在请求未接受完整的情况，所以后面可以改成根据method判断是否跳转到FINISH阶段*/
-            /*因为在ParseHeader_中请求头解析到空行时会将state_置为body，所以这里的判断条件可以改为 if(state_==body && method_==GET){state_=FINISH;}*/
-            /*这样就可以实验GET与POST的对应处理*/
+            // note: 因为可能会存在请求未接受完整的情况，所以后面可以改成根据method_判断是否跳转到FINISH阶段
+            // 因为在ParseHeader_中请求头解析到空行时会将state_置为BODY
+            // 所以这里的判断条件可以改为 if(state_==body && method_==GET){state_=FINISH;}
+            // 这样就可以实现GET与POST的对应处理
+            // 如果是POST请求，则将state_设置为BODY进入解析请求体的流程
+            // 如果是GET请求，则将state_设置为FINISH状态结束解析
             if (state_ == BODY && method_ == "GET")
             {
+                // 状态改为完成
                 state_ = FINISH;
+                // 读完所有，回收空间
                 buff.retrieveAll();
+                // 返回GET_REQUEST获取完整请求
                 return GET_REQUEST;
             }
+            // 同上，继续循环解析
             break;
         case BODY:
-            /*解析完请求行之后，若是POST请求则会进入解析请求体这一步*/
+            // 解析完请求首行之后，若是POST请求则会进入解析请求体这一步
+            // 如果请求体数据不完整，parseBody_()函数返回false
             if (!parseBody_(line))
             {
+                // 返回NO_REQUEST请求不完整，等待接收剩余数据
                 return NO_REQUEST;
             }
+            // 完整请求体，回收空间
             buff.retrieveAll();
+            // 返回GET_REQUEST获取完整请求
             return GET_REQUEST;
         default:
+            // 默认返回INTERNAL_ERROR服务器内部错误，一般不会进
             return INTERNAL_ERROR;
         }
+        // 移动读指针到下一行，跳过上一行的\r\n
         buff.retrieveUntil(lineEnd + 2);
     }
+    // 打印请求首行日志信息
     LOG_DEBUG("[%s], [%s], [%s]", method_.c_str(), path_.c_str(), version_.c_str());
-    /*最后最好直接返回NO_REQUEST状态，表示如果执行到这一部分，说明请求没有接受完整，需要继续接受请求，若是请求完整的在之前就会return出while*/
+    // note: 最后最好直接返回NO_REQUEST状态，表示如果执行到这一部分，说明请求没有接受完整，需要继续接受请求，若是请求完整的在之前就会return出while
     return NO_REQUEST;
 }

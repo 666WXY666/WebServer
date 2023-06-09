@@ -185,3 +185,15 @@
 2023-06-08 16:35:32.261415 [info]:  SqlConnPool num: 12, ThreadPool num: 6
 2023-06-08 16:35:32.261431 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
 2023-06-08 16:35:32.261448 [info]:  TimeOut: 60s
+2023-06-08 17:24:27.553418 [info]:  =============Server init================
+2023-06-08 17:24:27.553441 [info]:  Date: 2023-06-08, Time: 17:24:27
+2023-06-08 17:24:27.553520 [info]:  Daemon Mode: No
+2023-06-08 17:24:27.553533 [info]:  Port: 9006, OpenLinger: false
+2023-06-08 17:24:27.553543 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-08 17:24:27.553553 [info]:  Actor Mode: Reactor
+2023-06-08 17:24:27.553562 [info]:  LogSys Status: Open
+2023-06-08 17:24:27.553569 [info]:  Log level: 1
+2023-06-08 17:24:27.553652 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-08 17:24:27.553675 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-08 17:24:27.553691 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-08 17:24:27.553707 [info]:  TimeOut: 60s

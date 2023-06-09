@@ -1,9 +1,5 @@
-//
-// Created by zzh on 2022/4/19.
-//
-
-#ifndef MY_WEBSERVER_WEBSERVER_H
-#define MY_WEBSERVER_WEBSERVER_H
+#ifndef WEB_SERVER_H
+#define WEB_SERVER_H
 
 #include <unordered_map>
 #include <fcntl.h> // fcntl()
@@ -35,6 +31,7 @@ public:
     void start();
 
 private:
+    // 设置文件描述符非阻塞
     static int setFdNonblock(int fd);
     // 初始化监听socket
     bool initSocket_();
@@ -42,8 +39,8 @@ private:
     void initEventMode_(int trigMode);
     // 添加客户端
     void addClient_(int fd, sockaddr_in addr);
-    // 获取新连接，初始化客户端数据
 
+    // 获取新连接，初始化客户端数据
     void dealListen_();
     // 调用ExtentTime_，并将写任务加入线程池的工作队列
     void dealWrite_(HttpConn *client);
@@ -84,7 +81,7 @@ private:
     std::unique_ptr<ThreadPool> threadPool_; // 线程池
     std::unique_ptr<Epoller> epoller_;       // 监听实例epoller变量
     // note: 使用hash实现的文件描述符，这样可以用一个实例化一个，不用一开始就初始化很多个
-    std::unordered_map<int, HttpConn> users_; // 客户端连接集合
+    std::unordered_map<int, HttpConn> users_; // 客户端连接集合，key为文件描述符fd
 };
 
-#endif // MY_WEBSERVER_WEBSERVER_H
+#endif // WEB_SERVER_H

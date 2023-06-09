@@ -1,0 +1,52 @@
+2023-06-09 15:24:45.697594 [info]:  =============Server init================
+2023-06-09 15:24:45.697618 [info]:  Date: 2023-06-09, Time: 15:24:45
+2023-06-09 15:24:45.697629 [info]:  Daemon Mode: No
+2023-06-09 15:24:45.697713 [info]:  Port: 9006, OpenLinger: false
+2023-06-09 15:24:45.697725 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-09 15:24:45.697736 [info]:  Actor Mode: Reactor
+2023-06-09 15:24:45.697743 [info]:  LogSys Status: Open
+2023-06-09 15:24:45.697826 [info]:  Log level: 1
+2023-06-09 15:24:45.697856 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-09 15:24:45.697878 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-09 15:24:45.697886 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-09 15:24:45.697894 [info]:  TimeOut: 60s
+2023-06-09 15:24:45.697902 [info]:  ================Server start================
+2023-06-09 15:25:03.041082 [info]:  Client[18](10.128.133.88:49099) In, UserCount: 1
+2023-06-09 15:25:03.041209 [info]:  Client[18] In!
+2023-06-09 15:25:03.077119 [info]:  Client[19](10.128.133.88:49355) In, UserCount: 2
+2023-06-09 15:25:03.077213 [info]:  Client[19] In!
+2023-06-09 15:25:03.078112 [info]:  Client[20](10.128.133.88:50123) In, UserCount: 3
+2023-06-09 15:25:03.078200 [info]:  Client[20] In!
+2023-06-09 15:25:03.078251 [info]:  Client[21](10.128.133.88:49867) In, UserCount: 4
+2023-06-09 15:25:03.078287 [info]:  Client[21] In!
+2023-06-09 15:25:03.078323 [info]:  Client[22](10.128.133.88:49611) In, UserCount: 5
+2023-06-09 15:25:03.078373 [info]:  Client[22] In!
+2023-06-09 15:25:03.107149 [info]:  Client[23](10.128.133.88:50379) In, UserCount: 6
+2023-06-09 15:25:03.107250 [info]:  Client[23] In!
+2023-06-09 15:25:26.783104 [info]:  Verify name:haha pwd:haha
+2023-06-09 15:26:26.902416 [info]:  Client[18] Quit!
+2023-06-09 15:26:26.902630 [info]:  Client[18](10.128.133.88:49099) Quit, UserCount: 5
+2023-06-09 15:26:26.902692 [info]:  Client[19] Quit!
+2023-06-09 15:26:26.902749 [info]:  Client[19](10.128.133.88:49355) Quit, UserCount: 4
+2023-06-09 15:26:26.902778 [info]:  Client[21] Quit!
+2023-06-09 15:26:26.902820 [info]:  Client[21](10.128.133.88:49867) Quit, UserCount: 3
+2023-06-09 15:26:26.902861 [info]:  Client[20] Quit!
+2023-06-09 15:26:26.902922 [info]:  Client[20](10.128.133.88:50123) Quit, UserCount: 2
+2023-06-09 15:26:26.902977 [info]:  Client[23] Quit!
+2023-06-09 15:26:26.903031 [info]:  Client[23](10.128.133.88:50379) Quit, UserCount: 1
+2023-06-09 15:26:26.903077 [info]:  Client[22] Quit!
+2023-06-09 15:26:26.903124 [info]:  Client[22](10.128.133.88:49611) Quit, UserCount: 0
+2023-06-09 15:26:58.437587 [info]:  Client[18](10.128.133.88:32206) In, UserCount: 1
+2023-06-09 15:26:58.437705 [info]:  Client[18] In!
+2023-06-09 15:26:58.478946 [info]:  Client[19](10.128.133.88:32462) In, UserCount: 2
+2023-06-09 15:26:58.479035 [info]:  Client[19] In!
+2023-06-09 15:26:58.480735 [info]:  Client[20](10.128.133.88:33230) In, UserCount: 3
+2023-06-09 15:26:58.480783 [info]:  Client[20] In!
+2023-06-09 15:26:58.480824 [info]:  Client[21](10.128.133.88:32974) In, UserCount: 4
+2023-06-09 15:26:58.480878 [info]:  Client[21] In!
+2023-06-09 15:26:58.480921 [info]:  Client[22](10.128.133.88:32718) In, UserCount: 5
+2023-06-09 15:26:58.480959 [info]:  Client[22] In!
+2023-06-09 15:26:58.482129 [info]:  Client[23](10.128.133.88:33486) In, UserCount: 6
+2023-06-09 15:26:58.482169 [info]:  Client[23] In!
+2023-06-09 15:27:14.300640 [info]:  Verify name:test123 pwd:test123.
+2023-06-09 15:27:27.990272 [info]:  Verify name:test123 pwd:test123
