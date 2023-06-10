@@ -14,11 +14,11 @@ Config::Config()
 {
     // 端口
     port = 9006;
-    // ET+ET模式
+    // epoll事件触发模式，默认ET+ET模式
     trigMode = 3;
-    // timeoutMs
+    // timeoutMs，默认1min
     timeoutMS = 60000;
-    // 优雅退出
+    // 优雅退出，默认关闭
     OptLinger = false;
     // Mysql配置
     sqlPort = 3306;
@@ -35,9 +35,9 @@ Config::Config()
     logLevel = 1;
     // 阻塞队列容量
     logQueSize = 1024;
-    // 事件处理模式默认为reactor
+    // 事件处理模式，默认reactor
     actor = 0;
-    // 守护进程默认不开启
+    // 守护进程，默认不开启
     is_daemon = false;
 }
 

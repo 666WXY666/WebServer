@@ -1,3 +1,12 @@
+/*
+ * @Copyright: Copyright (c) 2022 WangXingyu All Rights Reserved.
+ * @Description:
+ * @Version:
+ * @Author: WangXingyu
+ * @Date: 2023-05-30 18:15:26
+ * @LastEditors: WangXingyu
+ * @LastEditTime: 2023-06-10 14:14:47
+ */
 #ifndef WEB_SERVER_H
 #define WEB_SERVER_H
 
@@ -64,7 +73,7 @@ private:
     static const int MAX_FD = 65536; // 最大文件描述符数量
 
     int port_;      // 监听的端口
-    int timeoutMS_; // 毫秒MS
+    int timeoutMS_; // 超时时间，毫秒MS
     int listenFd_;  // 监听的文件描述符
     // note: SO_LINGER将决定系统如何处理残存在套接字发送队列中的数据
     // 处理方式无非两种：丢弃或者将数据继续发送至对端

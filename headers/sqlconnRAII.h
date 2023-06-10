@@ -5,26 +5,22 @@
  * @Author: WangXingyu
  * @Date: 2023-05-30 18:15:26
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-08 15:53:09
+ * @LastEditTime: 2023-06-10 14:11:26
  */
-//
-// Created by zzh on 2022/4/19.
-//
-
-#ifndef MY_WEBSERVER_SQLCONNRAII_H
-#define MY_WEBSERVER_SQLCONNRAII_H
+#ifndef SQL_CONN_RAII_H
+#define SQL_CONN_RAII_H
 
 #include "sqlconnpoll.h"
 
 /*
- * 资源在对象构造初始化 资源在对象析构时释放
+ * RAII：资源在对象构造初始化 资源在对象析构时释放
  */
 class SqlConnRAII
 {
 public:
     /*
-     * 因为这里需要修改指针的值，所以需要拆入二级指针，其实这里可以用指针的引用接收，这样只需要传入指针即可
-     * 构造函数中获取连接
+     * 构造函数，获取数据库连接池单例对象，从数据库连接池获取MySQL连接
+     * 因为这里需要修改指针的值，所以需要传入二级指针，其实这里可以用指针的引用接收，这样只需要传入指针即可
      */
     SqlConnRAII(MYSQL **sql, SqlConnPool *connpool)
     {
@@ -35,7 +31,7 @@ public:
     }
 
     /*
-     * 析构函数中释放
+     * 析构函数，释放MySQL连接，重新放回数据库连接池
      */
     ~SqlConnRAII()
     {
@@ -46,8 +42,8 @@ public:
     }
 
 private:
-    MYSQL *sql_;            /*数据库连接*/
-    SqlConnPool *connpool_; /*连接池*/
+    MYSQL *sql_;            // MySQL连接
+    SqlConnPool *connpool_; // 数据库连接池（单例，只有一个对象）
 };
 
-#endif // MY_WEBSERVER_SQLCONNRAII_H
+#endif // SQL_CONN_RAII_H

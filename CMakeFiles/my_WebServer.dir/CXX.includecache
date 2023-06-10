@@ -16,10 +16,6 @@ stdio.h
 ../headers/config.h
 /home/wxy/Projects/my-WebServer/headers/config.h
 
-/home/wxy/Projects/my-WebServer/codes/epoller.cpp
-../headers/epoller.h
-/home/wxy/Projects/my-WebServer/headers/epoller.h
-
 /home/wxy/Projects/my-WebServer/codes/heaptimer.cpp
 ../headers/heaptimer.h
 /home/wxy/Projects/my-WebServer/headers/heaptimer.h

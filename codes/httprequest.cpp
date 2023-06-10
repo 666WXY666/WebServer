@@ -321,53 +321,57 @@ void HttpRequest::parseFromUrlencoded_()
  */
 bool HttpRequest::userVerify(const std::string &name, const std::string &pwd, bool isLogin)
 {
-    /*密码或用户名为空，直接错误*/
+    // 密码或用户名为空，直接错误
     if (name == "" || pwd == "")
     {
         return false;
     }
     LOG_INFO("Verify name:%s pwd:%s", name.c_str(), pwd.c_str());
 
-    /*获取一个sql连接*/
+    // note: 用RAII获取一个MySQL连接
     MYSQL *sql;
-    /*RAII*/
+    // SqlConnPool::instance()单例获取数据库连接池实例
+    // RAII自动管理资源，析构自动释放
     SqlConnRAII sqlConnRaii(&sql, SqlConnPool::instance());
     assert(sql);
 
-    /*初始化一系列相关变量*/
-    bool flag = false;
-    unsigned int j = 0;
-    char order[256] = {0};
-    MYSQL_FIELD *fields = nullptr;
-    MYSQL_RES *res = nullptr;
+    // 初始化一系列相关变量
+    bool flag = false;             // 最终返回值，密码是否通过验证（如果是注册，直接通过）
+    unsigned int j = 0;            // 结果集中的列数（未使用）
+    char order[256] = {0};         // 存储sql语句
+    MYSQL_FIELD *fields = nullptr; // 结果集中的字段结构数组（未使用）
+    MYSQL_RES *res = nullptr;      // sql查询结果
 
-    /*如果是注册，那么将flag置为true*/
+    // 如果是注册，那么将flag置为true
     if (!isLogin)
     {
         flag = true;
     }
-    /* 查询用户及密码 */
+    // 查询用户及密码
     snprintf(order, 256, "SELECT username, password FROM user WHERE username='%s' LIMIT 1", name.c_str());
     LOG_DEBUG("%s", order);
-
+    // 运行sql语句
+    // 注意：mysql_query()成功返回0，失败返回非0
     if (mysql_query(sql, order))
     {
+        // 释放所有关联的结果内存
         mysql_free_result(res);
         return false;
     }
-    /*从表中检索完整的结果集*/
+    // 从表中检索完整的结果集
+    // 如果mysql_store_result()查询未返回结果集，返回nullptr，比如INSERT
     res = mysql_store_result(sql);
-    /*返回结果集中的列数*/
+    // 返回结果集中的列数
     j = mysql_num_fields(res);
-    /*返回所有字段结构的数组*/
+    // 返回所有字段结构的数组
     fields = mysql_fetch_fields(res);
 
-    /*从结果集中获取下一行*/
+    // 从结果集中获取下一行
     while (MYSQL_ROW row = mysql_fetch_row(res))
     {
         LOG_DEBUG("MYSQL ROW: %s %s", row[0], row[1]);
         std::string password(row[1]);
-        /*登录验证*/
+        // 登录验证
         if (isLogin)
         {
             if (pwd == password)
@@ -377,34 +381,38 @@ bool HttpRequest::userVerify(const std::string &name, const std::string &pwd, bo
             else
             {
                 flag = false;
-                LOG_DEBUG("pwd error!");
+                LOG_DEBUG("Password Error!");
             }
         }
         else
         {
             flag = false;
-            LOG_DEBUG("user used!");
+            LOG_DEBUG("User Used!");
         }
     }
     mysql_free_result(res);
 
-    /* 注册行为 且 用户名未被使用*/
+    // 注册行为 且 用户名未被使用
     if (!isLogin && flag)
     {
-        LOG_DEBUG("regirster!");
+        LOG_DEBUG("Register!");
+        // 重置sql语句
         bzero(order, 256);
+        // 插入sql语句
         snprintf(order, 256, "INSERT INTO user(username, password) VALUES('%s','%s')", name.c_str(), pwd.c_str());
         LOG_DEBUG("%s", order);
-        /*插入数据库，用户注册成功*/
+        // 插入数据库
+        // 插入失败
         if (mysql_query(sql, order))
         {
-            LOG_DEBUG("Insert error!");
+            LOG_DEBUG("Insert Error!");
             flag = false;
         }
+        // 插入成功，用户注册成功
         flag = true;
     }
 
-    LOG_DEBUG("UserVerify success!!");
+    LOG_DEBUG("User Verify Success!");
     return flag;
 }
 

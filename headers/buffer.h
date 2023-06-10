@@ -5,7 +5,7 @@
  * @Author: WangXingyu
  * @Date: 2023-05-30 18:15:26
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-09 14:49:15
+ * @LastEditTime: 2023-06-10 15:46:29
  */
 #ifndef BUFFER_H
 #define BUFFER_H
@@ -54,7 +54,7 @@ public:
     char *beginWrite();
 
     // 往缓冲区写数据
-    // string类型
+    // string类型（主要用于日志buffer中）
     void append(const std::string &str);
     // char *类型
     void append(const char *str, size_t len);

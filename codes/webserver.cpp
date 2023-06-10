@@ -30,7 +30,7 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool optLinger,
     // 日志初始化
     if (openLog)
     {
-        // 初始化LOG类设置
+        // 初始化Log类设置
         Log::instance()->init(logLevel, "./log", ".log", logQueSize);
         if (isClose_)
         {
@@ -280,7 +280,7 @@ void WebServer::addClient_(int fd, sockaddr_in addr)
     users_[fd].init(fd, addr);
     if (timeoutMS_ > 0)
     {
-        // 若设置了超时事件，则需要向定时器里添加这一项
+        // 若设置了超时事件，则需要向定时器里添加这一项，设置回调函数为关闭连接
         // note: std::bind，函数适配器，接受一个可调用对象，生成一个新的可调用对象来适应原对象的参数列表
         timer_->add(fd, timeoutMS_, std::bind(&WebServer::closeConn_, this, &users_[fd]));
     }
@@ -299,6 +299,7 @@ void WebServer::extentTime_(HttpConn *client)
     assert(client);
     if (timeoutMS_ > 0)
     {
+        // 调整fd对应的定时器的超时时间为初始设定值timeoutMS_
         timer_->adjust(client->getFd(), timeoutMS_);
     }
 }
@@ -430,7 +431,7 @@ void WebServer::start()
             timeMS = timer_->getNextTick();
         }
         // epoll等待事件的唤醒，等待时间为最近一个连接会超时的时间
-        // 第一次调用是阻塞的（timeMS为-1），接下来每次调用timeMS为时间堆顶超时时长
+        // 第一次调用是阻塞的（timeMS为-1），接下来每次调用timeMS为定时器小根堆顶的超时时长，也就是最小超时时间
         // 返回0说明超时，不会调用下面的for循环
         int eventCount = epoller_->wait(timeMS);
         for (int i = 0; i < eventCount; i++)
