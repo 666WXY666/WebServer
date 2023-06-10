@@ -117,6 +117,7 @@ void Log::asyncWrite_()
 
 /*
  * 局部静态变量，线程安全的初始化方式
+ * 静态函数，只有静态成员方法才能访问静态成员变量
  * 单例模式，返回一个Log对象的引用
  */
 Log *Log::instance()
@@ -167,7 +168,9 @@ void Log::init(int level, const char *path, const char *suffix, int maxQueueSize
     // 从第一行开始
     lineCount_ = 0;
     // 获取当前时间，保存到变量t中
+    // 从世界协调时间UTC 1970-01-01 00:00:00 到现在的秒数
     time_t timer = time(nullptr);
+    // 将timer的值分解为tm结构，并用本地区时表示
     struct tm *sysTime = localtime(&timer);
     struct tm t = *sysTime;
     // 初始化文件路径以及后缀名
@@ -189,7 +192,7 @@ void Log::init(int level, const char *path, const char *suffix, int maxQueueSize
             flush();
             fclose(fp_);
         }
-        // 创建文件目录与文件
+        // 创建文件目录与文件，以追加模式打开新的日志文件
         fp_ = fopen(fileName, "a");
         // 如果未创建成功，说明没有对应的目录，创建目录后再创建文件即可
         if (!fp_)
@@ -209,7 +212,9 @@ void Log::init(int level, const char *path, const char *suffix, int maxQueueSize
 void Log::write(int level, const char *format, ...)
 {
     // 获取当前时间
+    // timeval结构体存储秒和微妙
     struct timeval now = {0, 0};
+    // 返回当前距离1970年的秒数和微妙数，第二个参数是时区，一般不用
     gettimeofday(&now, nullptr);
     time_t tSec = now.tv_sec;
     struct tm *sysTime = localtime(&tSec);
@@ -239,7 +244,7 @@ void Log::write(int level, const char *format, ...)
         // 进入到此分支表示文件行数超过了最大行数，需要分出第二个log文件来存储今日的文件
         else
         {
-            // 文件名由 path_  tail (lineCount_ / MAX_LINES) suffix_ 组成
+            // 文件名由 path_  tail (lineCount_ / MAX_LINES) suffix_ 组成，加上横杠标记的后缀-x，如-2
             snprintf(newFile, LOG_NAME_LEN - 72, "%s/%s-%d%s", path_,
                      tail, (lineCount_ / MAX_LINES), suffix_);
         }
@@ -269,8 +274,10 @@ void Log::write(int level, const char *format, ...)
         appendLogLevelTitle_(level);
 
         // 根据用户传入的参数，向缓冲区添加数据
+        // 为format里的参数初始化为vaList参数列表
         va_start(vaList, format);
         int m = vsnprintf(buff_.beginWrite(), buff_.writableBytes(), format, vaList);
+        // 清理为vaList保留的内存
         va_end(vaList);
         // 移动缓冲区的指针，表示写了多少字节数据到缓冲区中
         buff_.hasWritten(m);
