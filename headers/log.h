@@ -19,7 +19,8 @@
 class Log
 {
 public:
-    // 初始化日志，设置级别，路径，后缀，日志队列大小，创建日志文件
+    // 初始化日志，设置级别，路径，后缀，日志队列的最大大小，创建日志文件
+    // 日志队列的最大大小maxQueueSize，如果设置为0则代表同步输出日志，如果设置为>0则代表异步输出日志
     void init(int level = 1, const char *path = "./log",
               const char *suffix = ".log", int maxQueueSize = 1024);
     // 单例懒汉，静态方法
@@ -75,7 +76,8 @@ private:
  * 4种类型的日志，分别是LOG_DEBUG、LOG_INFO、LOG_WARN与LOG_ERROR
  * 它们共同使用LOG_BASE，以level来区分不同级别的日志
  * 只会像文件写入规定level以下的log信息 log->GetLevel() <= level
- * 日志类型必须小于等于系统的日志等级才能输出，比如日志等级设置为1，那么DEBUG类型的日志无法输出
+ * 打印的日志级别（level）必须<=系统的日志级别（log->getLevel()）才能输出
+ * 比如系统的日志级别设置为1，那么DEBUG类型的日志无法输出
  */
 #define LOG_BASE(level, format, ...)                   \
     do                                                 \

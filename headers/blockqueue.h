@@ -220,7 +220,7 @@ template <typename T>
 bool BlockDeque<T>::pop(T &item)
 {
     std::unique_lock<std::mutex> locker(mtx_);
-    // 如果队列为空，消费者条件变量等待，若关闭变量isClose为true则返回false
+    //  while循环，只要队列为空，消费者条件变量就等待，或者关闭变量isClose为true，则返回false
     while (deq_.empty())
     {
         condConsumer_.wait(locker);
@@ -248,6 +248,7 @@ template <typename T>
 bool BlockDeque<T>::pop(T &item, int timeout)
 {
     std::unique_lock<std::mutex> locker(mtx_);
+    // while循环，只要队列为空，消费者条件变量就等待，或者等待超时，或者关闭变量isClose为true，则返回false
     while (deq_.empty())
     {
         // 加入了超时时间的等待

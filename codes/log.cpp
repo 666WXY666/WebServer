@@ -108,8 +108,10 @@ void Log::asyncWrite_()
 {
     std::string str = "";
     // BlockDeque实现了生产者消费者阻塞，如果队列为空会阻塞在pop这
+    // 因为BlockDeque本身就是线程安全的实现，所以这里while判断不用加锁
     while (deque_->pop(str))
     {
+        // 这里加锁保证多线程对fp_的操作
         std::lock_guard<std::mutex> locker(mtx_);
         fputs(str.c_str(), fp_);
     }
@@ -142,7 +144,7 @@ void Log::init(int level, const char *path, const char *suffix, int maxQueueSize
 {
     isOpen_ = true;
     level_ = level;
-    // 如果消息队列大于0，说明启用了异步写入log，那就要初始化异步写入所需的变量
+    // 如果日志队列的最大大小>0，说明启用了异步写入log，那就要初始化异步写入所需的变量
     if (maxQueueSize > 0)
     {
         // 开启异步写入
