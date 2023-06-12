@@ -5,7 +5,7 @@
  * @Author: WangXingyu
  * @Date: 2023-06-08 15:13:16
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-08 16:27:33
+ * @LastEditTime: 2023-06-12 14:22:24
  */
 #include <stdio.h>
 #include "../headers/config.h"
@@ -35,7 +35,7 @@ Config::Config()
     logLevel = 1;
     // 阻塞队列容量
     logQueSize = 1024;
-    // 事件处理模式，默认reactor
+    // 事件处理模式：Reactor(0)/Proactor(1)，默认Reactor
     actor = 0;
     // 守护进程，默认不开启
     is_daemon = false;

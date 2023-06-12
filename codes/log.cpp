@@ -286,16 +286,16 @@ void Log::write(int level, const char *format, ...)
         // 行尾写入换行符，注意加入\0表示字符串结束
         buff_.append("\n\0", 2);
 
-        // 根据变量选择是否异步写入
+        // 根据变量选择是否异步写入，并且如果缓冲区满了，直接转为同步写入（或者直接丢弃，看业务需求）
         if (isAsync_ && deque_ && !deque_->full())
         {
-            // 如果以上三个条件都满足，那么进行异步写入
             // retrieveAllToStr()返回buff_数据组成的string，同时回收所有空间，所以下面不用retrieveAll()
+            // 这里如果缓冲区满了，deque_的push_back()会阻塞等待，为了防止主线程阻塞等待，前面判断了缓冲区是否满
             deque_->push_back(buff_.retrieveAllToStr());
         }
+        // 同步写入，直接写入至文件
         else
         {
-            // 否则直接写入至文件
             // fputs的char *str参数以\0结尾
             fputs(buff_.peek(), fp_);
             // 回收所有空间

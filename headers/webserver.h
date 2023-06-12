@@ -85,7 +85,7 @@ private:
     bool openLinger_;   // 是否优雅关闭
     bool isClose_;      // 是否关闭服务器，指示InitSocket操作是否成功
     char *srcDir_;      // 资源文件目录
-    int actor_;         // 事件处理模式：reactor(0)/proactor(1)
+    int actor_;         // 事件处理模式：Reactor(0)/Proactor(1)
     bool is_daemon_;    // 是否以守护进程方式启动
     int pipefd_[2];     // 传递信号的管道
     SigUtils sigutils_; // 信号处理对象

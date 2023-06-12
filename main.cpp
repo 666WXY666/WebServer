@@ -35,6 +35,6 @@ int main(int argc, char *argv[])
     // WebServer启动
     server.start();
     // 打印退出成功日志
-    LOG_INFO("================Server Quit================\n");
+    LOG_INFO("=========================Server Quit=========================\n");
     return 0;
 }

@@ -34,13 +34,13 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool optLinger,
         Log::instance()->init(logLevel, "./log", ".log", logQueSize);
         if (isClose_)
         {
-            LOG_ERROR("================Server Init Error!================");
+            LOG_ERROR("=========================Server Init Error!=========================");
         }
         else
         {
             time_t timer = time(nullptr);
             struct tm *t = localtime(&timer);
-            LOG_INFO("================Server Init================");
+            LOG_INFO("=========================Server Init=========================");
             LOG_INFO("Date: %04d-%02d-%02d, Time: %02d:%02d:%02d",
                      t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec);
             LOG_INFO("Daemon Mode: %s", is_daemon_ ? "Yes" : "No");
@@ -142,7 +142,6 @@ void WebServer::sendError_(int fd, const char *info)
 void WebServer::closeConn_(HttpConn *client)
 {
     assert(client);
-    LOG_INFO("Client[%d] Quit!", client->getFd());
     epoller_->delFd(client->getFd());
     client->close();
 }
@@ -351,11 +350,10 @@ void WebServer::addClient_(int fd, sockaddr_in addr)
         // note: std::bind，函数适配器，接受一个可调用对象，生成一个新的可调用对象来适应原对象的参数列表
         timer_->add(fd, timeoutMS_, std::bind(&WebServer::closeConn_, this, &users_[fd]));
     }
-    // 添加epoll监听EPOLLIN事件，连接设置为非阻塞
+    // 添加epoll监听EPOLLIN事件
     epoller_->addFd(fd, EPOLLIN | connEvent_);
+    // 文件描述符设置为非阻塞
     setFdNonblock(fd);
-
-    LOG_INFO("Client[%d] In!", users_[fd].getFd());
 }
 
 /*
@@ -408,7 +406,7 @@ void WebServer::onRead_(HttpConn *client)
         return;
     }
     // 读取成功，此时数据保存在HttpConn *client的readBuff_中
-    // 调用onProcess函数解析数据，执行业务逻辑
+    // 调用onProcess_()函数解析数据，执行业务逻辑
     onProcess_(client);
 }
 
@@ -420,8 +418,30 @@ void WebServer::dealRead_(HttpConn *client)
     assert(client);
     // 调整过期时间
     extentTime_(client);
-    // 添加线程池任务，运行onRead_()函数
-    threadPool_->addTask(std::bind(&WebServer::onRead_, this, client));
+    // 如果是Reactor模式
+    if (actor_ == 0)
+    {
+        // 添加线程池任务，运行onRead_()函数
+        threadPool_->addTask(std::bind(&WebServer::onRead_, this, client));
+    }
+    // Proactor模式（同步模拟）
+    // 相当于把onRead_()拿到主线程运行读取，子线程运行onProcess_()解析并处理业务
+    else
+    {
+        int ret = -1;
+        int readErrno = 0;
+        // 调用httpconn类的read方法，读取数据
+        ret = client->read(&readErrno);
+        if (ret <= 0 && readErrno != EAGAIN)
+        {
+            // 若返回值小于0，且信号不为EAGAIN说明发生了错误
+            closeConn_(client);
+            return;
+        }
+        // 读取成功，此时数据保存在HttpConn *client的readBuff_中
+        // 调用onProcess_()函数解析数据，执行业务逻辑
+        threadPool_->addTask(std::bind(&WebServer::onProcess_, this, client));
+    }
 }
 
 /*
@@ -441,9 +461,11 @@ void WebServer::onWrite_(HttpConn *client)
         // 检查客户端是否设置了长连接字段
         if (client->isKeepAlive())
         {
-            // 如果客户端设置了长连接，那么调用OnProcess_()函数
+            // note: 如果客户端设置了长连接，那么调用OnProcess_()函数
             // 因为此时的client->process()会返回false，所以该连接会重新注册epoll的EPOLLIN事件
-            onProcess_(client);
+            // onProcess_(client);
+            // 这里直接设置epoll监听该连接上的EPOLLIN读事件也可以
+            epoller_->modFd(client->getFd(), connEvent_ | EPOLLIN);
             // 此时直接返回，不关闭连接
             return;
         }
@@ -471,8 +493,17 @@ void WebServer::dealWrite_(HttpConn *client)
     assert(client);
     // 调整过期时间
     extentTime_(client);
-    // 添加线程池任务，运行onWrite_()函数
-    threadPool_->addTask(std::bind(&WebServer::onWrite_, this, client));
+    // 如果是Reactor模式
+    if (actor_ == 0)
+    {
+        // 添加线程池任务，运行onWrite_()函数
+        threadPool_->addTask(std::bind(&WebServer::onWrite_, this, client));
+    }
+    // Proactor模式（同步模拟），把onWrite_()拿到主线程运行写入
+    else
+    {
+        onWrite_(client);
+    }
 }
 
 /*
@@ -485,7 +516,7 @@ void WebServer::start()
     int timeMS = -1;
     if (!isClose_)
     {
-        LOG_INFO("================Server Start================");
+        LOG_INFO("=========================Server Start=========================");
     }
 
     // 根据不同的事件调用不同的函数
