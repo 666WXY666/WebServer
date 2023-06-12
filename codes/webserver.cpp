@@ -22,8 +22,8 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool optLinger,
     // 根据参数设置连接事件与监听事件的触发模式LT或ET
     initEventMode_(trigMode);
 
-    // 初始化监听套接字
-    if (!initSocket_())
+    // 初始化监听套接字和管道套接字
+    if (!initSocket_() || !initPipe_())
     {
         isClose_ = true;
     }
@@ -34,13 +34,13 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool optLinger,
         Log::instance()->init(logLevel, "./log", ".log", logQueSize);
         if (isClose_)
         {
-            LOG_ERROR("=================Server init error!===================");
+            LOG_ERROR("================Server Init Error!================");
         }
         else
         {
             time_t timer = time(nullptr);
             struct tm *t = localtime(&timer);
-            LOG_INFO("=============Server init================");
+            LOG_INFO("================Server Init================");
             LOG_INFO("Date: %04d-%02d-%02d, Time: %02d:%02d:%02d",
                      t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec);
             LOG_INFO("Daemon Mode: %s", is_daemon_ ? "Yes" : "No");
@@ -64,11 +64,16 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool optLinger,
  */
 WebServer::~WebServer()
 {
+    // 关闭监听描述符
     close(listenFd_);
     isClose_ = true;
+    // 释放文件资源
     free(srcDir_);
+    // 关闭数据库连接池
     SqlConnPool::instance()->closePool();
-    // todo: 信号处理关闭管道
+    // 关闭信号管道
+    close(pipefd_[0]);
+    close(pipefd_[1]);
 }
 
 /*
@@ -241,6 +246,35 @@ bool WebServer::initSocket_()
 }
 
 /*
+ * 初始化传递信号的管道
+ */
+bool WebServer::initPipe_()
+{
+    // 新建管道Socket
+    int ret = socketpair(PF_UNIX, SOCK_STREAM, 0, pipefd_);
+    assert(ret != -1);
+    // 增加epoll事件
+    ret = epoller_->addFd(pipefd_[0], EPOLLRDHUP | EPOLLIN);
+    // 返回值为false，错误
+    if (!ret)
+    {
+        LOG_ERROR("Add Pipefd[0] Error!");
+        close(pipefd_[0]);
+        close(pipefd_[1]);
+        return false;
+    }
+    // 设置非阻塞
+    setFdNonblock(pipefd_[1]);
+    // 增加捕获的信号
+    sigutils_.addSig_(SIGPIPE, SIG_IGN);
+    sigutils_.addSig_(SIGINT, SigUtils::sigHandler_, false);
+    sigutils_.addSig_(SIGTERM, SigUtils::sigHandler_, false);
+    // 设置信号管道
+    SigUtils::u_pipefd = pipefd_;
+    return true;
+}
+
+/*
  * 处理客户端连接事件
  */
 void WebServer::dealListen_()
@@ -268,6 +302,39 @@ void WebServer::dealListen_()
         // 添加客户端
         addClient_(fd, addr);
     } while (listenEvent_ & EPOLLET);
+}
+
+/*
+ * 处理信号事件
+ */
+void WebServer::dealSignal_()
+{
+    int ret = 0;
+    char signals[1024];
+    // 接收信号
+    ret = recv(pipefd_[0], signals, sizeof(signals), 0);
+    if (ret == 0 || ret == -1)
+    {
+        return;
+    }
+
+    for (int i = 0; i < ret; ++i)
+    {
+        // 对每种信号处理
+        switch (signals[i])
+        {
+        case SIGINT:
+            // 默认关闭
+            LOG_INFO("Received Signal SIGINT!")
+            isClose_ = true;
+        case SIGTERM:
+            // 默认关闭
+            LOG_INFO("Received Signal SIGTERM!")
+            isClose_ = true;
+        default:
+            break;
+        }
+    }
 }
 
 /*
@@ -418,7 +485,7 @@ void WebServer::start()
     int timeMS = -1;
     if (!isClose_)
     {
-        LOG_INFO("================Server start================");
+        LOG_INFO("================Server Start================");
     }
 
     // 根据不同的事件调用不同的函数
@@ -441,32 +508,37 @@ void WebServer::start()
             uint32_t events = epoller_->getEvents(i);
 
             // 根据不同情况进入不同分支
+            // 若对应文件描述符为监听描述符，进入新连接处理流程
             if (fd == listenFd_)
             {
-                // 若对应文件描述符为监听描述符，进入新连接处理流程
                 dealListen_();
             }
+            // 若epoll事件为 (EPOLLRDHUP | EPOLLHUP | EPOLLERR) 其中之一，表示连接出现问题，需要关闭该连接
             else if (events & (EPOLLRDHUP | EPOLLHUP | EPOLLERR))
             {
-                // 若epoll事件为 (EPOLLRDHUP | EPOLLHUP | EPOLLERR) 其中之一，表示连接出现问题，需要关闭该连接
                 assert(users_.count(fd) > 0);
                 closeConn_(&users_[fd]);
             }
+            // 若epoll事件为EPOLLIN并且fd是信号管道，表示有信号需要处理
+            else if (fd == pipefd_[0] && (events & EPOLLIN))
+            {
+                dealSignal_();
+            }
+            // 若epoll事件为EPOLLIN，表示有对应套接字收到数据，需要读取出来
             else if (events & EPOLLIN)
             {
-                // 若epoll事件为EPOLLIN，表示有对应套接字收到数据，需要读取出来
                 assert(users_.count(fd) > 0);
                 dealRead_(&users_[fd]);
             }
+            // 若epoll事件为EPOLLOUT，表示返回给客户端的数据已准备好，需要向对应套接字连接发送数据
             else if (events & EPOLLOUT)
             {
-                // 若epoll事件为EPOLLOUT，表示返回给客户端的数据已准备好，需要向对应套接字连接发送数据
                 assert(users_.count(fd) > 0);
                 dealWrite_(&users_[fd]);
             }
+            // 其余事件皆为错误，向log文件写入该事件
             else
             {
-                // 其余事件皆为错误，向log文件写入该事件
                 LOG_ERROR("Unexpected Event!");
             }
         }

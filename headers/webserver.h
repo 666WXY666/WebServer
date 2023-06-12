@@ -5,7 +5,7 @@
  * @Author: WangXingyu
  * @Date: 2023-05-30 18:15:26
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-10 14:14:47
+ * @LastEditTime: 2023-06-12 11:25:17
  */
 #ifndef WEB_SERVER_H
 #define WEB_SERVER_H
@@ -26,6 +26,7 @@
 #include "threadpool.h"
 #include "sqlconnpoll.h"
 #include "sqlconnRAII.h"
+#include "sigutils.h"
 
 class WebServer
 {
@@ -44,6 +45,8 @@ private:
     static int setFdNonblock(int fd);
     // 初始化监听socket
     bool initSocket_();
+    // 初始化传递信号的管道
+    bool initPipe_();
     // 初始化触发组合模式
     void initEventMode_(int trigMode);
     // 添加客户端
@@ -51,6 +54,8 @@ private:
 
     // 获取新连接，初始化客户端数据
     void dealListen_();
+    // 处理信号事件
+    void dealSignal_();
     // 调用ExtentTime_，并将写任务加入线程池的工作队列
     void dealWrite_(HttpConn *client);
     // 调用ExtentTime_，并将读任务加入线程池的工作队列
@@ -77,11 +82,13 @@ private:
     int listenFd_;  // 监听的文件描述符
     // note: SO_LINGER将决定系统如何处理残存在套接字发送队列中的数据
     // 处理方式无非两种：丢弃或者将数据继续发送至对端
-    bool openLinger_; // 是否优雅关闭
-    bool isClose_;    // 是否关闭服务器，指示InitSocket操作是否成功
-    char *srcDir_;    // 资源文件目录
-    int actor_;       // 事件处理模式：reactor(0)/proactor(1)
-    bool is_daemon_;  // 是否以守护进程方式启动
+    bool openLinger_;   // 是否优雅关闭
+    bool isClose_;      // 是否关闭服务器，指示InitSocket操作是否成功
+    char *srcDir_;      // 资源文件目录
+    int actor_;         // 事件处理模式：reactor(0)/proactor(1)
+    bool is_daemon_;    // 是否以守护进程方式启动
+    int pipefd_[2];     // 传递信号的管道
+    SigUtils sigutils_; // 信号处理对象
 
     uint32_t listenEvent_; // 监听描述符上的epoll事件
     uint32_t connEvent_;   // 连接描述符上的epoll事件

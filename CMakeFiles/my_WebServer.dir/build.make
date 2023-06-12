@@ -161,9 +161,22 @@ CMakeFiles/my_WebServer.dir/codes/log.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_WebServer.dir/codes/log.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wxy/Projects/my-WebServer/codes/log.cpp -o CMakeFiles/my_WebServer.dir/codes/log.cpp.s
 
+CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o: CMakeFiles/my_WebServer.dir/flags.make
+CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o: codes/sigutils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o -c /home/wxy/Projects/my-WebServer/codes/sigutils.cpp
+
+CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wxy/Projects/my-WebServer/codes/sigutils.cpp > CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.i
+
+CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wxy/Projects/my-WebServer/codes/sigutils.cpp -o CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.s
+
 CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o: CMakeFiles/my_WebServer.dir/flags.make
 CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o: codes/sqlconnpoll.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o -c /home/wxy/Projects/my-WebServer/codes/sqlconnpoll.cpp
 
 CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.i: cmake_force
@@ -176,7 +189,7 @@ CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.s: cmake_force
 
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: CMakeFiles/my_WebServer.dir/flags.make
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: codes/webserver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o -c /home/wxy/Projects/my-WebServer/codes/webserver.cpp
 
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.i: cmake_force
@@ -189,7 +202,7 @@ CMakeFiles/my_WebServer.dir/codes/webserver.cpp.s: cmake_force
 
 CMakeFiles/my_WebServer.dir/main.cpp.o: CMakeFiles/my_WebServer.dir/flags.make
 CMakeFiles/my_WebServer.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/my_WebServer.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/my_WebServer.dir/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/my_WebServer.dir/main.cpp.o -c /home/wxy/Projects/my-WebServer/main.cpp
 
 CMakeFiles/my_WebServer.dir/main.cpp.i: cmake_force
@@ -210,6 +223,7 @@ my_WebServer_OBJECTS = \
 "CMakeFiles/my_WebServer.dir/codes/httprequest.cpp.o" \
 "CMakeFiles/my_WebServer.dir/codes/httpresponse.cpp.o" \
 "CMakeFiles/my_WebServer.dir/codes/log.cpp.o" \
+"CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o" \
 "CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o" \
 "CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o" \
 "CMakeFiles/my_WebServer.dir/main.cpp.o"
@@ -225,13 +239,14 @@ bin/my_WebServer: CMakeFiles/my_WebServer.dir/codes/httpconn.cpp.o
 bin/my_WebServer: CMakeFiles/my_WebServer.dir/codes/httprequest.cpp.o
 bin/my_WebServer: CMakeFiles/my_WebServer.dir/codes/httpresponse.cpp.o
 bin/my_WebServer: CMakeFiles/my_WebServer.dir/codes/log.cpp.o
+bin/my_WebServer: CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o
 bin/my_WebServer: CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o
 bin/my_WebServer: CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o
 bin/my_WebServer: CMakeFiles/my_WebServer.dir/main.cpp.o
 bin/my_WebServer: CMakeFiles/my_WebServer.dir/build.make
 bin/my_WebServer: /usr/lib/x86_64-linux-gnu/libmysqlclient.so
 bin/my_WebServer: CMakeFiles/my_WebServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable bin/my_WebServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable bin/my_WebServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/my_WebServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

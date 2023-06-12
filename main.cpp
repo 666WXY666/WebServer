@@ -5,12 +5,11 @@
  * @Author: WangXingyu
  * @Date: 2023-05-30 18:15:26
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-08 16:33:40
+ * @LastEditTime: 2023-06-12 13:13:29
  */
 #include <unistd.h>
 #include "headers/webserver.h"
 #include "headers/config.h"
-#include <iostream>
 
 int main(int argc, char *argv[])
 {
@@ -35,5 +34,7 @@ int main(int argc, char *argv[])
     );
     // WebServer启动
     server.start();
+    // 打印退出成功日志
+    LOG_INFO("================Server Quit================\n");
     return 0;
 }

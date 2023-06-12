@@ -6,40 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/wxy/Projects/my-WebServer/codes/buffer.cpp
-../headers/buffer.h
-/home/wxy/Projects/my-WebServer/headers/buffer.h
-
-/home/wxy/Projects/my-WebServer/codes/config.cpp
-stdio.h
--
-../headers/config.h
-/home/wxy/Projects/my-WebServer/headers/config.h
-
-/home/wxy/Projects/my-WebServer/codes/heaptimer.cpp
-../headers/heaptimer.h
-/home/wxy/Projects/my-WebServer/headers/heaptimer.h
-
-/home/wxy/Projects/my-WebServer/codes/httpconn.cpp
-../headers/httpconn.h
-/home/wxy/Projects/my-WebServer/headers/httpconn.h
-
-/home/wxy/Projects/my-WebServer/codes/httprequest.cpp
-../headers/httprequest.h
-/home/wxy/Projects/my-WebServer/headers/httprequest.h
-
-/home/wxy/Projects/my-WebServer/codes/httpresponse.cpp
-../headers/httpresponse.h
-/home/wxy/Projects/my-WebServer/headers/httpresponse.h
-
-/home/wxy/Projects/my-WebServer/codes/log.cpp
-../headers/log.h
-/home/wxy/Projects/my-WebServer/headers/log.h
-
-/home/wxy/Projects/my-WebServer/codes/sqlconnpoll.cpp
-../headers/sqlconnpoll.h
-/home/wxy/Projects/my-WebServer/headers/sqlconnpoll.h
-
 /home/wxy/Projects/my-WebServer/codes/webserver.cpp
 ../headers/webserver.h
 /home/wxy/Projects/my-WebServer/headers/webserver.h
@@ -202,6 +168,18 @@ buffer.h
 blockqueue.h
 /home/wxy/Projects/my-WebServer/headers/blockqueue.h
 
+/home/wxy/Projects/my-WebServer/headers/sigutils.h
+sys/types.h
+-
+string.h
+-
+assert.h
+-
+sys/socket.h
+-
+signal.h
+-
+
 /home/wxy/Projects/my-WebServer/headers/sqlconnRAII.h
 sqlconnpoll.h
 /home/wxy/Projects/my-WebServer/headers/sqlconnpoll.h
@@ -267,6 +245,8 @@ sqlconnpoll.h
 /home/wxy/Projects/my-WebServer/headers/sqlconnpoll.h
 sqlconnRAII.h
 /home/wxy/Projects/my-WebServer/headers/sqlconnRAII.h
+sigutils.h
+/home/wxy/Projects/my-WebServer/headers/sigutils.h
 
 /home/wxy/Projects/my-WebServer/main.cpp
 unistd.h
@@ -275,6 +255,4 @@ headers/webserver.h
 /home/wxy/Projects/my-WebServer/headers/webserver.h
 headers/config.h
 /home/wxy/Projects/my-WebServer/headers/config.h
-iostream
--
 

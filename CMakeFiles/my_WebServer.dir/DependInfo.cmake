@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wxy/Projects/my-WebServer/codes/httprequest.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/httprequest.cpp.o"
   "/home/wxy/Projects/my-WebServer/codes/httpresponse.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/httpresponse.cpp.o"
   "/home/wxy/Projects/my-WebServer/codes/log.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/log.cpp.o"
+  "/home/wxy/Projects/my-WebServer/codes/sigutils.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o"
   "/home/wxy/Projects/my-WebServer/codes/sqlconnpoll.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o"
   "/home/wxy/Projects/my-WebServer/codes/webserver.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o"
   "/home/wxy/Projects/my-WebServer/main.cpp" "/home/wxy/Projects/my-WebServer/CMakeFiles/my_WebServer.dir/main.cpp.o"

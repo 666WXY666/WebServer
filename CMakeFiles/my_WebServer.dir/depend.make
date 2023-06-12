@@ -48,6 +48,9 @@ CMakeFiles/my_WebServer.dir/codes/log.cpp.o: headers/blockqueue.h
 CMakeFiles/my_WebServer.dir/codes/log.cpp.o: headers/buffer.h
 CMakeFiles/my_WebServer.dir/codes/log.cpp.o: headers/log.h
 
+CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o: codes/sigutils.cpp
+CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o: headers/sigutils.h
+
 CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o: codes/sqlconnpoll.cpp
 CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o: headers/blockqueue.h
 CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o: headers/buffer.h
@@ -63,6 +66,7 @@ CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/httpconn.h
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/httprequest.h
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/httpresponse.h
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/log.h
+CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/sigutils.h
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/sqlconnRAII.h
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/sqlconnpoll.h
 CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o: headers/threadpool.h
@@ -77,6 +81,7 @@ CMakeFiles/my_WebServer.dir/main.cpp.o: headers/httpconn.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/httprequest.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/httpresponse.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/log.h
+CMakeFiles/my_WebServer.dir/main.cpp.o: headers/sigutils.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/sqlconnRAII.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/sqlconnpoll.h
 CMakeFiles/my_WebServer.dir/main.cpp.o: headers/threadpool.h

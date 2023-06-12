@@ -48,6 +48,9 @@ CMakeFiles/my_WebServer.dir/codes/log.cpp.o
  /home/wxy/Projects/my-WebServer/headers/blockqueue.h
  /home/wxy/Projects/my-WebServer/headers/buffer.h
  /home/wxy/Projects/my-WebServer/headers/log.h
+CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o
+ /home/wxy/Projects/my-WebServer/codes/sigutils.cpp
+ /home/wxy/Projects/my-WebServer/headers/sigutils.h
 CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o
  /home/wxy/Projects/my-WebServer/codes/sqlconnpoll.cpp
  /home/wxy/Projects/my-WebServer/headers/blockqueue.h
@@ -64,6 +67,7 @@ CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o
  /home/wxy/Projects/my-WebServer/headers/httprequest.h
  /home/wxy/Projects/my-WebServer/headers/httpresponse.h
  /home/wxy/Projects/my-WebServer/headers/log.h
+ /home/wxy/Projects/my-WebServer/headers/sigutils.h
  /home/wxy/Projects/my-WebServer/headers/sqlconnRAII.h
  /home/wxy/Projects/my-WebServer/headers/sqlconnpoll.h
  /home/wxy/Projects/my-WebServer/headers/threadpool.h
@@ -78,6 +82,7 @@ CMakeFiles/my_WebServer.dir/main.cpp.o
  /home/wxy/Projects/my-WebServer/headers/httprequest.h
  /home/wxy/Projects/my-WebServer/headers/httpresponse.h
  /home/wxy/Projects/my-WebServer/headers/log.h
+ /home/wxy/Projects/my-WebServer/headers/sigutils.h
  /home/wxy/Projects/my-WebServer/headers/sqlconnRAII.h
  /home/wxy/Projects/my-WebServer/headers/sqlconnpoll.h
  /home/wxy/Projects/my-WebServer/headers/threadpool.h
