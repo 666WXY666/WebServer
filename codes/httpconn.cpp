@@ -2,6 +2,7 @@
 
 // 静态变量
 const char *HttpConn::srcDir;         // 资源目录
+const char *HttpConn::uploadDir;      // 上传目录
 std::atomic<int> HttpConn::userCount; // 连接数
 bool HttpConn::isET;                  // 工作模式
 
@@ -11,6 +12,9 @@ bool HttpConn::isET;                  // 工作模式
 HttpConn::HttpConn() : fd_(-1), isClose_(true)
 {
     addr_ = {0};
+    // 初始化上传文件目录
+    // note: 这里注意静态变量的初始化方式
+    HttpRequest::uploadDir = uploadDir;
 }
 
 /*
@@ -31,12 +35,10 @@ void HttpConn::init(int sockfd, const sockaddr_in &addr)
     userCount++;
     addr_ = addr;
     fd_ = sockfd;
-
     // 初始化读写缓冲区以及标志httpconn是否开启的变量
     writeBuff_.retrieveAll();
     readBuff_.retrieveAll();
     isClose_ = false;
-
     LOG_INFO("Client[%d](%s:%d) In, UserCount: %d", sockfd, getIP(), getPort(), (int)userCount);
 }
 
@@ -172,7 +174,6 @@ ssize_t HttpConn::write(int *saveErrno)
         // 这里有点问题，如果是LT模式，且需要写的数据小于等于10240，那么连接会被直接关闭，这里可以选择在调用函数处修改判断条件
         // 或者直接将这里改为ToWriteBytes()>0
     } while (toWriteBytes() > 0);
-
     return len;
 }
 
@@ -222,13 +223,11 @@ bool HttpConn::process()
     // httpresponse负责拼装返回的头部以及需要发送的文件
     // 注意这里响应数据要存在writeBuff_中，供后续写事件使用，而不是在readBuff_
     response_.makeResponse(writeBuff_);
-
     // 响应头（写缓冲区writeBuff_）
     // 将写缓冲区赋值给iov_，后面使用writev函数发送至客户端
     iov_[0].iov_base = const_cast<char *>(writeBuff_.peek());
     iov_[0].iov_len = writeBuff_.readableBytes();
     iovCnt_ = 1;
-
     // 响应体（文件内存映射）
     // 如果需要返回服务器的文件内容，且文件内容不为空
     if (response_.fileLen() > 0 && response_.file())

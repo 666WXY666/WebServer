@@ -8,7 +8,6 @@
  * @LastEditTime: 2023-06-12 13:05:27
  */
 #include "../headers/sigutils.h"
-#include <iostream>
 
 int *SigUtils::u_pipefd = 0; // 初始化管道
 

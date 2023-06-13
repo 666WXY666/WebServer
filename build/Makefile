@@ -150,6 +150,33 @@ codes/buffer.cpp.s:
 	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/buffer.cpp.s
 .PHONY : codes/buffer.cpp.s
 
+codes/config.o: codes/config.cpp.o
+
+.PHONY : codes/config.o
+
+# target to build an object file
+codes/config.cpp.o:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.o
+.PHONY : codes/config.cpp.o
+
+codes/config.i: codes/config.cpp.i
+
+.PHONY : codes/config.i
+
+# target to preprocess a source file
+codes/config.cpp.i:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.i
+.PHONY : codes/config.cpp.i
+
+codes/config.s: codes/config.cpp.s
+
+.PHONY : codes/config.s
+
+# target to generate assembly for a file
+codes/config.cpp.s:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.s
+.PHONY : codes/config.cpp.s
+
 codes/epoller.o: codes/epoller.cpp.o
 
 .PHONY : codes/epoller.o
@@ -312,6 +339,33 @@ codes/log.cpp.s:
 	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/log.cpp.s
 .PHONY : codes/log.cpp.s
 
+codes/sigutils.o: codes/sigutils.cpp.o
+
+.PHONY : codes/sigutils.o
+
+# target to build an object file
+codes/sigutils.cpp.o:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o
+.PHONY : codes/sigutils.cpp.o
+
+codes/sigutils.i: codes/sigutils.cpp.i
+
+.PHONY : codes/sigutils.i
+
+# target to preprocess a source file
+codes/sigutils.cpp.i:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.i
+.PHONY : codes/sigutils.cpp.i
+
+codes/sigutils.s: codes/sigutils.cpp.s
+
+.PHONY : codes/sigutils.s
+
+# target to generate assembly for a file
+codes/sigutils.cpp.s:
+	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.s
+.PHONY : codes/sigutils.cpp.s
+
 codes/sqlconnpoll.o: codes/sqlconnpoll.cpp.o
 
 .PHONY : codes/sqlconnpoll.o
@@ -405,6 +459,9 @@ help:
 	@echo "... codes/buffer.o"
 	@echo "... codes/buffer.i"
 	@echo "... codes/buffer.s"
+	@echo "... codes/config.o"
+	@echo "... codes/config.i"
+	@echo "... codes/config.s"
 	@echo "... codes/epoller.o"
 	@echo "... codes/epoller.i"
 	@echo "... codes/epoller.s"
@@ -423,6 +480,9 @@ help:
 	@echo "... codes/log.o"
 	@echo "... codes/log.i"
 	@echo "... codes/log.s"
+	@echo "... codes/sigutils.o"
+	@echo "... codes/sigutils.i"
+	@echo "... codes/sigutils.s"
 	@echo "... codes/sqlconnpoll.o"
 	@echo "... codes/sqlconnpoll.i"
 	@echo "... codes/sqlconnpoll.s"

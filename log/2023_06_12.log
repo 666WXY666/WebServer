@@ -1,43 +1,848 @@
-2023-06-12 14:37:10.954172 [info]:  =========================Server Init=========================
-2023-06-12 14:37:10.954191 [info]:  Date: 2023-06-12, Time: 14:37:10
-2023-06-12 14:37:10.954197 [info]:  Daemon Mode: No
-2023-06-12 14:37:10.954281 [info]:  Port: 9006, OpenLinger: false
-2023-06-12 14:37:10.954287 [info]:  Listen Mode: ET, Conn Mode: ET
-2023-06-12 14:37:10.954366 [info]:  Actor Mode: Reactor
-2023-06-12 14:37:10.954381 [info]:  LogSys Status: Open
-2023-06-12 14:37:10.954389 [info]:  Log level: 1
-2023-06-12 14:37:10.954394 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
-2023-06-12 14:37:10.954406 [info]:  SqlConnPool num: 12, ThreadPool num: 6
-2023-06-12 14:37:10.954417 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
-2023-06-12 14:37:10.954437 [info]:  TimeOut: 60s
-2023-06-12 14:37:10.954451 [info]:  =========================Server Start=========================
-2023-06-12 14:37:16.862658 [info]:  Client[20](10.128.133.88:57847) In, UserCount: 1
-2023-06-12 14:37:16.917190 [info]:  Client[21](10.128.133.88:58103) In, UserCount: 2
-2023-06-12 14:37:16.917290 [info]:  Client[22](10.128.133.88:58871) In, UserCount: 3
-2023-06-12 14:37:16.917327 [info]:  Client[23](10.128.133.88:58359) In, UserCount: 4
-2023-06-12 14:37:16.918435 [info]:  Client[24](10.128.133.88:58615) In, UserCount: 5
-2023-06-12 14:37:16.952571 [info]:  Client[25](10.128.133.88:59127) In, UserCount: 6
-2023-06-12 14:37:17.143350 [info]:  Client[25](10.128.133.88:59127) Quit, UserCount: 5
-2023-06-12 14:37:17.143477 [info]:  Client[24](10.128.133.88:58615) Quit, UserCount: 4
-2023-06-12 14:37:17.143540 [info]:  Client[21](10.128.133.88:58103) Quit, UserCount: 3
-2023-06-12 14:37:17.143590 [info]:  Client[22](10.128.133.88:58871) Quit, UserCount: 2
-2023-06-12 14:37:17.144853 [info]:  Client[20](10.128.133.88:57847) Quit, UserCount: 1
-2023-06-12 14:37:17.144990 [info]:  Client[23](10.128.133.88:58359) Quit, UserCount: 0
-2023-06-12 14:37:37.163980 [info]:  Client[20](10.128.133.88:16632) In, UserCount: 1
-2023-06-12 14:37:37.200123 [info]:  Client[21](10.128.133.88:16888) In, UserCount: 2
-2023-06-12 14:37:37.201750 [info]:  Client[22](10.128.133.88:17400) In, UserCount: 3
-2023-06-12 14:37:37.201861 [info]:  Client[23](10.128.133.88:17144) In, UserCount: 4
-2023-06-12 14:37:37.203716 [info]:  Client[24](10.128.133.88:17656) In, UserCount: 5
-2023-06-12 14:37:37.244592 [info]:  Client[25](10.128.133.88:17912) In, UserCount: 6
-2023-06-12 14:38:37.239684 [info]:  Client[20](10.128.133.88:16632) Quit, UserCount: 5
-2023-06-12 14:38:55.027221 [info]:  Client[20](10.128.133.88:20217) In, UserCount: 6
-2023-06-12 14:39:55.093009 [info]:  Client[25](10.128.133.88:17912) Quit, UserCount: 5
-2023-06-12 14:39:55.093120 [info]:  Client[23](10.128.133.88:17144) Quit, UserCount: 4
-2023-06-12 14:39:55.093168 [info]:  Client[24](10.128.133.88:17656) Quit, UserCount: 3
-2023-06-12 14:39:55.093202 [info]:  Client[20](10.128.133.88:20217) Quit, UserCount: 2
-2023-06-12 14:39:55.093232 [info]:  Client[22](10.128.133.88:17400) Quit, UserCount: 1
-2023-06-12 14:39:55.104426 [info]:  Client[21](10.128.133.88:16888) Quit, UserCount: 0
-2023-06-12 14:45:24.034292 [info]:  Received Signal SIGINT!
-2023-06-12 14:45:24.034588 [info]:  Received Signal SIGTERM!
-2023-06-12 14:45:24.034647 [info]:  =========================Server Quit=========================
+2023-06-12 23:46:40.347242 [info]:  =========================Server Init=========================
+2023-06-12 23:46:40.347276 [info]:  Date: 2023-06-12, Time: 23:46:40
+2023-06-12 23:46:40.347366 [info]:  Daemon Mode: No
+2023-06-12 23:46:40.347378 [info]:  Port: 9006, OpenLinger: false
+2023-06-12 23:46:40.347388 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-12 23:46:40.347398 [info]:  Actor Mode: Reactor
+2023-06-12 23:46:40.347407 [info]:  LogSys Status: Open
+2023-06-12 23:46:40.347416 [info]:  Log level: 0
+2023-06-12 23:46:40.347426 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-12 23:46:40.347436 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-12 23:46:40.347446 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-12 23:46:40.347455 [info]:  TimeOut: 60s
+2023-06-12 23:46:40.347465 [info]:  =========================Server Start=========================
+2023-06-12 23:46:41.941132 [info]:  Client[20](10.128.133.88:59330) In, UserCount: 1
+2023-06-12 23:46:41.948431 [debug]: request path /index.html
+2023-06-12 23:46:41.948553 [debug]: file path /home/wxy/Projects/my-WebServer/resources//index.html
+2023-06-12 23:46:41.948602 [debug]: filesize: 3144, 2 to 3266
+2023-06-12 23:46:41.985825 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:46:41.985944 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:46:41.986001 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:46:41.986339 [info]:  Client[21](10.128.133.88:60098) In, UserCount: 2
+2023-06-12 23:46:41.986457 [info]:  Client[22](10.128.133.88:59842) In, UserCount: 3
+2023-06-12 23:46:41.986509 [info]:  Client[23](10.128.133.88:59586) In, UserCount: 4
+2023-06-12 23:46:41.986556 [info]:  Client[24](10.128.133.88:60354) In, UserCount: 5
+2023-06-12 23:46:41.993254 [debug]: request path /css/animate.css
+2023-06-12 23:46:41.993361 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:46:41.993410 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:46:42.004792 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:46:42.004897 [debug]: request path /css/style.css
+2023-06-12 23:46:42.004911 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:46:42.005046 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:46:42.005055 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:46:42.005064 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:46:42.005161 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:46:42.005184 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:46:42.005269 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:46:42.037271 [debug]: request path /images/profile-image.jpg
+2023-06-12 23:46:42.037398 [debug]: file path /home/wxy/Projects/my-WebServer/resources//images/profile-image.jpg
+2023-06-12 23:46:42.037451 [debug]: filesize: 47176, 2 to 47300
+2023-06-12 23:46:42.055762 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:46:42.055892 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:46:42.055942 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:46:42.056038 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:46:42.056130 [debug]: request path /js/jquery.js
+2023-06-12 23:46:42.056180 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:46:42.056298 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:46:42.056299 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:46:42.056363 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:46:42.057820 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:46:42.057960 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:46:42.058013 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:46:42.059935 [info]:  Client[25](10.128.133.88:60610) In, UserCount: 6
+2023-06-12 23:46:42.067014 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:46:42.067148 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:46:42.067214 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:46:42.070600 [debug]: request path /js/wow.min.js
+2023-06-12 23:46:42.070706 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:46:42.070758 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:46:42.070907 [debug]: request path /js/custom.js
+2023-06-12 23:46:42.071009 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:46:42.071054 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:46:49.511208 [debug]: request path /upload.html
+2023-06-12 23:46:49.511367 [debug]: file path /home/wxy/Projects/my-WebServer/resources//upload.html
+2023-06-12 23:46:49.511417 [debug]: filesize: 3004, 2 to 3126
+2023-06-12 23:46:49.544602 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:46:49.544655 [debug]: request path /css/animate.css
+2023-06-12 23:46:49.544748 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:46:49.544877 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:46:49.544879 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:46:49.544986 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:46:49.545784 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:46:49.545910 [debug]: request path /css/style.css
+2023-06-12 23:46:49.545929 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:46:49.546047 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:46:49.546064 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:46:49.546154 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:46:49.546585 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:46:49.546729 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:46:49.546783 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:46:49.546834 [debug]: request path /js/jquery.js
+2023-06-12 23:46:49.546989 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:46:49.547052 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:46:49.559228 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:46:49.559353 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:46:49.559404 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:46:49.564655 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:46:49.564784 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:46:49.564839 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:46:49.566636 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:46:49.566758 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:46:49.566809 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:46:49.570265 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:46:49.570425 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:46:49.570476 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:46:49.575118 [debug]: request path /js/wow.min.js
+2023-06-12 23:46:49.575258 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:46:49.575311 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:46:49.575769 [debug]: request path /js/custom.js
+2023-06-12 23:46:49.575910 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:46:49.575964 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:46:55.668070 [debug]: [POST], [/upload.html], [1.1]
+2023-06-12 23:46:55.668347 [debug]: Upload!
+2023-06-12 23:46:55.668429 [debug]: File UpLoad Body: line1(------WebKitFormBoundaryBm8SNyTgvPaFAmlE), len(40)
+2023-06-12 23:46:55.668486 [debug]: File UpLoad Body: line2(Content-Disposition: form-data; name="file"; filename="大厂算法和数据结构刷题班.txt"), len(96)
+2023-06-12 23:46:55.668622 [debug]: File UpLoad Body: line3(Content-Type: text/plain), len(24)
+2023-06-12 23:46:55.668689 [debug]: File UpLoad Body: line4(), len(0)
+2023-06-12 23:46:55.668780 [debug]: File UpLoad Body: line5(大厂高频算法和数据结构面试题
 
+01 大厂高频算法和数据结构面试题1
+
+题目：
+
+给定一个有序数组arr，代表坐落在X轴上的点，给定一个正数K，代表绳子的长度，返回绳子最多压中几个点？
+即使绳子边缘处盖住点也算盖住
+
+给定一个文件目录的路径，写一个函数统计这个目录下所有的文件数量并返回，隐藏文件也算，但是文件夹不算
+
+给定一个非负整数num，如何不用循环语句，返回>=num，并且离num最近的，2的某次方
+
+一个数组中只有两种字符'G'和'B'，可以让所有的G都放在左侧，所有的B都放在右侧
+或者可以让所有的G都放在右侧，所有的B都放在左侧，但是只能在相邻字符之间进行交换操作，返回至少需要交换几次
+
+给定一个二维数组matrix，你可以从任何位置出发，走向上、下、左、右四个方向，返回能走出来的最长的递增链�2023-06-12 23:46:55.669117 [debug]: File UpLoad Body: line6(------WebKitFormBoundaryBm8SNyTgvPaFAmlE--), len(42)
+2023-06-12 23:46:55.669177 [debug]: request path /success.html
+2023-06-12 23:46:55.669259 [debug]: file path /home/wxy/Projects/my-WebServer/resources//success.html
+2023-06-12 23:46:55.669301 [debug]: filesize: 3168, 2 to 3290
+2023-06-12 23:46:55.701000 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:46:55.701135 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:46:55.701191 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:46:55.702024 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:46:55.702172 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:46:55.702224 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:46:55.702319 [debug]: request path /css/animate.css
+2023-06-12 23:46:55.702460 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:46:55.702521 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:46:55.703100 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:46:55.703236 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:46:55.703291 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:46:55.703562 [debug]: request path /css/style.css
+2023-06-12 23:46:55.703704 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:46:55.703773 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:46:55.730188 [debug]: request path /images/profile-image.jpg
+2023-06-12 23:46:55.730322 [debug]: file path /home/wxy/Projects/my-WebServer/resources//images/profile-image.jpg
+2023-06-12 23:46:55.730380 [debug]: filesize: 47176, 2 to 47300
+2023-06-12 23:46:55.739714 [debug]: request path /js/jquery.js
+2023-06-12 23:46:55.739869 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:46:55.739926 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:46:55.741581 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:46:55.741717 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:46:55.741769 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:46:55.741846 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:46:55.741991 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:46:55.742072 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:46:55.743735 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:46:55.743842 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:46:55.743897 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:46:55.743964 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:46:55.744027 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:46:55.744031 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:46:55.744114 [debug]: request path /js/wow.min.js
+2023-06-12 23:46:55.744268 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:46:55.744331 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:46:55.755776 [debug]: request path /js/custom.js
+2023-06-12 23:46:55.755914 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:46:55.755964 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:47:21.581496 [debug]: request path /upload.html
+2023-06-12 23:47:21.581685 [debug]: file path /home/wxy/Projects/my-WebServer/resources//upload.html
+2023-06-12 23:47:21.581739 [debug]: filesize: 3004, 2 to 3126
+2023-06-12 23:47:21.611117 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:47:21.611260 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:47:21.611318 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:47:21.612408 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:47:21.612429 [debug]: request path /css/style.css
+2023-06-12 23:47:21.612581 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:47:21.612644 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:47:21.612645 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:47:21.612702 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:47:21.614728 [debug]: request path /css/animate.css
+2023-06-12 23:47:21.614857 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:47:21.614876 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:47:21.614997 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:47:21.615047 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:47:21.615053 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:47:21.643859 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:47:21.643952 [debug]: request path /js/jquery.js
+2023-06-12 23:47:21.644045 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:47:21.643994 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:47:21.644176 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:47:21.644184 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:47:21.644217 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:47:21.644228 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:47:21.644244 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:47:21.644284 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:47:21.644430 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:47:21.644503 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:47:21.653436 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:47:21.653573 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:47:21.653622 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:47:21.659647 [debug]: request path /js/custom.js
+2023-06-12 23:47:21.659696 [debug]: request path /js/wow.min.js
+2023-06-12 23:47:21.659804 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:47:21.659873 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:47:21.659874 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:47:21.659927 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:47:27.924532 [debug]: Upload!
+2023-06-12 23:47:27.924660 [debug]: File UpLoad Body: line1(------WebKitFormBoundary6zfQAu6FRkhN9sTv), len(40)
+2023-06-12 23:47:27.924719 [debug]: File UpLoad Body: line2(Content-Disposition: form-data; name="file"; filename="大厂算法和数据结构刷题班.txt"), len(96)
+2023-06-12 23:47:27.924853 [debug]: File UpLoad Body: line3(Content-Type: text/plain), len(24)
+2023-06-12 23:47:27.924938 [debug]: File UpLoad Body: line4(), len(0)
+2023-06-12 23:50:19.283113 [info]:  =========================Server Init=========================
+2023-06-12 23:50:19.283135 [info]:  Date: 2023-06-12, Time: 23:50:19
+2023-06-12 23:50:19.283224 [info]:  Daemon Mode: No
+2023-06-12 23:50:19.283237 [info]:  Port: 9006, OpenLinger: false
+2023-06-12 23:50:19.283244 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-12 23:50:19.283254 [info]:  Actor Mode: Reactor
+2023-06-12 23:50:19.283263 [info]:  LogSys Status: Open
+2023-06-12 23:50:19.283270 [info]:  Log level: 0
+2023-06-12 23:50:19.283279 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-12 23:50:19.283290 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-12 23:50:19.283299 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-12 23:50:19.283309 [info]:  TimeOut: 60s
+2023-06-12 23:50:19.283319 [info]:  =========================Server Start=========================
+2023-06-12 23:50:23.083284 [info]:  Client[20](10.128.133.88:5832) In, UserCount: 1
+2023-06-12 23:50:23.088642 [debug]: request path /index.html
+2023-06-12 23:50:23.088762 [debug]: file path /home/wxy/Projects/my-WebServer/resources//index.html
+2023-06-12 23:50:23.088807 [debug]: filesize: 3144, 2 to 3266
+2023-06-12 23:50:23.125586 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:50:23.125714 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:50:23.125771 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:50:23.128085 [info]:  Client[21](10.128.133.88:6088) In, UserCount: 2
+2023-06-12 23:50:23.128201 [info]:  Client[22](10.128.133.88:6344) In, UserCount: 3
+2023-06-12 23:50:23.128258 [info]:  Client[23](10.128.133.88:6856) In, UserCount: 4
+2023-06-12 23:50:23.128304 [info]:  Client[24](10.128.133.88:6600) In, UserCount: 5
+2023-06-12 23:50:23.135173 [debug]: request path /css/animate.css
+2023-06-12 23:50:23.135298 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:50:23.135358 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:50:23.140730 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:50:23.140845 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:50:23.140918 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:50:23.141900 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:50:23.142016 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:50:23.142073 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:50:23.147243 [debug]: request path /css/style.css
+2023-06-12 23:50:23.147358 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:50:23.147408 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:50:23.167047 [debug]: request path /images/profile-image.jpg
+2023-06-12 23:50:23.167176 [debug]: file path /home/wxy/Projects/my-WebServer/resources//images/profile-image.jpg
+2023-06-12 23:50:23.167230 [debug]: filesize: 47176, 2 to 47300
+2023-06-12 23:50:23.197840 [debug]: request path /js/jquery.js
+2023-06-12 23:50:23.198034 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:50:23.198109 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:50:23.198114 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:50:23.198285 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:50:23.198343 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:50:23.198705 [info]:  Client[25](10.128.133.88:7112) In, UserCount: 6
+2023-06-12 23:50:23.199443 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:50:23.199619 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:50:23.199681 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:50:23.202108 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:50:23.202213 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:50:23.202257 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:50:23.202364 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:50:23.202378 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:50:23.202417 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:50:23.204260 [debug]: request path /js/wow.min.js
+2023-06-12 23:50:23.204340 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:50:23.204384 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:50:23.219867 [debug]: request path /js/custom.js
+2023-06-12 23:50:23.219985 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:50:23.220032 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:50:25.708206 [debug]: request path /upload.html
+2023-06-12 23:50:25.708383 [debug]: file path /home/wxy/Projects/my-WebServer/resources//upload.html
+2023-06-12 23:50:25.708436 [debug]: filesize: 3004, 2 to 3126
+2023-06-12 23:50:25.745762 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:50:25.745904 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:50:25.745963 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:50:25.746953 [debug]: request path /css/animate.css
+2023-06-12 23:50:25.747038 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:50:25.747090 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:50:25.747258 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:50:25.747315 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:50:25.747317 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:50:25.747497 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:50:25.747637 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:50:25.747694 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:50:25.748308 [debug]: request path /css/style.css
+2023-06-12 23:50:25.748459 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:50:25.748520 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:50:25.749122 [debug]: request path /js/jquery.js
+2023-06-12 23:50:25.749255 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:50:25.749318 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:50:25.762377 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:50:25.762501 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:50:25.762560 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:50:25.770330 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:50:25.770461 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:50:25.770514 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:50:25.770570 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:50:25.770700 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:50:25.770754 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:50:25.780483 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:50:25.780627 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:50:25.780674 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:50:25.781731 [debug]: request path /js/wow.min.js
+2023-06-12 23:50:25.781884 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:50:25.781938 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:50:25.782246 [debug]: request path /js/custom.js
+2023-06-12 23:50:25.782390 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:50:25.782445 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:50:30.433738 [debug]: [POST], [/upload.html], [1.1]
+2023-06-12 23:50:30.434045 [debug]: Upload!
+2023-06-12 23:50:30.434177 [debug]: File UpLoad Body: line1(------WebKitFormBoundaryJC5w8l7ncInAMGSD), len(40)
+2023-06-12 23:50:30.434262 [debug]: File UpLoad Body: line2(Content-Disposition: form-data; name="file"; filename="大厂算法和数据结构刷题班.txt"), len(96)
+2023-06-12 23:50:30.434416 [debug]: File UpLoad Body: line3(Content-Type: text/plain), len(24)
+2023-06-12 23:50:30.434482 [debug]: File UpLoad Body: line4(), len(0)
+2023-06-12 23:50:30.434776 [debug]: File UpLoad Body: line5(大厂高频算法和数据结构面试题
+
+01 大厂高频算法和数据结构面试题1
+
+题目：
+
+给定一个有序数组arr，代表坐落在X轴上的点，给定一个正数K，代表绳子的长度，返回绳子最多压中几个点？
+即使绳子边缘处盖住点也算盖住
+
+给定一个文件目录的路径，写一个函数统计这个目录下所有的文件数量并返回，隐藏文件也算，但是文件夹不算
+
+给定一个非负整数num，如何不用循环语句，返回>=num，并且离num最近的，2的某次方
+
+一个数组中只有两种字符'G'和'B'，可以让所有的G都放在左侧，所有的B都放在右侧
+或者可以让所有的G都放在右侧，所有的B都放在左侧，但是只能在相邻字符之间进行交换操作，返回至少需要交换几次
+
+给定一个二维数组matrix，你可以从任何位置出发，走向上、下、左、右四个方向，返回能走出来的最长的递增链�2023-06-12 23:50:30.435116 [debug]: File UpLoad Body: line6(------WebKitFormBoundaryJC5w8l7ncInAMGSD--), len(42)
+2023-06-12 23:50:30.435213 [debug]: request path /success.html
+2023-06-12 23:50:30.435298 [debug]: file path /home/wxy/Projects/my-WebServer/resources//success.html
+2023-06-12 23:50:30.435349 [debug]: filesize: 3168, 2 to 3290
+2023-06-12 23:50:30.466676 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:50:30.466796 [debug]: request path /css/animate.css
+2023-06-12 23:50:30.466809 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:50:30.466927 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:50:30.466978 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:50:30.467044 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:50:30.468131 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:50:30.468251 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:50:30.468268 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:50:30.468385 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:50:30.468404 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:50:30.468587 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:50:30.468843 [debug]: request path /css/style.css
+2023-06-12 23:50:30.469021 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:50:30.469085 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:50:30.503839 [debug]: request path /images/profile-image.jpg
+2023-06-12 23:50:30.503982 [debug]: file path /home/wxy/Projects/my-WebServer/resources//images/profile-image.jpg
+2023-06-12 23:50:30.504039 [debug]: filesize: 47176, 2 to 47300
+2023-06-12 23:50:30.509562 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:50:30.509621 [debug]: request path /js/jquery.js
+2023-06-12 23:50:30.509737 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:50:30.509739 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:50:30.509882 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:50:30.509890 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:50:30.509924 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:50:30.509992 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:50:30.510027 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:50:30.510032 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:50:30.510157 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:50:30.510199 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:50:30.510417 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:50:30.510418 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:50:30.510462 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:50:30.521209 [debug]: request path /js/custom.js
+2023-06-12 23:50:30.521367 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:50:30.521432 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:50:30.521643 [debug]: request path /js/wow.min.js
+2023-06-12 23:50:30.521788 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:50:30.521857 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:51:30.570092 [info]:  Client[23](10.128.133.88:6856) Quit, UserCount: 5
+2023-06-12 23:51:30.570282 [info]:  Client[21](10.128.133.88:6088) Quit, UserCount: 4
+2023-06-12 23:51:30.570359 [info]:  Client[25](10.128.133.88:7112) Quit, UserCount: 3
+2023-06-12 23:51:30.570415 [info]:  Client[22](10.128.133.88:6344) Quit, UserCount: 2
+2023-06-12 23:51:30.570467 [info]:  Client[24](10.128.133.88:6600) Quit, UserCount: 1
+2023-06-12 23:51:30.570521 [info]:  Client[20](10.128.133.88:5832) Quit, UserCount: 0
+2023-06-12 23:51:57.386226 [info]:  Client[20](10.128.133.88:12746) In, UserCount: 1
+2023-06-12 23:51:57.391933 [debug]: request path /upload.html
+2023-06-12 23:51:57.392053 [debug]: file path /home/wxy/Projects/my-WebServer/resources//upload.html
+2023-06-12 23:51:57.392104 [debug]: filesize: 3004, 2 to 3126
+2023-06-12 23:51:57.425036 [info]:  Client[21](10.128.133.88:13002) In, UserCount: 2
+2023-06-12 23:51:57.427668 [info]:  Client[22](10.128.133.88:13770) In, UserCount: 3
+2023-06-12 23:51:57.427737 [info]:  Client[23](10.128.133.88:13258) In, UserCount: 4
+2023-06-12 23:51:57.427779 [info]:  Client[24](10.128.133.88:13514) In, UserCount: 5
+2023-06-12 23:51:57.427795 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:51:57.427955 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:51:57.428040 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:51:57.434192 [debug]: request path /css/animate.css
+2023-06-12 23:51:57.434316 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:51:57.434371 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:51:57.435862 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:51:57.436007 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:51:57.436068 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:51:57.437752 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:51:57.437872 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:51:57.437940 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:51:57.441097 [debug]: request path /css/style.css
+2023-06-12 23:51:57.441206 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:51:57.441257 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:51:57.455059 [info]:  Client[25](10.128.133.88:14026) In, UserCount: 6
+2023-06-12 23:51:57.462706 [debug]: request path /js/jquery.js
+2023-06-12 23:51:57.462847 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:51:57.462902 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:51:57.467142 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:51:57.467267 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:51:57.467339 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:51:57.467471 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:51:57.467625 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:51:57.467697 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:51:57.467722 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:51:57.467849 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:51:57.467888 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:51:57.468134 [debug]: request path /js/wow.min.js
+2023-06-12 23:51:57.468270 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:51:57.468328 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:51:57.469008 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:51:57.469130 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:51:57.469193 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:51:57.481493 [debug]: request path /js/custom.js
+2023-06-12 23:51:57.481628 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:51:57.481676 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:01.669779 [debug]: Upload!
+2023-06-12 23:52:01.669878 [debug]: File UpLoad Body: line1(------WebKitFormBoundaryXGu7IZ8WjNc1ctxx), len(40)
+2023-06-12 23:52:01.669934 [debug]: File UpLoad Body: line2(Content-Disposition: form-data; name="file"; filename="大厂算法和数据结构刷题班.txt"), len(96)
+2023-06-12 23:52:01.670077 [debug]: File UpLoad Body: line3(Content-Type: text/plain), len(24)
+2023-06-12 23:52:01.670129 [debug]: File UpLoad Body: line4(), len(0)
+2023-06-12 23:52:01.670413 [debug]: File UpLoad Body: line5(大厂高频算法和数据结构面试题
+
+01 大厂高频算法和数据结构面试题1
+
+题目：
+
+给定一个有序数组arr，代表坐落在X轴上的点，给定一个正数K，代表绳子的长度，返回绳子最多压中几个点？
+即使绳子边缘处盖住点也算盖住
+
+给定一个文件目录的路径，写一个函数统计这个目录下所有的文件数量并返回，隐藏文件也算，但是文件夹不算
+
+给定一个非负整数num，如何不用循环语句，返回>=num，并且离num最近的，2的某次方
+
+一个数组中只有两种字符'G'和'B'，可以让所有的G都放在左侧，所有的B都放在右侧
+或者可以让所有的G都放在右侧，所有的B都放在左侧，但是只能在相邻字符之间进行交换操作，返回至少需要交换几次
+
+给定一个二维数组matrix，你可以从任何位置出发，走向上、下、左、右四个方向，返回能走出来的最长的递增链�2023-06-12 23:52:01.670724 [debug]: File UpLoad Body: line6(------WebKitFormBoundaryXGu7IZ8WjNc1ctxx--), len(42)
+2023-06-12 23:52:01.670827 [debug]: request path /success.html
+2023-06-12 23:52:01.670905 [debug]: file path /home/wxy/Projects/my-WebServer/resources//success.html
+2023-06-12 23:52:01.670950 [debug]: filesize: 3168, 2 to 3290
+2023-06-12 23:52:01.706771 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:52:01.706934 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:52:01.707014 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:52:01.707817 [debug]: request path /css/style.css
+2023-06-12 23:52:01.707948 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:52:01.707993 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:52:01.707999 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:52:01.708090 [debug]: request path /css/animate.css
+2023-06-12 23:52:01.708154 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:52:01.708225 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:52:01.708226 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:52:01.708233 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:52:01.708398 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:52:01.708427 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:52:01.708494 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:52:01.739778 [debug]: request path /js/jquery.js
+2023-06-12 23:52:01.739934 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:52:01.740020 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:52:01.740454 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:52:01.740474 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:52:01.740494 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:52:01.740710 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:52:01.740789 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:52:01.740718 [debug]: request path /js/wow.min.js
+2023-06-12 23:52:01.740809 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:52:01.740799 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:52:01.740891 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:52:01.740983 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:52:01.740910 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:52:01.740908 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:52:01.741062 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:52:01.741148 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:52:01.741210 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:52:01.750604 [debug]: request path /images/profile-image.jpg
+2023-06-12 23:52:01.750729 [debug]: file path /home/wxy/Projects/my-WebServer/resources//images/profile-image.jpg
+2023-06-12 23:52:01.750785 [debug]: filesize: 47176, 2 to 47300
+2023-06-12 23:52:01.752152 [debug]: request path /js/custom.js
+2023-06-12 23:52:01.752254 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:52:01.752297 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:03.434207 [debug]: request path /upload.html
+2023-06-12 23:52:03.434382 [debug]: file path /home/wxy/Projects/my-WebServer/resources//upload.html
+2023-06-12 23:52:03.434448 [debug]: filesize: 3004, 2 to 3126
+2023-06-12 23:52:03.465938 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:52:03.466137 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:52:03.466207 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:52:03.466859 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:52:03.466963 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:52:03.467019 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:52:03.467058 [debug]: request path /css/animate.css
+2023-06-12 23:52:03.467157 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:52:03.467125 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:52:03.467238 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:52:03.467243 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:52:03.467297 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:52:03.467379 [debug]: request path /css/style.css
+2023-06-12 23:52:03.467531 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:52:03.467595 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:52:03.509527 [debug]: request path /js/jquery.js
+2023-06-12 23:52:03.509677 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:52:03.509729 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:52:03.510958 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:52:03.511040 [debug]: request path /js/wow.min.js
+2023-06-12 23:52:03.511143 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:52:03.511178 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:52:03.511177 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:52:03.511262 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:52:03.511272 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:52:03.511277 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:52:03.511333 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:52:03.511333 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:52:03.511407 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:52:03.511476 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:52:03.511484 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:52:03.511506 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:52:03.511555 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:52:03.525245 [debug]: request path /js/custom.js
+2023-06-12 23:52:03.525344 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:52:03.525378 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:09.356849 [debug]: Upload!
+2023-06-12 23:52:09.356961 [debug]: File UpLoad Body: line1(------WebKitFormBoundaryTW4IDLuawpeSjuXE), len(40)
+2023-06-12 23:52:09.357004 [debug]: File UpLoad Body: line2(Content-Disposition: form-data; name="file"; filename="大厂算法和数据结构刷题班.txt"), len(96)
+2023-06-12 23:52:09.357144 [debug]: File UpLoad Body: line3(Content-Type: text/plain), len(24)
+2023-06-12 23:52:09.357195 [debug]: File UpLoad Body: line4(), len(0)
+2023-06-12 23:52:09.357473 [debug]: File UpLoad Body: line5(大厂高频算法和数据结构面试题
+
+01 大厂高频算法和数据结构面试题1
+
+题目：
+
+给定一个有序数组arr，代表坐落在X轴上的点，给定一个正数K，代表绳子的长度，返回绳子最多压中几个点？
+即使绳子边缘处盖住点也算盖住
+
+给定一个文件目录的路径，写一个函数统计这个目录下所有的文件数量并返回，隐藏文件也算，但是文件夹不算
+
+给定一个非负整数num，如何不用循环语句，返回>=num，并且离num最近的，2的某次方
+
+一个数组中只有两种字符'G'和'B'，可以让所有的G都放在左侧，所有的B都放在右侧
+或者可以让所有的G都放在右侧，所有的B都放在左侧，但是只能在相邻字符之间进行交换操作，返回至少需要交换几次
+
+给定一个二维数组matrix，你可以从任何位置出发，走向上、下、左、右四个方向，返回能走出来的最长的递增链�2023-06-12 23:52:09.357869 [debug]: File UpLoad Body: line6(------WebKitFormBoundaryTW4IDLuawpeSjuXE--), len(42)
+2023-06-12 23:52:09.357980 [debug]: request path /success.html
+2023-06-12 23:52:09.358062 [debug]: file path /home/wxy/Projects/my-WebServer/resources//success.html
+2023-06-12 23:52:09.358128 [debug]: filesize: 3168, 2 to 3290
+2023-06-12 23:52:09.392803 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:52:09.392960 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:52:09.393020 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:52:09.394004 [debug]: request path /css/animate.css
+2023-06-12 23:52:09.394045 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:52:09.394183 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:52:09.394192 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:52:09.394322 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:52:09.394329 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:52:09.394380 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:52:09.394386 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:52:09.394437 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:52:09.394703 [debug]: request path /css/style.css
+2023-06-12 23:52:09.394842 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:52:09.394899 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:52:09.415118 [debug]: request path /images/profile-image.jpg
+2023-06-12 23:52:09.415257 [debug]: file path /home/wxy/Projects/my-WebServer/resources//images/profile-image.jpg
+2023-06-12 23:52:09.415324 [debug]: filesize: 47176, 2 to 47300
+2023-06-12 23:52:09.435067 [debug]: request path /js/jquery.js
+2023-06-12 23:52:09.435225 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:52:09.435115 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:52:09.435369 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:52:09.435455 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:52:09.435524 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:52:09.436591 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:52:09.436610 [debug]: request path /js/wow.min.js
+2023-06-12 23:52:09.436764 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:52:09.436835 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:52:09.436918 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:52:09.436923 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:52:09.436942 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:52:09.437078 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:52:09.437130 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:52:09.437137 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:52:09.437270 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:52:09.437305 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:52:09.447516 [debug]: request path /js/custom.js
+2023-06-12 23:52:09.447664 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:52:09.447714 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:11.685356 [debug]: request path /upload.html
+2023-06-12 23:52:11.685507 [debug]: file path /home/wxy/Projects/my-WebServer/resources//upload.html
+2023-06-12 23:52:11.685557 [debug]: filesize: 3004, 2 to 3126
+2023-06-12 23:52:11.718132 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:52:11.718275 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:52:11.718337 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:52:11.718700 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:52:11.718875 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:52:11.718932 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:52:11.718935 [debug]: request path /css/animate.css
+2023-06-12 23:52:11.718935 [debug]: request path /css/style.css
+2023-06-12 23:52:11.719132 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:52:11.719200 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:52:11.719266 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:52:11.719270 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:52:11.719435 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:52:11.719582 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:52:11.719660 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:52:11.743254 [debug]: request path /js/jquery.js
+2023-06-12 23:52:11.743354 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:52:11.743411 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:52:11.743463 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:52:11.743507 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:52:11.743568 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:52:11.743568 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:52:11.743577 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:52:11.743576 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:52:11.743746 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:52:11.743793 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:52:11.743796 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:52:11.743925 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:52:11.743929 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:52:11.743985 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:52:11.744263 [debug]: request path /js/wow.min.js
+2023-06-12 23:52:11.744398 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:52:11.744463 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:52:11.758158 [debug]: request path /js/custom.js
+2023-06-12 23:52:11.758273 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:52:11.758322 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:16.130366 [debug]: Upload!
+2023-06-12 23:52:16.130472 [debug]: File UpLoad Body: line1(------WebKitFormBoundary0HeaAmkrX2MnQmZK), len(40)
+2023-06-12 23:52:16.130558 [debug]: File UpLoad Body: line2(Content-Disposition: form-data; name="file"; filename="test.txt"), len(64)
+2023-06-12 23:52:16.130709 [debug]: File UpLoad Body: line3(Content-Type: text/plain), len(24)
+2023-06-12 23:52:16.130777 [debug]: File UpLoad Body: line4(), len(0)
+2023-06-12 23:52:16.130831 [debug]: File UpLoad Body: line5(12345
+、sss
+# 遇到的困难
+12345), len(36)
+2023-06-12 23:52:16.130922 [debug]: File UpLoad Body: line6(------WebKitFormBoundary0HeaAmkrX2MnQmZK--), len(42)
+2023-06-12 23:52:16.131006 [debug]: request path /success.html
+2023-06-12 23:52:16.131081 [debug]: file path /home/wxy/Projects/my-WebServer/resources//success.html
+2023-06-12 23:52:16.131133 [debug]: filesize: 3168, 2 to 3290
+2023-06-12 23:52:16.159773 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:52:16.159923 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:52:16.159985 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:52:16.160355 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:52:16.160412 [debug]: request path /css/animate.css
+2023-06-12 23:52:16.160570 [debug]: request path /css/style.css
+2023-06-12 23:52:16.160613 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:52:16.160570 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:52:16.160577 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:52:16.160765 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:52:16.160773 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:52:16.160849 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:52:16.160895 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:52:16.160929 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:52:16.160987 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:52:16.196237 [debug]: request path /images/profile-image.jpg
+2023-06-12 23:52:16.196385 [debug]: file path /home/wxy/Projects/my-WebServer/resources//images/profile-image.jpg
+2023-06-12 23:52:16.196440 [debug]: filesize: 47176, 2 to 47300
+2023-06-12 23:52:16.200938 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:52:16.200944 [debug]: request path /js/jquery.js
+2023-06-12 23:52:16.201064 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:52:16.201070 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:52:16.201127 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:52:16.201133 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:52:16.201074 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:52:16.201192 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:52:16.201222 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:52:16.201263 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:52:16.201292 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:52:16.201326 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:52:16.201323 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:52:16.201380 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:52:16.201442 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:52:16.212514 [debug]: request path /js/custom.js
+2023-06-12 23:52:16.212611 [debug]: request path /js/wow.min.js
+2023-06-12 23:52:16.212612 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:52:16.212715 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:16.212765 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:52:16.212822 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:52:17.832960 [debug]: request path /upload.html
+2023-06-12 23:52:17.833118 [debug]: file path /home/wxy/Projects/my-WebServer/resources//upload.html
+2023-06-12 23:52:17.833165 [debug]: filesize: 3004, 2 to 3126
+2023-06-12 23:52:17.864368 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:52:17.864513 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:52:17.864576 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:52:17.865440 [debug]: request path /css/animate.css
+2023-06-12 23:52:17.865594 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:52:17.865653 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:52:17.865813 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:52:17.865836 [debug]: request path /css/style.css
+2023-06-12 23:52:17.865814 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:52:17.866016 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:52:17.866091 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:52:17.866098 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:52:17.866099 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:52:17.866192 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:52:17.866251 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:52:17.892899 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:52:17.893032 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:52:17.893085 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:52:17.893169 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:52:17.893302 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:52:17.893412 [debug]: request path /js/wow.min.js
+2023-06-12 23:52:17.893423 [debug]: request path /js/jquery.js
+2023-06-12 23:52:17.893514 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:52:17.893647 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:52:17.893659 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:52:17.893654 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:52:17.893434 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:52:17.893719 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:52:17.893740 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:52:17.893743 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:52:17.893746 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:52:17.893878 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:52:17.893915 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:52:17.906365 [debug]: request path /js/custom.js
+2023-06-12 23:52:17.906444 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:52:17.906497 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:22.880722 [debug]: Upload!
+2023-06-12 23:52:22.880846 [debug]: File UpLoad Body: line1(------WebKitFormBoundaryy4t5xGxGk1n2jWzj), len(40)
+2023-06-12 23:52:22.880933 [debug]: File UpLoad Body: line2(Content-Disposition: form-data; name="file"; filename="大厂算法和数据结构刷题班.txt"), len(96)
+2023-06-12 23:52:22.881115 [debug]: File UpLoad Body: line3(Content-Type: text/plain), len(24)
+2023-06-12 23:52:22.881178 [debug]: File UpLoad Body: line4(), len(0)
+2023-06-12 23:52:22.881467 [debug]: File UpLoad Body: line5(大厂高频算法和数据结构面试题
+
+01 大厂高频算法和数据结构面试题1
+
+题目：
+
+给定一个有序数组arr，代表坐落在X轴上的点，给定一个正数K，代表绳子的长度，返回绳子最多压中几个点？
+即使绳子边缘处盖住点也算盖住
+
+给定一个文件目录的路径，写一个函数统计这个目录下所有的文件数量并返回，隐藏文件也算，但是文件夹不算
+
+给定一个非负整数num，如何不用循环语句，返回>=num，并且离num最近的，2的某次方
+
+一个数组中只有两种字符'G'和'B'，可以让所有的G都放在左侧，所有的B都放在右侧
+或者可以让所有的G都放在右侧，所有的B都放在左侧，但是只能在相邻字符之间进行交换操作，返回至少需要交换几次
+
+给定一个二维数组matrix，你可以从任何位置出发，走向上、下、左、右四个方向，返回能走出来的最长的递增链�2023-06-12 23:52:22.881819 [debug]: File UpLoad Body: line6(------WebKitFormBoundaryy4t5xGxGk1n2jWzj--), len(42)
+2023-06-12 23:52:22.881924 [debug]: request path /success.html
+2023-06-12 23:52:22.882011 [debug]: file path /home/wxy/Projects/my-WebServer/resources//success.html
+2023-06-12 23:52:22.882064 [debug]: filesize: 3168, 2 to 3290
+2023-06-12 23:52:22.916053 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:52:22.916112 [debug]: request path /css/animate.css
+2023-06-12 23:52:22.916236 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:52:22.916310 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:52:22.916313 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:52:22.916442 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:52:22.917734 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:52:22.917871 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:52:22.917923 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:52:22.917991 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:52:22.918099 [debug]: request path /css/style.css
+2023-06-12 23:52:22.918157 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:52:22.918263 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:52:22.918317 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:52:22.918391 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:52:22.950326 [debug]: request path /images/profile-image.jpg
+2023-06-12 23:52:22.950468 [debug]: file path /home/wxy/Projects/my-WebServer/resources//images/profile-image.jpg
+2023-06-12 23:52:22.950518 [debug]: filesize: 47176, 2 to 47300
+2023-06-12 23:52:22.952891 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:52:22.953035 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:52:22.953036 [debug]: request path /js/jquery.js
+2023-06-12 23:52:22.953164 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:52:22.953232 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:52:22.953236 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:52:22.953380 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:52:22.953385 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:52:22.953662 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:52:22.953773 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:52:22.953899 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:52:22.953950 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:52:22.954104 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:52:22.954254 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:52:22.954313 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:52:22.966696 [debug]: request path /js/wow.min.js
+2023-06-12 23:52:22.966838 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:52:22.966891 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:52:22.969237 [debug]: request path /js/custom.js
+2023-06-12 23:52:22.969373 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:52:22.969422 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:24.307505 [debug]: request path /upload.html
+2023-06-12 23:52:24.307645 [debug]: file path /home/wxy/Projects/my-WebServer/resources//upload.html
+2023-06-12 23:52:24.307696 [debug]: filesize: 3004, 2 to 3126
+2023-06-12 23:52:24.343025 [debug]: request path /css/bootstrap.min.css
+2023-06-12 23:52:24.343152 [debug]: request path /css/magnific-popup.css
+2023-06-12 23:52:24.343161 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/bootstrap.min.css
+2023-06-12 23:52:24.343282 [debug]: filesize: 121255, 2 to 121379
+2023-06-12 23:52:24.343286 [debug]: request path /css/font-awesome.min.css
+2023-06-12 23:52:24.343353 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/magnific-popup.css
+2023-06-12 23:52:24.343478 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/font-awesome.min.css
+2023-06-12 23:52:24.343482 [debug]: filesize: 6951, 2 to 7073
+2023-06-12 23:52:24.343545 [debug]: filesize: 27392, 2 to 27515
+2023-06-12 23:52:24.343672 [debug]: request path /css/style.css
+2023-06-12 23:52:24.343825 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/style.css
+2023-06-12 23:52:24.343882 [debug]: request path /css/animate.css
+2023-06-12 23:52:24.343885 [debug]: filesize: 9807, 2 to 9929
+2023-06-12 23:52:24.344026 [debug]: file path /home/wxy/Projects/my-WebServer/resources//css/animate.css
+2023-06-12 23:52:24.344086 [debug]: filesize: 72922, 2 to 73045
+2023-06-12 23:52:24.451286 [debug]: request path /js/jquery.js
+2023-06-12 23:52:24.451342 [debug]: request path /js/smoothscroll.js
+2023-06-12 23:52:24.451485 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.js
+2023-06-12 23:52:24.451559 [debug]: filesize: 85658, 2 to 85788
+2023-06-12 23:52:24.451566 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/smoothscroll.js
+2023-06-12 23:52:24.451700 [debug]: filesize: 4474, 2 to 4603
+2023-06-12 23:52:24.451766 [debug]: request path /js/jquery.magnific-popup.min.js
+2023-06-12 23:52:24.451858 [debug]: request path /js/bootstrap.min.js
+2023-06-12 23:52:24.451960 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/jquery.magnific-popup.min.js
+2023-06-12 23:52:24.452026 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/bootstrap.min.js
+2023-06-12 23:52:24.452033 [debug]: filesize: 20932, 2 to 21062
+2023-06-12 23:52:24.452087 [debug]: filesize: 36868, 2 to 36998
+2023-06-12 23:52:24.459802 [debug]: request path /js/wow.min.js
+2023-06-12 23:52:24.459950 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/wow.min.js
+2023-06-12 23:52:24.460009 [debug]: filesize: 7082, 2 to 7211
+2023-06-12 23:52:24.460155 [debug]: request path /js/magnific-popup-options.js
+2023-06-12 23:52:24.460325 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/magnific-popup-options.js
+2023-06-12 23:52:24.460398 [debug]: filesize: 1069, 2 to 1198
+2023-06-12 23:52:24.463778 [debug]: request path /js/custom.js
+2023-06-12 23:52:24.463896 [debug]: file path /home/wxy/Projects/my-WebServer/resources//js/custom.js
+2023-06-12 23:52:24.463948 [debug]: filesize: 1047, 2 to 1176
+2023-06-12 23:52:29.856202 [debug]: Upload!
+2023-06-12 23:52:29.856305 [debug]: File UpLoad Body: line1(------WebKitFormBoundaryIv0aeZaUucPhr8F7), len(40)
+2023-06-12 23:52:29.856352 [debug]: File UpLoad Body: line2(Content-Disposition: form-data; name="file"; filename="遇到的困难.md"), len(74)
+2023-06-12 23:52:29.856506 [debug]: File UpLoad Body: line3(Content-Type: application/octet-stream), len(38)
+2023-06-12 23:52:29.856560 [debug]: File UpLoad Body: line4(), len(0)
+2023-06-12 23:54:30.176714 [info]:  =========================Server Init=========================
+2023-06-12 23:54:30.176746 [info]:  Date: 2023-06-12, Time: 23:54:30
+2023-06-12 23:54:30.176755 [info]:  Daemon Mode: No
+2023-06-12 23:54:30.176833 [info]:  Port: 9006, OpenLinger: false
+2023-06-12 23:54:30.176898 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-12 23:54:30.176970 [info]:  Actor Mode: Reactor
+2023-06-12 23:54:30.176999 [info]:  LogSys Status: Open
+2023-06-12 23:54:30.177015 [info]:  Log level: 1
+2023-06-12 23:54:30.177031 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-12 23:54:30.177047 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-12 23:54:30.177062 [info]:  srcDir: /home/wxy/Projects/my-WebServer/resources/
+2023-06-12 23:54:30.177076 [info]:  TimeOut: 60s
+2023-06-12 23:54:30.177091 [info]:  =========================Server Start=========================
+2023-06-12 23:54:38.055945 [info]:  Client[20](10.128.133.88:14028) In, UserCount: 1
+2023-06-12 23:54:38.100570 [info]:  Client[21](10.128.133.88:14284) In, UserCount: 2
+2023-06-12 23:54:38.100681 [info]:  Client[22](10.128.133.88:14540) In, UserCount: 3
+2023-06-12 23:54:38.100740 [info]:  Client[23](10.128.133.88:14796) In, UserCount: 4
+2023-06-12 23:54:38.100789 [info]:  Client[24](10.128.133.88:15052) In, UserCount: 5

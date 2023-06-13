@@ -5,7 +5,7 @@
  * @Author: WangXingyu
  * @Date: 2023-05-30 18:15:26
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-12 11:25:17
+ * @LastEditTime: 2023-06-12 15:12:40
  */
 #ifndef WEB_SERVER_H
 #define WEB_SERVER_H
@@ -85,6 +85,7 @@ private:
     bool openLinger_;   // 是否优雅关闭
     bool isClose_;      // 是否关闭服务器，指示InitSocket操作是否成功
     char *srcDir_;      // 资源文件目录
+    char *uploadDir_;   // 上传文件目录
     int actor_;         // 事件处理模式：Reactor(0)/Proactor(1)
     bool is_daemon_;    // 是否以守护进程方式启动
     int pipefd_[2];     // 传递信号的管道

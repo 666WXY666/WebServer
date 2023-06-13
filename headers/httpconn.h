@@ -41,6 +41,7 @@ public:
     // 静态成员
     static bool isET;                  // 指示工作模式
     static const char *srcDir;         // 资源文件目录
+    static const char *uploadDir;      // 上传文件目录
     static std::atomic<int> userCount; // 指示用户连接个数，原子变量，各连接共享
 
 private:

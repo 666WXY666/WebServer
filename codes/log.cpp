@@ -13,6 +13,7 @@ Log::Log() : lineCount_(0), isAsync_(false), writeThread_(nullptr),
  */
 Log::~Log()
 {
+    // note: 不能在这里打印服务器退出成功日志，否则会死锁
     // 先判断能否joinable()
     if (writeThread_ && writeThread_->joinable())
     {
@@ -25,6 +26,9 @@ Log::~Log()
         // 在最后一定要调用join()或detach()，这里调用join()让主线程必须等待日志子线程结束后方能终止
         writeThread_->join();
     }
+    // 先修改为同步写，直接写日志文件（因为上面deque_关闭了），然后在这里打印服务器退出日志
+    isAsync_ = false;
+    LOG_INFO("=========================Server Quit=========================\n");
     // 关闭文件
     if (fp_)
     {

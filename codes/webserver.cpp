@@ -14,9 +14,15 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool optLinger,
     assert(srcDir_);
     strncat(srcDir_, "/resources/", 16);
 
+    // 获取上传目录
+    uploadDir_ = getcwd(nullptr, 256);
+    assert(uploadDir_);
+    strcat(uploadDir_, "/resources/upload/");
+
     // 初始化http连接类的静态变量值以及数据库连接池
     HttpConn::userCount = 0;
     HttpConn::srcDir = srcDir_;
+    HttpConn::uploadDir = uploadDir_;
     SqlConnPool::instance()->init("localhost", sqlPort, sqlUser, sqlPwd, dbName, connPoolNum);
 
     // 根据参数设置连接事件与监听事件的触发模式LT或ET
@@ -122,11 +128,12 @@ void WebServer::initEventMode_(int trigMode)
 }
 
 /*
- * 向客户端发送错误消息
+ * 连接数太多，向客户端发送错误消息
  */
 void WebServer::sendError_(int fd, const char *info)
 {
     assert(fd > 0);
+    // 直接向Socket发送错误信息
     int ret = send(fd, info, strlen(info), 0);
     if (ret < 0)
     {
@@ -148,21 +155,21 @@ void WebServer::closeConn_(HttpConn *client)
 
 /*
  * 设置文件描述符为非阻塞
- * 使用fcntl(fd, F_GETFD, 0)获取原有描述符
- * F_SETFL 设置描述符状态标志
  */
 int WebServer::setFdNonblock(int fd)
 {
     assert(fd > 0);
+    // 使用fcntl(fd, F_GETFD, 0)获取原有描述符
     int old_option = fcntl(fd, F_GETFL);
     int new_option = old_option | O_NONBLOCK;
+    // F_SETFL 设置描述符状态标志
     fcntl(fd, F_SETFL, new_option);
 
     return old_option;
 }
 
 /*
- * 创建监听描述符
+ * 创建监听描述符，设置端口复用，bind，listen，添加epoll监听fd，设置非阻塞
  */
 bool WebServer::initSocket_()
 {
@@ -452,7 +459,6 @@ void WebServer::onWrite_(HttpConn *client)
     assert(client);
     int ret = -1;
     int writeErrno = 0;
-
     // 调用httpconn类的write方法向socket发送数据
     ret = client->write(&writeErrno);
     // 如果还需要写的数据为0，那么完成传输

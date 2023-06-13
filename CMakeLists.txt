@@ -6,6 +6,11 @@ set(CMAKE_CXX_STANDARD 14)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 # 添加寻找FindSFML.cmake文件的路径
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmakeModule/;${CMAKE_MODULE_PATH};")
+# 开启调试，如不需要开启就把下面三行注释
+# SET(CMAKE_BUILD_TYPE "Debug")
+# SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+# SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
 # 查找第三方库
 find_package(Threads REQUIRED)
 find_package(MySQL REQUIRED)

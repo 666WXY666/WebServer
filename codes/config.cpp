@@ -7,7 +7,6 @@
  * @LastEditors: WangXingyu
  * @LastEditTime: 2023-06-12 14:22:24
  */
-#include <stdio.h>
 #include "../headers/config.h"
 
 Config::Config()

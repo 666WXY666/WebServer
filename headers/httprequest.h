@@ -5,7 +5,7 @@
  * @Author: WangXingyu
  * @Date: 2023-05-30 18:15:26
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-09 14:51:10
+ * @LastEditTime: 2023-06-12 20:08:25
  */
 #ifndef HTTP_REQUEST_H
 #define HTTP_REQUEST_H
@@ -67,6 +67,10 @@ public:
     // 是否是长连接
     bool isKeepAlive() const;
 
+    // 静态常量
+    // note: 注意，这里的需要是静态的，并且需要在在全局定义，在外层调用构造的时候初始化
+    static std::string uploadDir; // 上传文件目录
+
 private:
     // 16进制转10进制
     static int convertHex(char ch);
@@ -84,6 +88,8 @@ private:
     bool parsePost_();
     // 解析form-urlencoded格式，获取POST的数据
     void parseFromUrlencoded_();
+    // 解析multipart/form-data格式，获取POST的数据（上传文件）
+    bool parseFormData_();
 
     PARSE_STATE state_;                                   // 状态机解析状态
     std::string method_, path_, version_, body_;          // 请求首行：方法、URL、版本，消息体
@@ -91,6 +97,13 @@ private:
     // POST请求表单中的信息，以key:value对的形式存储POST的参数（用户名&密码）
     // 因为本服务器接受的是application/x-www-form-urlencoded这种表单形式
     std::unordered_map<std::string, std::string> post_;
+
+    int parseBodyCnt_;           // 解析了几行请求内容
+    std::string uploadFilename_; // 上传的文件名
+    FILE *fp_;                   // 文件指针
+    bool upload_;                // 是否上传文件
+    bool upload_error_;          // 上传文件错误指示
+
     // 静态常量
     static const std::unordered_set<std::string> DEFAULT_HTML;          // 默认的返回页面的地址
     static const std::unordered_map<std::string, int> DEFAULT_HTML_TAG; // 保存默认的HTML标签

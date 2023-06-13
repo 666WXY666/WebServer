@@ -1,3 +1,12 @@
+/*
+ * @Copyright: Copyright (c) 2022 WangXingyu All Rights Reserved.
+ * @Description:
+ * @Version:
+ * @Author: WangXingyu
+ * @Date: 2023-05-30 18:15:26
+ * @LastEditors: WangXingyu
+ * @LastEditTime: 2023-06-13 17:02:53
+ */
 #include "../headers/httprequest.h"
 
 // 保存默认界面名字的静态变量，所有对以下界面的请求都会加上 .html 后缀
@@ -8,12 +17,16 @@ const std::unordered_set<std::string> HttpRequest::DEFAULT_HTML{
     "/welcome",
     "/video",
     "/picture",
-};
+    "/upload",
+    "/success"};
 
 // 静态变量，保存默认的HTML标签
 const std::unordered_map<std::string, int> HttpRequest::DEFAULT_HTML_TAG{
     {"/register.html", 0},
     {"/login.html", 1}};
+
+// 上传文件目录
+std::string HttpRequest::uploadDir;
 
 /*
  * 构造函数中初始化
@@ -35,6 +48,12 @@ void HttpRequest::init()
     // 清空以下变量
     header_.clear();
     post_.clear();
+    // 重置是否上传状态，这里必须重置，因为每次请求都会重新init
+    upload_ = false;
+    upload_error_ = false;
+    // 重置记录解析请求体的行数，一定要在这里初始化
+    // 否则如果在parse里初始化，不完整数据下一半来的时候就不知道前面读了几行了
+    parseBodyCnt_ = 0;
 }
 
 /*
@@ -194,8 +213,27 @@ void HttpRequest::parseHeader_(const std::string &line)
  */
 bool HttpRequest::parseBody_(const std::string &line)
 {
+    // 判断是否是上传文件，只进一次，upload_设为true后就不会再进if
+    if (!upload_ && header_["Content-Type"].find("multipart/form-data") != std::string::npos)
+    {
+        upload_ = true;
+        LOG_DEBUG("Upload!");
+        int p = header_["Content-Type"].find("--");
+        header_["boundary"] = header_["Content-Type"].substr(p);
+    }
     // 将line赋值给类变量body_
     body_ = line;
+    // 解析请求体行数++
+    parseBodyCnt_++;
+    // 打印读到的请求体日志信息
+    if (!upload_)
+    {
+        LOG_DEBUG("UserInfo Body: Usr&Pwd(%s), len(%d)", line.c_str(), line.size());
+    }
+    else
+    {
+        LOG_DEBUG("File UpLoad Body: line%d(%s), len(%d)", parseBodyCnt_, line.c_str(), line.size());
+    }
     // 调用ParsePost_函数解析POST中带的请求体数据
     // parsePost_()函数返回false代表请求体不完整，继续请求
     if (!parsePost_())
@@ -204,8 +242,6 @@ bool HttpRequest::parseBody_(const std::string &line)
     }
     // 请求体完整，解析成功，将状态置为FINISH
     state_ = FINISH;
-    // 打印解析到的请求体日志信息
-    LOG_DEBUG("Body: %s, len: %d", line.c_str(), line.size());
     return true;
 }
 
@@ -213,18 +249,19 @@ bool HttpRequest::parseBody_(const std::string &line)
  * 解析请求体中的内容
  * 目前只能解析application/x-www-form-urlencoded此种格式，以后可以根据需要添加格式，比如json
  * 如果请求方式时POST Content-Type为application/x-www-form-urlencoded就可以解析，表示以键值对的数据格式提交
- * 使用post的形式进行登录信息的传输
+ * 使用POST的形式进行登录信息的传输
  */
 bool HttpRequest::parsePost_()
 {
-    // 判断post数据是否接受完整，未接收完则返回false，表示继续请求
-    if (body_.size() < atol(header_["Content-Length"].c_str()))
-    {
-        return false;
-    }
     // 以后可以添加其他种类的Content-Type的支持
+    // 登录业务
     if (method_ == "POST" && header_["Content-Type"] == "application/x-www-form-urlencoded")
     {
+        // 判断POST数据是否接受完整，未接收完则返回false，表示继续请求
+        if (body_.size() < atol(header_["Content-Length"].c_str()))
+        {
+            return false;
+        }
         // 将请求体中的内容解析到post_变量中
         parseFromUrlencoded_();
         // 用户是否请求的默认DEFAULT_HTML_TAG（登录与注册）网页
@@ -233,7 +270,7 @@ bool HttpRequest::parsePost_()
             // 获取登录与注册对应的标识
             // 注意：const的map没有重载[]运算符，所以这里需要用find
             int tag = DEFAULT_HTML_TAG.find(path_)->second;
-            LOG_DEBUG("Tag:%d", tag);
+            LOG_DEBUG("Tag: %d", tag);
             if (tag == 0 || tag == 1)
             {
                 // 通过标识确定用户请求的是登录还是注册（0注册，1登陆）
@@ -244,12 +281,48 @@ bool HttpRequest::parsePost_()
                 {
                     path_ = "/welcome.html";
                 }
-                // 验证失败，设置返回错误页面
+                // 登录验证失败，设置返回登录错误页面
+                else if (isLogin)
+                {
+                    path_ = "/login_error.html";
+                }
+                // 注册验证失败，设置返回注册错误页面
                 else
                 {
-                    path_ = "/error.html";
+                    path_ = "/register_error.html";
                 }
             }
+        }
+    }
+    // 上传文件业务
+    else if (method_ == "POST" && upload_)
+    {
+        // 判断文件大小（Content-Length），超过30M直接返回错误
+        if (strtoll(header_["Content-Length"].c_str(), nullptr, 10) > 30 * 1024 * 1024)
+        {
+            // 记录错误标志
+            upload_error_ = true;
+        }
+        bool ret = parseFormData_();
+        // 上传成功
+        if (ret)
+        {
+            // 跳转失败页面
+            if (upload_error_)
+            {
+                path_ = "/upload_error.html";
+            }
+            // 跳转成功页面
+            else
+            {
+                path_ = "/success.html";
+            }
+            return true;
+        }
+        // 上传不完整
+        else
+        {
+            return false;
         }
     }
     return true;
@@ -317,6 +390,79 @@ void HttpRequest::parseFromUrlencoded_()
 }
 
 /*
+ * 从请求体中的multipart/form-data类型信息提取信息，用类似有限状态自动机，根据parseBodyCnt_和body头和body结尾判断结束
+ * 示例：
+ * ------WebKitFormBoundaryT2H3ppmKTEsin6D1
+ * Content-Disposition: form-data; name="file"; filename="test.txt"
+ * Content-Type: text/plain
+ * 空行
+ * 文件内容
+ * ------WebKitFormBoundaryT2H3ppmKTEsin6D1--
+ */
+bool HttpRequest::parseFormData_()
+{
+    // 第2行是文件信息
+    if (parseBodyCnt_ == 2)
+    {
+        // 取文件名
+        auto p = body_.find("filename");
+        // 取从"开始
+        uploadFilename_ = body_.substr(p + 10);
+        // 去掉后面的"
+        uploadFilename_ = uploadFilename_.substr(0, uploadFilename_.size() - 1);
+        // 取文件后缀
+        p = uploadFilename_.find(".");
+        // 未找到后缀，直接返回格式错误
+        if (p == uploadFilename_.npos)
+        {
+            upload_error_ = true;
+            return false;
+        }
+        std::string suffix = uploadFilename_.substr(p + 1);
+        // 后缀不是txt
+        if (suffix != "txt")
+        {
+            upload_error_ = true;
+            return false;
+        }
+        // 文件格式验证通过
+        if (!upload_error_)
+        {
+            // 增加路径前缀
+            uploadFilename_ = uploadDir + uploadFilename_;
+            // 打开文件
+            // note: fopen和open有区别
+            fp_ = fopen(uploadFilename_.c_str(), "w");
+        }
+        return false;
+    }
+    // 第5行以后都是文件内容，后面body_的判断是防止空文件
+    else if (parseBodyCnt_ >= 5 && body_ != "--" + header_["boundary"] + "--")
+    {
+        if (!upload_error_)
+        {
+            // 将请求体的上传文件数据写入文件
+            fputs(body_.c_str(), fp_);
+            // 刷新缓冲区（若没有及时刷新，内核可能会延迟一段时间才将缓存区数据写到磁盘）
+            fflush(fp_);
+        }
+        return false;
+    }
+    // 最后一行是结尾
+    else if (body_ == "--" + header_["boundary"] + "--")
+    {
+        if (!upload_error_)
+        {
+            // 在关闭时fopen和open也有区别
+            fclose(fp_);
+        }
+        return true;
+    }
+    // 其他情况继续读取，可能是空行等
+    return false;
+}
+
+/*
  * 验证用户
  */
 bool HttpRequest::userVerify(const std::string &name, const std::string &pwd, bool isLogin)
@@ -326,7 +472,7 @@ bool HttpRequest::userVerify(const std::string &name, const std::string &pwd, bo
     {
         return false;
     }
-    LOG_INFO("Verify name:%s pwd:%s", name.c_str(), pwd.c_str());
+    LOG_INFO("Verify Name:%s Password:%s", name.c_str(), pwd.c_str());
 
     // note: 用RAII获取一个MySQL连接
     MYSQL *sql;
@@ -374,16 +520,19 @@ bool HttpRequest::userVerify(const std::string &name, const std::string &pwd, bo
         // 登录验证
         if (isLogin)
         {
+            // 密码正确
             if (pwd == password)
             {
                 flag = true;
             }
+            // 密码错误
             else
             {
                 flag = false;
                 LOG_DEBUG("Password Error!");
             }
         }
+        // 注册，能查找到用户名，说明用户名重复
         else
         {
             flag = false;
@@ -453,24 +602,28 @@ HttpRequest::HTTP_CODE HttpRequest::parse(Buffer &buff)
     {
         return NO_REQUEST;
     }
-
     // 状态机方式解析http请求头，只要可读并且没有解析完成就继续循环
+    // 在BODY状态，如果可读，说明在缓冲区中有多行数据
+    // 如果不可读说明网络传输了一部分，此时跳出while循环，返回NO_REQUEST，重新注册EPOLLIN事件，等待接收剩余数据
     while (buff.readableBytes() && state_ != FINISH)
     {
         // 首先通过查找CRLF标志找到一行的结尾
-        // note: search用于在序列A中查找序列B第一次出现的位置
+        // note: search用于在序列A中查找序列B第一次出现的位置，如果未找到，返回last迭代器，也就是buff.beginWriteConst()
         // lineEnd指针会指向\r位置，也就是有效字符串的后一个位置
         // 当序列A中没有序列B中的字符时，会返回序列A的尾后指针
-        const char *lineEnd = std::search(buff.peek(), buff.beginWriteConst(), CRLF, CRLF + 2);
+        // 这里用变量记录，方便switch后判断是否完整，即是否查到了CRLF
+        const char *rdp = buff.peek();
+        const char *wdp = buff.beginWriteConst();
+        const char *lineEnd = std::search(rdp, wdp, CRLF, CRLF + 2);
         // 根据查找到的行尾的位置初始化一个行字符串
-        std::string line(buff.peek(), lineEnd);
-
-        // 若解析状态停留在header且没有CRLF作为结尾，直接退出循环，返回NO_REQUEST请求不完整，等待接收剩余数据
-        if (lineEnd == buff.beginWrite() && state_ == HEADER)
+        std::string line(rdp, lineEnd);
+        // 若解析状态停留在HEADER且没有CRLF作为结尾（未找到CRLF）
+        // 直接退出循环，返回NO_REQUEST请求不完整，直到接收完整数据
+        // 因为是header，如果不完整，无法解析，而body可以先接受一部分
+        if (lineEnd == wdp && state_ == HEADER)
         {
             break;
         }
-
         // 开始解析
         switch (state_)
         {
@@ -510,8 +663,8 @@ HttpRequest::HTTP_CODE HttpRequest::parse(Buffer &buff)
             // 如果请求体数据不完整，parseBody_()函数返回false
             if (!parseBody_(line))
             {
-                // 返回NO_REQUEST请求不完整，等待接收剩余数据
-                return NO_REQUEST;
+                // 请求体没有读完整，可能还在缓冲区中有多行数据，也可能网络传输了一部分，break出switch到while循环判断
+                break;
             }
             // 完整请求体，回收空间
             buff.retrieveAll();
@@ -522,10 +675,20 @@ HttpRequest::HTTP_CODE HttpRequest::parse(Buffer &buff)
             return INTERNAL_ERROR;
         }
         // 移动读指针到下一行，跳过上一行的\r\n
-        buff.retrieveUntil(lineEnd + 2);
+        // 这里一定要注意，因为可能没找到\r\n，就不能跳过\r\n
+        // 若解析状态停留在BODY且没有CRLF作为结尾（未找到CRLF）
+        if (lineEnd == wdp && state_ == BODY)
+        {
+            buff.retrieveUntil(lineEnd);
+        }
+        // 读到了完整body，找打了\r\n
+        else
+        {
+            buff.retrieveUntil(lineEnd + 2);
+        }
     }
     // 打印请求首行日志信息
     LOG_DEBUG("[%s], [%s], [%s]", method_.c_str(), path_.c_str(), version_.c_str());
-    // note: 最后最好直接返回NO_REQUEST状态，表示如果执行到这一部分，说明请求没有接受完整，需要继续接受请求，若是请求完整的在之前就会return出while
+    // note: 最后直接返回NO_REQUEST状态，表示如果执行到这一部分，说明请求没有接受完整，需要继续接受请求，若是请求完整的在之前就会return出while
     return NO_REQUEST;
 }

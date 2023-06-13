@@ -5,9 +5,8 @@
  * @Author: WangXingyu
  * @Date: 2023-05-30 18:15:26
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-12 13:13:29
+ * @LastEditTime: 2023-06-12 16:30:26
  */
-#include <unistd.h>
 #include "headers/webserver.h"
 #include "headers/config.h"
 
@@ -34,7 +33,6 @@ int main(int argc, char *argv[])
     );
     // WebServer启动
     server.start();
-    // 打印退出成功日志
-    LOG_INFO("=========================Server Quit=========================\n");
+    // note: WebServer退出，在此之前主线程会等待log子线程退出，在Log析构函数里
     return 0;
 }

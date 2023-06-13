@@ -6,6 +6,11 @@
 },
 {
   "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/config.cpp.o -c /home/wxy/Projects/my-WebServer/codes/config.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/config.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
   "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/epoller.cpp.o -c /home/wxy/Projects/my-WebServer/codes/epoller.cpp",
   "file": "/home/wxy/Projects/my-WebServer/codes/epoller.cpp"
 },
@@ -33,6 +38,11 @@
   "directory": "/home/wxy/Projects/my-WebServer/build",
   "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/log.cpp.o -c /home/wxy/Projects/my-WebServer/codes/log.cpp",
   "file": "/home/wxy/Projects/my-WebServer/codes/log.cpp"
+},
+{
+  "directory": "/home/wxy/Projects/my-WebServer/build",
+  "command": "/usr/bin/g++   -I/usr/include/mysql -I/home/wxy/Projects/my-WebServer/headers  -g   -std=gnu++14 -o CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o -c /home/wxy/Projects/my-WebServer/codes/sigutils.cpp",
+  "file": "/home/wxy/Projects/my-WebServer/codes/sigutils.cpp"
 },
 {
   "directory": "/home/wxy/Projects/my-WebServer/build",
