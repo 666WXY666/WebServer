@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wxy/Projects/my-WebServer
+CMAKE_SOURCE_DIR = /home/wxy/Projects/WebServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wxy/Projects/my-WebServer
+CMAKE_BINARY_DIR = /home/wxy/Projects/WebServer
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wxy/Projects/my-WebServer/CMakeFiles /home/wxy/Projects/my-WebServer/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wxy/Projects/WebServer/CMakeFiles /home/wxy/Projects/WebServer/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wxy/Projects/my-WebServer/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wxy/Projects/WebServer/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named my_WebServer
+# Target rules for targets named WebServer
 
 # Build rule for target.
-my_WebServer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 my_WebServer
-.PHONY : my_WebServer
+WebServer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 WebServer
+.PHONY : WebServer
 
 # fast build rule for target.
-my_WebServer/fast:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/build
-.PHONY : my_WebServer/fast
+WebServer/fast:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/build
+.PHONY : WebServer/fast
 
 codes/buffer.o: codes/buffer.cpp.o
 
@@ -129,7 +129,7 @@ codes/buffer.o: codes/buffer.cpp.o
 
 # target to build an object file
 codes/buffer.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/buffer.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/buffer.cpp.o
 .PHONY : codes/buffer.cpp.o
 
 codes/buffer.i: codes/buffer.cpp.i
@@ -138,7 +138,7 @@ codes/buffer.i: codes/buffer.cpp.i
 
 # target to preprocess a source file
 codes/buffer.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/buffer.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/buffer.cpp.i
 .PHONY : codes/buffer.cpp.i
 
 codes/buffer.s: codes/buffer.cpp.s
@@ -147,7 +147,7 @@ codes/buffer.s: codes/buffer.cpp.s
 
 # target to generate assembly for a file
 codes/buffer.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/buffer.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/buffer.cpp.s
 .PHONY : codes/buffer.cpp.s
 
 codes/config.o: codes/config.cpp.o
@@ -156,7 +156,7 @@ codes/config.o: codes/config.cpp.o
 
 # target to build an object file
 codes/config.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/config.cpp.o
 .PHONY : codes/config.cpp.o
 
 codes/config.i: codes/config.cpp.i
@@ -165,7 +165,7 @@ codes/config.i: codes/config.cpp.i
 
 # target to preprocess a source file
 codes/config.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/config.cpp.i
 .PHONY : codes/config.cpp.i
 
 codes/config.s: codes/config.cpp.s
@@ -174,7 +174,7 @@ codes/config.s: codes/config.cpp.s
 
 # target to generate assembly for a file
 codes/config.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/config.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/config.cpp.s
 .PHONY : codes/config.cpp.s
 
 codes/epoller.o: codes/epoller.cpp.o
@@ -183,7 +183,7 @@ codes/epoller.o: codes/epoller.cpp.o
 
 # target to build an object file
 codes/epoller.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/epoller.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/epoller.cpp.o
 .PHONY : codes/epoller.cpp.o
 
 codes/epoller.i: codes/epoller.cpp.i
@@ -192,7 +192,7 @@ codes/epoller.i: codes/epoller.cpp.i
 
 # target to preprocess a source file
 codes/epoller.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/epoller.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/epoller.cpp.i
 .PHONY : codes/epoller.cpp.i
 
 codes/epoller.s: codes/epoller.cpp.s
@@ -201,7 +201,7 @@ codes/epoller.s: codes/epoller.cpp.s
 
 # target to generate assembly for a file
 codes/epoller.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/epoller.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/epoller.cpp.s
 .PHONY : codes/epoller.cpp.s
 
 codes/heaptimer.o: codes/heaptimer.cpp.o
@@ -210,7 +210,7 @@ codes/heaptimer.o: codes/heaptimer.cpp.o
 
 # target to build an object file
 codes/heaptimer.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/heaptimer.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/heaptimer.cpp.o
 .PHONY : codes/heaptimer.cpp.o
 
 codes/heaptimer.i: codes/heaptimer.cpp.i
@@ -219,7 +219,7 @@ codes/heaptimer.i: codes/heaptimer.cpp.i
 
 # target to preprocess a source file
 codes/heaptimer.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/heaptimer.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/heaptimer.cpp.i
 .PHONY : codes/heaptimer.cpp.i
 
 codes/heaptimer.s: codes/heaptimer.cpp.s
@@ -228,7 +228,7 @@ codes/heaptimer.s: codes/heaptimer.cpp.s
 
 # target to generate assembly for a file
 codes/heaptimer.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/heaptimer.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/heaptimer.cpp.s
 .PHONY : codes/heaptimer.cpp.s
 
 codes/httpconn.o: codes/httpconn.cpp.o
@@ -237,7 +237,7 @@ codes/httpconn.o: codes/httpconn.cpp.o
 
 # target to build an object file
 codes/httpconn.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httpconn.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httpconn.cpp.o
 .PHONY : codes/httpconn.cpp.o
 
 codes/httpconn.i: codes/httpconn.cpp.i
@@ -246,7 +246,7 @@ codes/httpconn.i: codes/httpconn.cpp.i
 
 # target to preprocess a source file
 codes/httpconn.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httpconn.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httpconn.cpp.i
 .PHONY : codes/httpconn.cpp.i
 
 codes/httpconn.s: codes/httpconn.cpp.s
@@ -255,7 +255,7 @@ codes/httpconn.s: codes/httpconn.cpp.s
 
 # target to generate assembly for a file
 codes/httpconn.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httpconn.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httpconn.cpp.s
 .PHONY : codes/httpconn.cpp.s
 
 codes/httprequest.o: codes/httprequest.cpp.o
@@ -264,7 +264,7 @@ codes/httprequest.o: codes/httprequest.cpp.o
 
 # target to build an object file
 codes/httprequest.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httprequest.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httprequest.cpp.o
 .PHONY : codes/httprequest.cpp.o
 
 codes/httprequest.i: codes/httprequest.cpp.i
@@ -273,7 +273,7 @@ codes/httprequest.i: codes/httprequest.cpp.i
 
 # target to preprocess a source file
 codes/httprequest.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httprequest.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httprequest.cpp.i
 .PHONY : codes/httprequest.cpp.i
 
 codes/httprequest.s: codes/httprequest.cpp.s
@@ -282,7 +282,7 @@ codes/httprequest.s: codes/httprequest.cpp.s
 
 # target to generate assembly for a file
 codes/httprequest.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httprequest.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httprequest.cpp.s
 .PHONY : codes/httprequest.cpp.s
 
 codes/httpresponse.o: codes/httpresponse.cpp.o
@@ -291,7 +291,7 @@ codes/httpresponse.o: codes/httpresponse.cpp.o
 
 # target to build an object file
 codes/httpresponse.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httpresponse.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httpresponse.cpp.o
 .PHONY : codes/httpresponse.cpp.o
 
 codes/httpresponse.i: codes/httpresponse.cpp.i
@@ -300,7 +300,7 @@ codes/httpresponse.i: codes/httpresponse.cpp.i
 
 # target to preprocess a source file
 codes/httpresponse.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httpresponse.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httpresponse.cpp.i
 .PHONY : codes/httpresponse.cpp.i
 
 codes/httpresponse.s: codes/httpresponse.cpp.s
@@ -309,7 +309,7 @@ codes/httpresponse.s: codes/httpresponse.cpp.s
 
 # target to generate assembly for a file
 codes/httpresponse.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/httpresponse.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/httpresponse.cpp.s
 .PHONY : codes/httpresponse.cpp.s
 
 codes/log.o: codes/log.cpp.o
@@ -318,7 +318,7 @@ codes/log.o: codes/log.cpp.o
 
 # target to build an object file
 codes/log.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/log.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/log.cpp.o
 .PHONY : codes/log.cpp.o
 
 codes/log.i: codes/log.cpp.i
@@ -327,7 +327,7 @@ codes/log.i: codes/log.cpp.i
 
 # target to preprocess a source file
 codes/log.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/log.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/log.cpp.i
 .PHONY : codes/log.cpp.i
 
 codes/log.s: codes/log.cpp.s
@@ -336,7 +336,7 @@ codes/log.s: codes/log.cpp.s
 
 # target to generate assembly for a file
 codes/log.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/log.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/log.cpp.s
 .PHONY : codes/log.cpp.s
 
 codes/sigutils.o: codes/sigutils.cpp.o
@@ -345,7 +345,7 @@ codes/sigutils.o: codes/sigutils.cpp.o
 
 # target to build an object file
 codes/sigutils.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/sigutils.cpp.o
 .PHONY : codes/sigutils.cpp.o
 
 codes/sigutils.i: codes/sigutils.cpp.i
@@ -354,7 +354,7 @@ codes/sigutils.i: codes/sigutils.cpp.i
 
 # target to preprocess a source file
 codes/sigutils.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/sigutils.cpp.i
 .PHONY : codes/sigutils.cpp.i
 
 codes/sigutils.s: codes/sigutils.cpp.s
@@ -363,7 +363,7 @@ codes/sigutils.s: codes/sigutils.cpp.s
 
 # target to generate assembly for a file
 codes/sigutils.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sigutils.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/sigutils.cpp.s
 .PHONY : codes/sigutils.cpp.s
 
 codes/sqlconnpoll.o: codes/sqlconnpoll.cpp.o
@@ -372,7 +372,7 @@ codes/sqlconnpoll.o: codes/sqlconnpoll.cpp.o
 
 # target to build an object file
 codes/sqlconnpoll.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/sqlconnpoll.cpp.o
 .PHONY : codes/sqlconnpoll.cpp.o
 
 codes/sqlconnpoll.i: codes/sqlconnpoll.cpp.i
@@ -381,7 +381,7 @@ codes/sqlconnpoll.i: codes/sqlconnpoll.cpp.i
 
 # target to preprocess a source file
 codes/sqlconnpoll.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/sqlconnpoll.cpp.i
 .PHONY : codes/sqlconnpoll.cpp.i
 
 codes/sqlconnpoll.s: codes/sqlconnpoll.cpp.s
@@ -390,7 +390,7 @@ codes/sqlconnpoll.s: codes/sqlconnpoll.cpp.s
 
 # target to generate assembly for a file
 codes/sqlconnpoll.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/sqlconnpoll.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/sqlconnpoll.cpp.s
 .PHONY : codes/sqlconnpoll.cpp.s
 
 codes/webserver.o: codes/webserver.cpp.o
@@ -399,7 +399,7 @@ codes/webserver.o: codes/webserver.cpp.o
 
 # target to build an object file
 codes/webserver.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/webserver.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/webserver.cpp.o
 .PHONY : codes/webserver.cpp.o
 
 codes/webserver.i: codes/webserver.cpp.i
@@ -408,7 +408,7 @@ codes/webserver.i: codes/webserver.cpp.i
 
 # target to preprocess a source file
 codes/webserver.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/webserver.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/webserver.cpp.i
 .PHONY : codes/webserver.cpp.i
 
 codes/webserver.s: codes/webserver.cpp.s
@@ -417,7 +417,7 @@ codes/webserver.s: codes/webserver.cpp.s
 
 # target to generate assembly for a file
 codes/webserver.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/codes/webserver.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/codes/webserver.cpp.s
 .PHONY : codes/webserver.cpp.s
 
 main.o: main.cpp.o
@@ -426,7 +426,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -435,7 +435,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -444,7 +444,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -455,7 +455,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... my_WebServer"
+	@echo "... WebServer"
 	@echo "... codes/buffer.o"
 	@echo "... codes/buffer.i"
 	@echo "... codes/buffer.s"

@@ -1,0 +1,29 @@
+2023-06-14 12:02:24.142647 [info]:  =========================Server Init=========================
+2023-06-14 12:02:24.142673 [info]:  Date: 2023-06-14, Time: 12:02:24
+2023-06-14 12:02:24.142683 [info]:  Daemon Mode: No
+2023-06-14 12:02:24.142691 [info]:  Port: 9006, OpenLinger: false
+2023-06-14 12:02:24.142698 [info]:  Listen Mode: ET, Conn Mode: ET
+2023-06-14 12:02:24.142705 [info]:  Actor Mode: Reactor
+2023-06-14 12:02:24.142711 [info]:  LogSys Status: Open
+2023-06-14 12:02:24.142718 [info]:  Log level: 1
+2023-06-14 12:02:24.142725 [info]:  DataBase: webserver, SqlUser: wxy, SqlPort: 3306
+2023-06-14 12:02:24.142732 [info]:  SqlConnPool num: 12, ThreadPool num: 6
+2023-06-14 12:02:24.142813 [info]:  srcDir: /home/wxy/Projects/WebServer/resources/
+2023-06-14 12:02:24.142845 [info]:  TimeOut: 60s
+2023-06-14 12:02:24.142908 [info]:  =========================Server Start=========================
+2023-06-14 12:02:27.510887 [info]:  Client[20](10.128.133.88:6377) In, UserCount: 1
+2023-06-14 12:02:27.590585 [info]:  Client[21](10.128.133.88:6633) In, UserCount: 2
+2023-06-14 12:02:27.592501 [info]:  Client[22](10.128.133.88:6889) In, UserCount: 3
+2023-06-14 12:02:27.594944 [info]:  Client[23](10.128.133.88:7145) In, UserCount: 4
+2023-06-14 12:02:27.596092 [info]:  Client[24](10.128.133.88:7401) In, UserCount: 5
+2023-06-14 12:02:27.600939 [info]:  Client[25](10.128.133.88:7657) In, UserCount: 6
+2023-06-14 12:03:29.565302 [info]:  Client[22](10.128.133.88:6889) Quit, UserCount: 5
+2023-06-14 12:03:29.565439 [info]:  Client[21](10.128.133.88:6633) Quit, UserCount: 4
+2023-06-14 12:03:29.565503 [info]:  Client[20](10.128.133.88:6377) Quit, UserCount: 3
+2023-06-14 12:03:29.565561 [info]:  Client[25](10.128.133.88:7657) Quit, UserCount: 2
+2023-06-14 12:03:29.565613 [info]:  Client[24](10.128.133.88:7401) Quit, UserCount: 1
+2023-06-14 12:03:29.565668 [info]:  Client[23](10.128.133.88:7145) Quit, UserCount: 0
+2023-06-14 12:03:56.317725 [info]:  Received Signal SIGINT!
+2023-06-14 12:03:56.317838 [info]:  Received Signal SIGTERM!
+2023-06-14 12:03:56.319304 [info]:  =========================Server Quit=========================
+

@@ -44,16 +44,16 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wxy/Projects/my-WebServer
+CMAKE_SOURCE_DIR = /home/wxy/Projects/WebServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wxy/Projects/my-WebServer
+CMAKE_BINARY_DIR = /home/wxy/Projects/WebServer
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/my_WebServer.dir/all
+all: CMakeFiles/WebServer.dir/all
 
 .PHONY : all
 
@@ -63,36 +63,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/my_WebServer.dir/clean
+clean: CMakeFiles/WebServer.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/my_WebServer.dir
+# Target rules for target CMakeFiles/WebServer.dir
 
 # All Build rule for target.
-CMakeFiles/my_WebServer.dir/all:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/depend
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wxy/Projects/my-WebServer/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target my_WebServer"
-.PHONY : CMakeFiles/my_WebServer.dir/all
+CMakeFiles/WebServer.dir/all:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/depend
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wxy/Projects/WebServer/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target WebServer"
+.PHONY : CMakeFiles/WebServer.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/my_WebServer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wxy/Projects/my-WebServer/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/my_WebServer.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wxy/Projects/my-WebServer/CMakeFiles 0
-.PHONY : CMakeFiles/my_WebServer.dir/rule
+CMakeFiles/WebServer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wxy/Projects/WebServer/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/WebServer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wxy/Projects/WebServer/CMakeFiles 0
+.PHONY : CMakeFiles/WebServer.dir/rule
 
 # Convenience name for target.
-my_WebServer: CMakeFiles/my_WebServer.dir/rule
+WebServer: CMakeFiles/WebServer.dir/rule
 
-.PHONY : my_WebServer
+.PHONY : WebServer
 
 # clean rule for target.
-CMakeFiles/my_WebServer.dir/clean:
-	$(MAKE) -f CMakeFiles/my_WebServer.dir/build.make CMakeFiles/my_WebServer.dir/clean
-.PHONY : CMakeFiles/my_WebServer.dir/clean
+CMakeFiles/WebServer.dir/clean:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/clean
+.PHONY : CMakeFiles/WebServer.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

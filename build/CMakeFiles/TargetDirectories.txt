@@ -1,3 +1,0 @@
-/home/wxy/Projects/my-WebServer/build/CMakeFiles/rebuild_cache.dir
-/home/wxy/Projects/my-WebServer/build/CMakeFiles/edit_cache.dir
-/home/wxy/Projects/my-WebServer/build/CMakeFiles/my_WebServer.dir
