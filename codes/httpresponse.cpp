@@ -232,7 +232,7 @@ void HttpResponse::addContent_(Buffer &buff)
     if (srcFd < 0)
     {
         // 若打开文件失败，向客户端发送指定错误信息的html页面
-        errorContent(buff, "File NotFound!");
+        errorContent(buff, "File Not Found!");
         return;
     }
 
@@ -243,13 +243,13 @@ void HttpResponse::addContent_(Buffer &buff)
     // 若映射文件失败，向客户端发送指定错误信息的html页面
     if (*mmRet == -1)
     {
-        errorContent(buff, "File NotFound!");
+        errorContent(buff, "File Not Found!");
         return;
     }
     // 将映射的地址赋值给mmFile_变量
     mmFile_ = (char *)mmRet;
     // 映射成功后就可以关闭文件描述符了
-    close(srcFd);
+    int ret = close(srcFd);
 
     // 继续向响应头添加Content-length信息并加入发送缓存中，返回内容的长度信息
     // 注意这里是往响应头添加字段，因为响应体文件映射在内存，没有在buff中，后面通过聚集写传输到Socket

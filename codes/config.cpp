@@ -5,7 +5,7 @@
  * @Author: WangXingyu
  * @Date: 2023-06-08 15:13:16
  * @LastEditors: WangXingyu
- * @LastEditTime: 2023-06-12 14:22:24
+ * @LastEditTime: 2023-06-26 11:54:46
  */
 #include "../headers/config.h"
 
@@ -13,8 +13,8 @@ Config::Config()
 {
     // 端口
     port = 9006;
-    // epoll事件触发模式，默认ET+ET模式
-    trigMode = 3;
+    // epoll事件触发模式，默认LT+ET模式
+    trigMode = 1;
     // timeoutMs，默认1min
     timeoutMS = 60000;
     // 优雅退出，默认关闭
@@ -29,7 +29,7 @@ Config::Config()
     // 线程池数量
     threadNum = 6;
     // 日志开关
-    openLog = true;
+    openLog = false;
     // 日志等级
     logLevel = 1;
     // 阻塞队列容量

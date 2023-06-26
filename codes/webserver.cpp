@@ -12,7 +12,8 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool optLinger,
     // 获取资源目录
     srcDir_ = getcwd(nullptr, 256);
     assert(srcDir_);
-    strncat(srcDir_, "/resources/", 16);
+    // 注意：这里的目录后面要不要加/
+    strcat(srcDir_, "/resources");
 
     // 获取上传目录
     uploadDir_ = getcwd(nullptr, 256);
